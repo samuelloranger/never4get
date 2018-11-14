@@ -1,0 +1,34 @@
+/**
+ * @author Prénom Nom courriel
+ * @todo Compléter selon l'énoncé
+*/
+
+@include border-box-sizing;
+
+@media(max-width:(($bureau)-1px)){
+  $susy: (
+          'columns': susy-repeat(4),
+          'gutters': 0.25,
+          'spread': 'narrow',
+          'container-spread': 'narrow',
+  );
+  .conteneur {
+    background: susy-svg-grid($susy) no-repeat scroll;
+  }
+}
+@media(min-width:$bureau){
+  $susy: (
+          'columns': susy-repeat(12),
+          'gutters': 0.25,
+          'spread': 'narrow',
+          'container-spread': 'narrow'
+  );
+  .conteneur {
+    background: susy-svg-grid($susy) no-repeat scroll;
+  }
+}
+
+.conteneur {
+  margin: 0 auto;
+  max-width: 1000px;
+}

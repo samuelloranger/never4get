@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="localhost">
+    <serverData>
+      <paths name="localhost">
+        <serverdata>
+          <mappings>
+            <mapping deploy="http://localhost/~samuel/P2_TOFU_2018/01_travail/03_site/" local="$PROJECT_DIR$" web="~samuel/P2_TOFU_2018/01_travail/03_site/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

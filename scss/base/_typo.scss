@@ -1,0 +1,33 @@
+/**
+ * @author Prénom Nom courriel
+ * @todo Compléter selon l'énoncé
+*/
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @include fontSize(16px);
+  font-family: $fonteSecondaire;
+  line-height: 1.375;
+  /* facteur multiplicateur de la taille de la police 1.375x16=22 */
+  @media (min-width:$bureau) {
+    line-height: 1.5;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: $fontePrimaire;
+}
+
+h1, .h1 {
+}
+
+h2, .h2{
+}
+
+h3, .h3 {
+}

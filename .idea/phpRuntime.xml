@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpRuntimeConfiguration">
+    <extensions>
+      <extension name="Ev" enabled="false" />
+      <extension name="ZendCache" enabled="false" />
+      <extension name="ZendDebugger" enabled="false" />
+      <extension name="ZendUtils" enabled="false" />
+      <extension name="amqp" enabled="false" />
+      <extension name="com" enabled="false" />
+      <extension name="couchbase" enabled="false" />
+      <extension name="fann" enabled="false" />
+      <extension name="ffmpeg" enabled="false" />
+      <extension name="gnupg" enabled="false" />
+      <extension name="grpc" enabled="false" />
+      <extension name="igbinary" enabled="false" />
+      <extension name="judy" enabled="false" />
+      <extension name="libsodium" enabled="false" />
+      <extension name="mqseries" enabled="false" />
+      <extension name="newrelic" enabled="false" />
+      <extension name="rar" enabled="false" />
+      <extension name="redis" enabled="false" />
+      <extension name="rrd" enabled="false" />
+      <extension name="sodium" enabled="false" />
+      <extension name="suhosin" enabled="false" />
+      <extension name="v8js" enabled="false" />
+      <extension name="win32service" enabled="false" />
+      <extension name="xcache" enabled="false" />
+      <extension name="xdebug" enabled="false" />
+      <extension name="zend" enabled="false" />
+      <extension name="zmq" enabled="false" />
+    </extensions>
+  </component>
+</project>
