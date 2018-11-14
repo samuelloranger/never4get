@@ -32,7 +32,7 @@
                 
                     MANDAT B: SAMUEL LORANGER
                         - Interfaces du mandat B
-*                           Consulter une liste
+                           Consulter une liste
                             Ajouter item
                             Éditer item
                         - Composantes
