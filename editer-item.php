@@ -1,11 +1,10 @@
 <?php
-//******************** Déclarations des variables **********
+//******************** Déclarations des variables ********************
 // Inclusion du fichier de configuration
 // include($niveau . 'inc/scripts/config.inc.php');
 
 //Déclaration de la variable niveau
 $niveau = "./";
-
 
 if (isset($_GET["ajouterEcheance"])) {
     /**
@@ -27,29 +26,20 @@ if (isset($_GET["ajouterEcheance"])) {
     <?php @include($niveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
-    <main>
-        <h1 id="contenu">Ajout d'une échéance</h1>
-        <h2>Liste de choses à faire pour le cégep</h2>
-        <form id="formDemoValidation" action="editer-item.php">
+    <main class="contenu">
+        <h1 id="contenu__titre">Éditer un item</h1>
+        <h2 class="contenu__liste">Liste:<span><!-- NOM DE LA LISTE  DE L'ITEM EN PHP ICI --></span></h2>
 
+        <form id="formDemoValidation" action="editer-item.php">
             <div class="conteneurChamp">
-                <label for="tache">Tâche </label>
-                <input type="text" name="tache" id="tache" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" required>
+                <label class="conteneurChamp__nomItem__label" for="nomListe">Nom de l'item: </label>
+                <input class="conteneurChamp__nomItem__input" type="text" name="nomListe" id="nomListe" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" required>
                 <p class="erreur"></p>
             </div>
 
             <fieldset class="conteneurChamp">
-                <legend>Cours</legend>
-                <ul>
-                    <li><input type="radio" name="cours" id="video" required><label for="video">Vidéo</label></li>
-                    <li><input type="radio" name="cours" id="conception"><label for="conception">Conception</label></li>
-                    <li><input type="radio" name="cours" id="realisation"><label for="realisation">Réalisation</label></li>
-                </ul>
-                <p class="erreur"></p>
-            </fieldset>
+                <legend>Date d'échéance (facultatif) <div  class="cacherDateEchance__button" ><button class="cacherDateEchance__button" id="cacherDateEchance"></button></div></legend>
 
-            <fieldset class="conteneurChamp">
-                <legend>Date d'échéance (facultatif)</legend>
                 <div class="date">
                     <label for="jour" class="screen-reader-only">Jour</label>
                     <select name="jour" id="jour">

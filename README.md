@@ -1,19 +1,12 @@
-********************************************************************************
-
-                         PROJET TOFU RÉALISÉ PAR
+********************************************************************************                         PROJET TOFU RÉALISÉ PAR
                             SAMUEL LORANGER
                                   ET
                       GABRIEL CHOUINARD-LETOURNEAU
                       
                       
                      
-                     
-                     
-                     
                      POUR LE COURS DE RÉALISATION DE
                    PRODUITS NUMÉRIQUES ET INTERACTIFS 1
-                   
-                   
                    
                    
                    
@@ -30,9 +23,11 @@
                                 Header
                                 Footer
                 
+                
+                
                     MANDAT B: SAMUEL LORANGER
                         - Interfaces du mandat B
-                           Consulter une liste
+                            Consulter une liste
                             Ajouter item
                             Éditer item
                         - Composantes
@@ -40,8 +35,5 @@
                             Schématisation et intégration de 
                                 Header
                                 Footer
-                                
-                                
-                                
 ********************************************************************************
                        
