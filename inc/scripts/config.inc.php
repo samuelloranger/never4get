@@ -12,9 +12,9 @@ if (stristr($_SERVER['HTTP_HOST'], 'local') || (substr($_SERVER['HTTP_HOST'], 0,
 // Selon l'environnement d'exécution (développement ou en ligne)
 if ($blnLocal) {
     $strHost = 'localhost';
-    $strBD='';
-    $strUser = '';
-    $strPassword= '';
+    $strBD="18_pni_tofu";
+    $strUser = "never4get";
+    $strPassword= "badrequest";
     error_reporting(E_ALL);
 } else {
     $strHost = 'timunix2.cegep-ste-foy.qc.ca';
@@ -25,7 +25,7 @@ if ($blnLocal) {
     error_reporting(0);
 }
 
-//Slug: erreur400, mdp: badrequest
+//FTP: erreur400, mdp: badrequest
 
 //Data Source Name pour l'objet PDO
 $strDsn = 'mysql:dbname='.$strBD.';host='.$strHost;
