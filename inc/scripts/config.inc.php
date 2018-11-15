@@ -12,7 +12,7 @@ if (stristr($_SERVER['HTTP_HOST'], 'local') || (substr($_SERVER['HTTP_HOST'], 0,
 // Selon l'environnement d'exécution (développement ou en ligne)
 if ($blnLocal) {
     $strHost = 'localhost';
-    $strBD="18_pni_tofu";
+    $strBD="18_pni1_tofu";
     $strUser = "never4get";
     $strPassword= "badrequest";
     error_reporting(E_ALL);
