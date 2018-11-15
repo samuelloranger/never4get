@@ -11,9 +11,15 @@ $strNiveau = "./";
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <?php include ($strNiveau.'inc/scripts/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <a href="#contenu">Allez au contenu</a>
 
+
+
+
+
+    <?php include ($strNiveau.'inc/scripts/footer.inc.php'); ?>
 <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
