@@ -2,47 +2,47 @@
   "nameOuId": {
     "label": "Intitulé de la balise label ou d'un attribut title",
     "erreurs": {
-      "vide": "Message à afficher si l'élément de formulaire n'est pas complété.",
-      "motif": "Explication complète du motif attendu."
+      "vide": "Message à afficher si l'élément de formulaire n'est pas complété",
+      "motif": "Explication complète du motif attendu"
     }
   },
-  "nomListe": {
+  "nom_liste": {
     "label": "Nom",
     "erreurs": {
-      "vide": "Veuillez entrer un nom pour la liste.",
-      "motif": "Minuscules, majuscules, caractères accentués, espaces, guillemets simples, traits d'union et # seulement. Maximum 50 caractères."
+      "vide": "Entrez un nom pour la liste!",
+      "motif": "Minuscules, majuscules, caractères accentués, espace, guillemet simple, trait d'union et #. Maximum 50 caractères."
     }
   },
-  "nomItem": {
+  "nom_item": {
     "label": "Nom",
     "erreurs": {
-      "vide": "Veuillez entrer un nom d'item.",
-      "motif": "Minuscules, majuscules, caractères accentués, espaces, guillemets simples, traits d'union et #. Maximum 55 caractères."
+      "vide": "Entrez un nom d'item!",
+      "motif": "Minuscules, majuscules, caractères accentués, espace, guillemet simple, trait d'union et #. Maximum 55 caractères."
     }
   },
   "echeance": {
     "label": "Échéance",
     "erreurs": {
-      "vide": "Veuillez entrer une date d'échéance complète.",
-      "motif": "Cette date d'échéance n'existe pas!"
+      "vide": "Veuillez entrer une date d'échéance complète",
+      "motif": "Cette date d'échéance n'est pas possible! Autant dire la semaine des 4 jeudis ou quand les poules auront des dents?!"
     }
   },
   "couleurs": {
     "label": "Sélectionnez une couleur",
     "erreurs": {
-      "vide": "Veuillez associer une couleur à la liste."
+      "vide": "SVP associez une couleur à la liste!"
     }
   },
   "retroactions": {
     "liste": {
-      "ajout": "La liste a été ajoutée.",
-      "modification": "La liste a été modifiée.",
-      "suppression": "La liste ainsi que tous les items de cette liste ont été supprimés."
+      "ajouter": "La liste a été ajoutée.",
+      "modifier": "La liste a été modifiée.",
+      "supprimer": "La liste a été supprimée ainsi que tous les items de cette liste."
     },
     "item": {
-      "ajout": "L'item a été ajouté.",
-      "modification": "L'item a été modifié.",
-      "suppression": "L'item a été supprimé."
+      "ajouter": "L'item a été ajouté.",
+      "modifier": "L'item a été modifié.",
+      "supprimer": "L'item a été supprimé."
     }
   }
 }
