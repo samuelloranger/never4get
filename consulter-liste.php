@@ -68,7 +68,6 @@
         //Insertion des valeurs de querystring dans la requête
         $pdosResultatModifierEtat -> bindValue("idItemModifierEtat", $idItemModifierEtat);
 
-        var_dump($pdosResultatModifierEtat);
         //Éxécution de la requête
         $pdosResultatModifierEtat -> execute();
 
