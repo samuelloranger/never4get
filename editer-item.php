@@ -1,19 +1,27 @@
 <?php
-//******************** Déclarations des variables ********************
-// Inclusion du fichier de configuration
-// include($niveau . 'inc/scripts/config.inc.php');
+    //******************** Déclarations des variables ********************
+    // Inclusion du fichier de configuration
+     include($niveau . 'inc/scripts/config.inc.php');
 
-//Déclaration de la variable niveau
-$niveau = "./";
+    //Déclaration de la variable niveau
+    $niveau = "./";
 
-if (isset($_GET["ajouterEcheance"])) {
-    /**
-     * Pour info seulement :
-     * Lorsque le formulaire est envoyé, on fera des validations sur l'ensemble du formulaire
-     * et seulement si tout est correct, on ajoute l'occurrence dans la BD.
-     */
-    echo "Le formulaire a été envoyé. C'est à ce moment qu'on fait les validations côté serveur!";
-}
+    //Récupération de query string
+    if(isset($_GET["id_item"])){
+        $strIdItem = $_GET["id_item"];
+    }
+
+    //******************** Affichage des infos de l'item ********************
+
+    //******************** Déclarations des variables ********************
+    if (isset($_GET["ajouterEcheance"])) {
+        /**
+         * Pour info seulement :
+         * Lorsque le formulaire est envoyé, on fera des validations sur l'ensemble du formulaire
+         * et seulement si tout est correct, on ajoute l'occurrence dans la BD.
+         */
+        echo "Le formulaire a été envoyé. C'est à ce moment qu'on fait les validations côté serveur!";
+    }
 
 ?>
 <!DOCTYPE html>
@@ -23,9 +31,10 @@ if (isset($_GET["ajouterEcheance"])) {
     <meta name="viewport" content="width=device-width"/>
     <title>Démonstration - Validations avec jQuery</title>
     <link rel="stylesheet" href="css/styles.css">
-    <?php @include($niveau . "inc/scripts/headlinks.php"); ?>
+    <?php include($niveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
+    <?php include($niveau . "inc/fragments/header.inc.php"); ?>
     <main class="contenu">
         <h1 id="contenu__titre">Éditer un item</h1>
         <h2 class="contenu__liste">Liste:<span><!-- NOM DE LA LISTE  DE L'ITEM EN PHP ICI --></span></h2>
@@ -74,9 +83,9 @@ if (isset($_GET["ajouterEcheance"])) {
             </p>
         </form>
     </main>
-    <footer>
-        <p>Tous droits réservés, 2018.</p>
-    </footer>
+
+    <?php include($niveau . "inc/fragments/footer.inc.php"); ?>
+
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -91,5 +100,6 @@ if (isset($_GET["ajouterEcheance"])) {
          */
         $(document).ready(validationsMandatX.initialiser.bind(validationsMandatX));
     </script>
+
 </body>
 </html>
