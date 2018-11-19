@@ -94,7 +94,7 @@
 
     //******************** Sélection des items de la liste ********************
     //Définition de la requête
-    $strRequeteItems = "SELECT id_item, item, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, echeance, est_complete, t_item.id_liste 
+    $strRequeteItems = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, echeance, est_complete, t_item.id_liste 
                                  FROM t_item
                                  INNER JOIN t_liste ON t_item.id_liste = t_liste.id_liste
                                  WHERE t_item.id_liste = :id_liste";
@@ -113,7 +113,7 @@
     //Boucle qui insère les données de la BD
     for($intCtr = 0; $ligne = $pdosResultatItems -> fetch(); $intCtr++){
         $arrItemsListe[$intCtr]["id_item"] = $ligne["id_item"];
-        $arrItemsListe[$intCtr]["item"] = $ligne["item"];
+        $arrItemsListe[$intCtr]["nom_item"] = $ligne["nom_item"];
         $arrItemsListe[$intCtr]["jour"] = $ligne["jour"];
         $arrItemsListe[$intCtr]["mois"] = $ligne["mois"];
         $arrItemsListe[$intCtr]["echeance"] = $ligne["echeance"];
@@ -146,7 +146,7 @@
         for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
             <ul>
                 <li><?php echo $arrItemsListe[$intCtr]["id_item"]; ?></li>
-                <li><?php echo $arrItemsListe[$intCtr]["item"]; ?></li>
+                <li><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></li>
                 <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
                     <li><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?></li>
                 <?php } ?>
@@ -158,7 +158,7 @@
                 <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
                 <button name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
                 <button name="btnOperation" value="supprimer">Supprimer</button>
-                <a href="editer-item.php?id=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
+                <a href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
             </form>
         <?php } ?>
 

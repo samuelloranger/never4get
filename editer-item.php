@@ -6,23 +6,121 @@
     //Déclaration de la variable niveau
     $niveau = "./";
 
+    //Déclaration de la variable d'éxécution
+    $strCodeOperation = "";
+
+    //Déclaration du code d'erreur
+    $strCodeErreur = "00000";
+
+    //Définit l'année de départ
+    $dateAjd = new DateTime();
+    $anneeAjd = $dateAjd -> format('Y');
+
+    //Tableau des mois pour affichage
+    $arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
+
     //Récupération de query string
     if(isset($_GET["id_item"])){
         $strIdItem = $_GET["id_item"];
     }
 
-    //******************** Affichage des infos de l'item ********************
+    //******************** Gestion des messages d'erreur ********************
+    $strFichierJson = file_get_contents($niveau. "js/objJSONMessages.json");
+    $jsonMessageErreur = json_decode($strFichierJson);
 
-    //******************** Déclarations des variables ********************
+    $arrChampErreur = array();
+
+    //Liste des message d'erreur à afficher
+    $arrMessageErreur = array();
+    $arrMessageErreur["nom_item"] = "";
+    $arrMessageErreur["echeance"] = "";
+
+    //******************** Fonction utilistaires ********************
+    //Fonction utilitaire pour l'affichage de la liste déroulante
+    function ecrireSelected($valeurOption, $nomSelection){
+        $strSelection = "";
+        global $arrParticipant;
+        if($valeurOption == $arrParticipant[$nomSelection]){
+            $strSelection = 'selected="selected"';
+        }
+        return $strSelection;
+    }
+
+    //******************** Affichage des infos de l'item ********************
+    $strRequeteInfosItem = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois , YEAR(echeance) AS annee, t_item.id_liste, nom_liste
+                                        FROM t_item
+                                        INNER JOIN t_liste ON t_liste.id_liste = t_item.id_liste
+                                        WHERE id_item = :id_item";
+
+    //Préparation de la requête
+    $pdosResultatInfosItem = $pdoConnexion -> prepare($strRequeteInfosItem);
+
+    //Insertion des valeurs de querystring dans la requête
+    $pdosResultatInfosItem -> bindValue("id_item", $strIdItem);
+
+    //Éxécution de la requête
+    $pdosResultatInfosItem -> execute();
+
+    $arrInfosItem = $pdosResultatInfosItem -> fetch();
+
+    //******************** Ajouter/Modifier la date d'échéance ********************
     if (isset($_GET["ajouterEcheance"])) {
         /**
          * Pour info seulement :
          * Lorsque le formulaire est envoyé, on fera des validations sur l'ensemble du formulaire
          * et seulement si tout est correct, on ajoute l'occurrence dans la BD.
          */
-        echo "Le formulaire a été envoyé. C'est à ce moment qu'on fait les validations côté serveur!";
-    }
+        $arrInfosItem["id_item"] = $_GET["id_item"];
+        $arrInfosItem["id_liste"] = $_GET["id_liste"];
+        $arrInfosItem["nom_item"] = $_GET["nom_item"];
+        $arrInfosItem["jour"] =  $_GET["jour"];
+        $arrInfosItem["mois"] =  $_GET["mois"];
+        $arrInfosItem["annee"] =  $_GET["annee"];
+        if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0){
+            $arrInfosItem["echeance"] = null;
+        }
+        else{
+            $arrInfosItem["echeance"] = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"];
+        }
 
+        //Validation
+        if(!preg_match("/^[a-zA-Zà-ÿ0-9 \'\- #]{1,55}$/", $arrInfosItem["nom_item"])){
+            $strCodeErreur = "-1";
+            array_push($arrChampErreur, "nom");
+        }
+
+        if( $arrInfosItem["echeance"] != null){
+            if(checkdate(intval($_GET["mois"]), intval($_GET["jour"]), intval($_GET["annee"])) == false){
+                $strCodeErreur = "-1";
+            }
+        }
+
+        if($strCodeErreur == "00000"){
+            $strRequeteUpdateInfosItem = "UPDATE t_item SET nom_item = :nom_item, echeance = :echeance WHERE id_item = :id_item";
+
+            $pdosResultatModifierItem =$pdoConnexion -> prepare($strRequeteUpdateInfosItem);
+
+            $pdosResultatModifierItem -> bindValue("id_item", $arrInfosItem["id_item"]);
+            $pdosResultatModifierItem -> bindValue("nom_item", $arrInfosItem["nom_item"]);
+            $pdosResultatModifierItem -> bindValue("echeance", $arrInfosItem["echeance"]);
+
+            $pdosResultatModifierItem -> execute();
+        }
+    }
+// *************************** Gestion des messages d'erreur **********************
+    if($strCodeErreur != "00000"){
+        for($intCtr = 0; $intCtr < count($arrChampErreur); $intCtr++){
+            $champ = $arrChampErreur[$intCtr];
+//            $arrMessageErreur[$champ] = $jsonMessageErreur -> {$champ};
+        }
+    }
+    else{
+        if(isset($_GET["ajouterEcheance"])){
+            header("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
+//            echo ("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
+        }
+//
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,13 +135,16 @@
     <?php include($niveau . "inc/fragments/header.inc.php"); ?>
     <main class="contenu">
         <h1 id="contenu__titre">Éditer un item</h1>
-        <h2 class="contenu__liste">Liste:<span><!-- NOM DE LA LISTE  DE L'ITEM EN PHP ICI --></span></h2>
+        <h2 class="contenu__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
 
         <form id="formDemoValidation" action="editer-item.php">
+            <input type="hidden" name="id_item" value="<?php echo $arrInfosItem["id_item"]; ?>">
+            <input type="hidden" name="id_liste" value="<?php echo $arrInfosItem["id_liste"]; ?>">
+
             <div class="conteneurChamp">
                 <label class="conteneurChamp__nomItem__label" for="nomListe">Nom de l'item: </label>
-                <input class="conteneurChamp__nomItem__input" type="text" name="nomListe" id="nomListe" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" required>
-                <p class="erreur"></p>
+                <input class="conteneurChamp__nomItem__input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" value="<?php echo $arrInfosItem["nom_item"]?>" required>
+                <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
             <fieldset class="conteneurChamp">
@@ -54,32 +155,28 @@
                     <select name="jour" id="jour">
                         <option value="0" selected>Jour</option>
                         <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
-                            <option value="<?php echo $intCtr; ?>"><?php echo $intCtr; ?></option>
+                            <option value="<?php echo $intCtr; ?>" <?php if($arrInfosItem["jour"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr; ?></option>
                         <?php } ?>
                     </select>
                     <label for="mois" class="screen-reader-only">Mois</label>
                     <select name="mois" id="mois">
-                        <option value="null" selected>Mois</option>
-                        <option value="1">Janvier</option>
-                        <option value="2">Février</option>
-                        <option value="3">Mars</option>
-                        <option value="4">Avril</option>
-                        <option value="5">Mai</option>
+                        <option value="0" selected>Mois</option>
+                        <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
+                            <option value="<?php echo $intCtr;?>" <?php if($arrInfosItem["mois"] == $intCtr){ echo "selected='selected'";}?>><?php echo $arrMois[$intCtr-1];?></option>
+                        <?php }?>
                     </select>
                     <label for="annee" class="screen-reader-only">Année</label>
                     <select name="annee" id="annee">
-                        <option value="null" selected>Année</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
+                        <option value="0" selected>Année</option>
+                        <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
+                            <option value="<?php echo $intCtr?>"  <?php if($arrInfosItem["annee"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr?></option>
+                        <?php } ?>
                     </select>
                 </div>
-                <p class="erreur"></p>
+                <p class="erreur"><?php echo $arrMessageErreur["echeance"]?></p>
             </fieldset>
             <p>
-                <button name="ajouterEcheance">Ajouter l'échéance</button>
+                <button name="ajouterEcheance" value="ajouterEcheance">Modifier l'item</button>
             </p>
         </form>
     </main>
