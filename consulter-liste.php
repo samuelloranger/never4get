@@ -26,6 +26,9 @@
             case "complete":
                 $strCodeOperation = "modifierComplete";
                 break;
+            case "updateItem":
+                $strCodeOperation = "updateItem";
+                break;
         }
     }
 
@@ -141,6 +144,9 @@
         <h1 id="contenu__titre"><?php echo $arrInfosListe["nom_liste"];?></h1>
         <p><?php echo $arrInfosListe["hexadecimale"]; ?></p>
 
+        <?php if($strCodeOperation == "updateItem"){ ?>
+            <p>Mise à jour réussie avec succès!</p>
+        <?php } ?>
 
         <?php
         for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>

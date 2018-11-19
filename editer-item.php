@@ -116,7 +116,7 @@
     }
     else{
         if(isset($_GET["ajouterEcheance"])){
-            header("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
+            header("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
 //            echo ("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
         }
 //
