@@ -132,6 +132,9 @@
     <?php include($niveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
+    <noscript>
+        <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+    </noscript>
     <?php include($niveau . "inc/fragments/header.inc.php"); ?>
     <main class="contenu">
         <h1 id="contenu__titre">Éditer un item</h1>
@@ -147,9 +150,16 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
+<<<<<<< HEAD
             <!-- <div  class="btnCacherDateEchance" id="btnCacherDateEchance">
                 <span class="curseurCacherDateEchance" id="curseurCacherDateEchance"></span>
             </div> -->
+=======
+<!--            <div  class="btnCacherDateEchance" id="btnCacherDateEchance">-->
+<!--                <label class="visuallyhidden">Afficher/Cacher</label>-->
+<!--                <input class="curseurCacherDateEchance" id="curseurCacherDateEchance">-->
+<!--            </div>-->
+>>>>>>> 82296e8d84201ad8cbc9ff360adc4e6fd9d2516c
 
             <fieldset class="conteneurDate visuallyhidden">
                 <legend>Date d'échéance (facultatif) </legend>
