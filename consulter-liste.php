@@ -97,7 +97,7 @@
 
     //******************** Sélection des items de la liste ********************
     //Définition de la requête
-    $strRequeteItems = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, echeance, est_complete, t_item.id_liste 
+    $strRequeteItems = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, HOUR(echeance) AS heure, MINUTE (echeance) AS minute, echeance, est_complete, t_item.id_liste 
                                  FROM t_item
                                  INNER JOIN t_liste ON t_item.id_liste = t_liste.id_liste
                                  WHERE t_item.id_liste = :id_liste";
@@ -119,8 +119,10 @@
         $arrItemsListe[$intCtr]["nom_item"] = $ligne["nom_item"];
         $arrItemsListe[$intCtr]["jour"] = $ligne["jour"];
         $arrItemsListe[$intCtr]["mois"] = $ligne["mois"];
-        $arrItemsListe[$intCtr]["echeance"] = $ligne["echeance"];
         $arrItemsListe[$intCtr]["annee"] = $ligne["annee"];
+        $arrItemsListe[$intCtr]["heure"] = $ligne["heure"];
+        $arrItemsListe[$intCtr]["minute"] = $ligne["minute"];
+        $arrItemsListe[$intCtr]["echeance"] = $ligne["echeance"];
         $arrItemsListe[$intCtr]["est_complete"] = $ligne["est_complete"];
     }
 
@@ -154,7 +156,11 @@
                 <li><?php echo $arrItemsListe[$intCtr]["id_item"]; ?></li>
                 <li><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></li>
                 <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
-                    <li><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?></li>
+                    <li><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
+                            <?php if($arrItemsListe[$intCtr]["heure"] != "0" AND $arrItemsListe[$intCtr]["minute"] != "0"){ ?>
+                                à <?php echo $arrItemsListe[$intCtr]["heure"]?>:<?php echo $arrItemsListe[$intCtr]["minute"]?>
+                            <?php } ?>
+                    </li>
                 <?php } ?>
                 <li><?php echo $arrItemsListe[$intCtr]["est_complete"]; ?></li>
             </ul>

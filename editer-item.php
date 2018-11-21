@@ -76,11 +76,13 @@
         $arrInfosItem["jour"] =  $_GET["jour"];
         $arrInfosItem["mois"] =  $_GET["mois"];
         $arrInfosItem["annee"] =  $_GET["annee"];
-        if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0){
+        $arrInfosItem["heure"] =  $_GET["heure"];
+        $arrInfosItem["minute"] =  $_GET["minute"];
+        if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0 AND $arrInfosItem["heure"] == 0 AND $arrInfosItem["minute"] == 0){
             $arrInfosItem["echeance"] = null;
         }
         else{
-            $arrInfosItem["echeance"] = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"];
+            $arrInfosItem["echeance"] = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
         }
 
         //Validation
@@ -150,17 +152,6 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
-<<<<<<< HEAD
-            <!-- <div  class="btnCacherDateEchance" id="btnCacherDateEchance">
-                <span class="curseurCacherDateEchance" id="curseurCacherDateEchance"></span>
-            </div> -->
-=======
-<!--            <div  class="btnCacherDateEchance" id="btnCacherDateEchance">-->
-<!--                <label class="visuallyhidden">Afficher/Cacher</label>-->
-<!--                <input class="curseurCacherDateEchance" id="curseurCacherDateEchance">-->
-<!--            </div>-->
->>>>>>> 82296e8d84201ad8cbc9ff360adc4e6fd9d2516c
-
             <fieldset class="conteneurDate visuallyhidden">
                 <legend>Date d'échéance (facultatif) </legend>
                 <div class="date">
@@ -186,19 +177,21 @@
                         <?php } ?>
                     </select>
 
-<!--                    <label>à</label>-->
-<!--                    <select name="heure" id="heure">-->
-<!--                        --><?php //for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
-<!--                            <option value="--><?php //echo $intCtr?><!--">--><?php //echo $intCtr?><!--</option>-->
-<!--                        --><?php //} ?>
-<!--                    </select>-->
-<!---->
-<!--                    <label>:</label>-->
-<!--                    <select name="minute" id="heure">-->
-<!--                        --><?php //for($intCtr = 1; $intCtr <= 59; $intCtr++){?>
-<!--                            <option value="--><?php //echo $intCtr?><!--">--><?php //echo $intCtr?><!--</option>-->
-<!--                        --><?php //} ?>
-<!--                    </select>-->
+                    <label>à</label>
+                    <select name="heure" id="heure">
+                        <option value="0">Heure</option>
+                        <?php for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
+                            <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
+                        <?php } ?>
+                    </select>
+
+                    <label>:</label>
+                    <select name="minute" id="heure">
+                        <option value="0">Minute</option>
+                        <?php for($intCtr = 1; $intCtr <= 59; $intCtr++){?>
+                            <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <p class="erreur"><?php echo $arrMessageErreur["echeance"]?></p>
             </fieldset>
