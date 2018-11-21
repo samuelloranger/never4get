@@ -16,13 +16,14 @@ if ($blnLocal) {
     $strUser = "never4get";
     $strPassword= "badrequest";
     error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 } else {
     $strHost = 'timunix2.cegep-ste-foy.qc.ca';
     $strBD='18_pni1_tofu_err';
     $strUser = '18_pni1_tofu_err';
     $strPassword = 'oups';
     // error_reporting(E_ALL & ~E_NOTICE);
-    error_reporting(0);
+    // error_reporting(0);
 }
 
 //FTP: erreur400, mdp: badrequest

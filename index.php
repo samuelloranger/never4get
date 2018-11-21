@@ -96,11 +96,14 @@ $pdosResultatEcheances->closeCursor();
     <a href="#contenu">Allez au contenu</a>
 
     <main>
+        <noscript>
+            <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+        </noscript>
         <div class="urgentBandeau conteneur">
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
                     <p>
-                        <span style="display: block;width:20px; height: 20px; background-color: #<?php echo $arrEcheances[$intCpt]['hexadecimale']; ?>;"></span>
+                        <span style="display: inline-block;width:20px; height: 20px; background-color: #<?php echo $arrEcheances[$intCpt]['hexadecimale']; ?>;"></span>
                         <?php echo $arrEcheances[$intCpt]['nom_item']; ?> / <?php echo $arrEcheances[$intCpt]['echeance']; ?>
                     </p>
             <?php } ?> 

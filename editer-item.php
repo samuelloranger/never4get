@@ -147,9 +147,9 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
-            <div  class="btnCacherDateEchance" id="btnCacherDateEchance">
+            <!-- <div  class="btnCacherDateEchance" id="btnCacherDateEchance">
                 <span class="curseurCacherDateEchance" id="curseurCacherDateEchance"></span>
-            </div>
+            </div> -->
 
             <fieldset class="conteneurDate visuallyhidden">
                 <legend>Date d'échéance (facultatif) </legend>

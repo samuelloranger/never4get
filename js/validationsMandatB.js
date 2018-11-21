@@ -46,9 +46,9 @@ var validationsMandatB = {
         $(".conteneurDate").addClass("visuallyhidden");
 
         $(".conteneurDate").before('' +
-            '<div class="btnCacherDateEchance" id="btnCacherDateEchance"> ' +
+            '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
                 '<label class="visuallyhidden">Afficher/Cacher</label> ' +
-                '<input type="checkbox" class="curseurCacherDateEchance" id="curseurCacherDateEchance"> ' +
+                '<input type="checkbox" class="cacherDateEcheance__btn" id="curseurCacherDateEchance"> ' +
             '</div>');
 
         //teste le bouton pour cacher la date d'échéance
@@ -68,8 +68,8 @@ var validationsMandatB = {
         $("#annee > option[value=0]").attr("selected", true);
 
         $(".conteneurDate").toggleClass("visuallyhidden");
-        $(".btnCacherDateEchance").toggleClass("btnCacherDateEchance--active");
-        $(".curseurCacherDateEchance").toggleClass("curseurCacherDateEchance--active");
+        $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
+        $(".cacherDateEcheance__btn").toggleClass("cacherDateEcheance__btn--active");
     },
 
     /**
