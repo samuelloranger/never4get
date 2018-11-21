@@ -27,9 +27,31 @@
 @import "base/general";
 @import "base/typo";
 
-/****** Modules ******/
-
 /****** Grille ******/
 @import "grille/general";
 @import "grille/entete";
 @import "grille/pied";
+
+.btnCacherDateEchance{
+  width: 62px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 25px;
+  position: relative;
+}
+
+.curseurCacherDateEchance {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  transition-duration: .4s;
+  &--active{
+    background-color: blue;
+    transform: translateX(30px);
+  }
+}

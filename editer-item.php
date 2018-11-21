@@ -147,11 +147,11 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
-            <div  class="cacherDateEchance__button" >
-                <input type="checkbox" class="btnCacherDateEchance" id="btnCacherDateEchance">
+            <div  class="btnCacherDateEchance" id="btnCacherDateEchance">
+                <span class="curseurCacherDateEchance" id="curseurCacherDateEchance"></span>
             </div>
 
-            <fieldset class="conteneurDate" id="conteneurDate">
+            <fieldset class="conteneurDate visuallyhidden">
                 <legend>Date d'échéance (facultatif) </legend>
                 <div class="date">
                     <label for="jour" class="screen-reader-only">Jour</label>

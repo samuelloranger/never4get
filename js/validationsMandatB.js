@@ -43,7 +43,7 @@ var validationsMandatB = {
         $('#annee').on('blur', this.validerAnnee.bind(this));
 
         //teste le bouton pour cacher la date d'échéance
-        $('#btnCacherDateEchance').on('change', this.cacherAfficherDateEcheance.bind(this));
+        $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
     },
 
     /******************************************************************************************
@@ -56,8 +56,9 @@ var validationsMandatB = {
         $("#mois > option[value=0]").attr("selected", true);
         $("#annee > option[value=0]").attr("selected", true);
 
-        $(".conteneurDate").toggleClass("visuallyHidden");
-
+        $(".conteneurDate").toggleClass("visuallyhidden");
+        $(".btnCacherDateEchance").toggleClass("btnCacherDateEchance--active");
+        $(".curseurCacherDateEchance").toggleClass("curseurCacherDateEchance--active");
     },
 
     /**
