@@ -1,10 +1,9 @@
 /**
  * @file Objet de validations avec jQuery
- * @author Nom étudiant.e <courriel etudiant.e>
+ * @author Samuel Loranger <samuelloranger@gmail.com>
  */
 
-var validationsMandatX = {
-
+var validationsMandatB = {
     objJSONMessages : {
         "nomItem": {
             "erreurs": {
@@ -38,19 +37,28 @@ var validationsMandatX = {
         //console.log('dans initialiser');
 
         // pour les champs de saisie, on peut se servir du id #
-        $('#tache').on('blur', this.validerTache.bind(this));
-
-        // sur les boutons radio on se sert du name qui est commun
-        $('[name=cours]').on('blur', this.validerCours.bind(this));
+        $('#nom_item').on('blur', this.validerTache.bind(this));
 
         // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
         $('#annee').on('blur', this.validerAnnee.bind(this));
+
+        //teste le bouton pour cacher la date d'échéance
+        $('#btnCacherDateEchance').on('change', this.cacherAfficherDateEcheance.bind(this));
     },
 
     /******************************************************************************************
      * Méthodes spécifiques
      * On ajoute une méthode validerQuelqueChose pour chaque élément de formulaire à valider
      */
+
+    cacherAfficherDateEcheance : function(){
+        $("#jour > option[value=0]").attr("selected", true);
+        $("#mois > option[value=0]").attr("selected", true);
+        $("#annee > option[value=0]").attr("selected", true);
+
+        $(".conteneurDate").toggleClass("visuallyHidden");
+
+    },
 
     /**
      * Exemple de méthode pour valider les input dont le type supporte l'attribut pattern
@@ -71,23 +79,6 @@ var validationsMandatX = {
             else {
                 this.afficherErreur($objCible, this.objJSONMessages.nomItem.erreurs.motif);
             }
-        }
-
-    },
-
-    /**
-     * Exemple de méthode pour valider des boutons radio
-     * @param evenement {Objet Event 'blur'}
-     */
-    validerCours : function(evenement){
-        var $objCible = $(evenement.currentTarget);
-        this.effacerRetro($objCible);
-
-        if ($objCible.prop('checked') == false){
-            this.afficherErreur($objCible, this.objJSONMessages.cours.erreurs.vide);
-        }
-        else{
-            this.ajouterEncouragement($objCible);
         }
 
     },
@@ -205,7 +196,7 @@ var validationsMandatX = {
         }
 
         $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('');
-        $objJQueryDOM.closest('.conteneurChamp').find('.OK').remove();
+        $objJQueryDOM.closest('.conteneurChamp').find('.ok').remove();
     },
 
 };

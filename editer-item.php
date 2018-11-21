@@ -147,31 +147,48 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
-            <fieldset class="conteneurChamp">
-                <legend>Date d'échéance (facultatif) <div  class="cacherDateEchance__button" ><button class="cacherDateEchance__button" id="cacherDateEchance"></button></div></legend>
+            <div  class="cacherDateEchance__button" >
+                <input type="checkbox" class="btnCacherDateEchance" id="btnCacherDateEchance">
+            </div>
 
+            <fieldset class="conteneurDate" id="conteneurDate">
+                <legend>Date d'échéance (facultatif) </legend>
                 <div class="date">
                     <label for="jour" class="screen-reader-only">Jour</label>
                     <select name="jour" id="jour">
-                        <option value="0" selected>Jour</option>
+                        <option value="0">Jour</option>
                         <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
                             <option value="<?php echo $intCtr; ?>" <?php if($arrInfosItem["jour"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr; ?></option>
                         <?php } ?>
                     </select>
                     <label for="mois" class="screen-reader-only">Mois</label>
                     <select name="mois" id="mois">
-                        <option value="0" selected>Mois</option>
+                        <option value="0">Mois</option>
                         <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
                             <option value="<?php echo $intCtr;?>" <?php if($arrInfosItem["mois"] == $intCtr){ echo "selected='selected'";}?>><?php echo $arrMois[$intCtr-1];?></option>
                         <?php }?>
                     </select>
                     <label for="annee" class="screen-reader-only">Année</label>
                     <select name="annee" id="annee">
-                        <option value="0" selected>Année</option>
+                        <option value="0">Année</option>
                         <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
                             <option value="<?php echo $intCtr?>"  <?php if($arrInfosItem["annee"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr?></option>
                         <?php } ?>
                     </select>
+
+<!--                    <label>à</label>-->
+<!--                    <select name="heure" id="heure">-->
+<!--                        --><?php //for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
+<!--                            <option value="--><?php //echo $intCtr?><!--">--><?php //echo $intCtr?><!--</option>-->
+<!--                        --><?php //} ?>
+<!--                    </select>-->
+<!---->
+<!--                    <label>:</label>-->
+<!--                    <select name="minute" id="heure">-->
+<!--                        --><?php //for($intCtr = 1; $intCtr <= 59; $intCtr++){?>
+<!--                            <option value="--><?php //echo $intCtr?><!--">--><?php //echo $intCtr?><!--</option>-->
+<!--                        --><?php //} ?>
+<!--                    </select>-->
                 </div>
                 <p class="erreur"><?php echo $arrMessageErreur["echeance"]?></p>
             </fieldset>
@@ -195,7 +212,7 @@
         /**
          * Initialiser les modules JavaScript ici: menu, accordéon...
          */
-        $(document).ready(validationsMandatX.initialiser.bind(validationsMandatX));
+        $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
     </script>
 
 </body>
