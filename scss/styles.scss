@@ -43,13 +43,19 @@
 }
 
 .curseurCacherDateEchance {
-  position: absolute;
+  position: relative;
   cursor: pointer;
   border-radius: 15px;
   width: 30px;
   height: 30px;
+  border: none;
+  user-select: none;
   background-color: grey;
   transition-duration: .4s;
+  &:focus{
+    outline: none;
+    border: yellow;
+  }
   &--active{
     background-color: blue;
     transform: translateX(30px);

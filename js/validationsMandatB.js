@@ -42,8 +42,19 @@ var validationsMandatB = {
         // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
         $('#annee').on('blur', this.validerAnnee.bind(this));
 
+        //Masque le fieldset à l'ouverture du fichier
+        $(".conteneurDate").addClass("visuallyhidden");
+
+        $(".conteneurDate").before('' +
+            '<div class="btnCacherDateEchance" id="btnCacherDateEchance"> ' +
+                '<label class="visuallyhidden">Afficher/Cacher</label> ' +
+                '<input type="checkbox" class="curseurCacherDateEchance" id="curseurCacherDateEchance"> ' +
+            '</div>');
+
         //teste le bouton pour cacher la date d'échéance
         $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
+
+
     },
 
     /******************************************************************************************
