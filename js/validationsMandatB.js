@@ -45,19 +45,19 @@ var validationsMandatB = {
         //Masque le fieldset à l'ouverture du fichier
 
         if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == 0 && $("#minute").val() == -1) {
-            $(".conteneurDate").before('' +
+            $(".dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label class="visuallyhidden">Afficher/Cacher</label> ' +
-                    '<input type="checkbox" class="cacherDateEcheance__btn" id="curseurCacherDateEchance"> ' +
+                    '<label class="cacherDateEcheance__btn"></label> ' +
+                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
 
             $(".conteneurDate").toggleClass("visuallyhidden");
         }
         else{
-            $(".conteneurDate").before('' +
+            $(".dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label class="visuallyhidden">Afficher/Cacher</label> ' +
-                    '<input type="checkbox" class="cacherDateEcheance__btn--active" id="curseurCacherDateEchance"> ' +
+                    '<label  class="cacherDateEcheance__btn--active"></label> ' +
+                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
         }
 

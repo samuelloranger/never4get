@@ -63,6 +63,8 @@
 
     $arrInfosItem = $pdosResultatInfosItem -> fetch();
 
+    $arrInfosItem["minute"] = "-1";
+
     //******************** Ajouter/Modifier la date d'échéance ********************
     if (isset($_GET["ajouterEcheance"])) {
         /**
@@ -78,8 +80,8 @@
         $arrInfosItem["annee"] =  $_GET["annee"];
         $arrInfosItem["heure"] =  $_GET["heure"];
         $arrInfosItem["minute"] =  $_GET["minute"];
-        if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0 AND $arrInfosItem["heure"] == 0 AND $arrInfosItem["minute"] == 0){
-            $arrInfosItem["echeance"] = null;
+        if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0 AND $arrInfosItem["heure"] == 0 AND $arrInfosItem["minute"] == -1){
+            $arrInfosItem["echeance"] = NULL;
         }
         else{
             $arrInfosItem["echeance"] = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
@@ -152,8 +154,8 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
+            <p class="dateEcheanceTitre">Date d'échéance (facultatif) </p>
             <fieldset class="conteneurDate">
-                <legend>Date d'échéance (facultatif) </legend>
                 <div class="date">
                     <label for="jour" class="screen-reader-only">Jour</label>
                     <select name="jour" id="jour">
