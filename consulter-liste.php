@@ -158,7 +158,7 @@
                 <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
                     <li><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
                             <?php if($arrItemsListe[$intCtr]["heure"] != "0" AND $arrItemsListe[$intCtr]["minute"] != "0"){ ?>
-                                à <?php echo $arrItemsListe[$intCtr]["heure"]?>:<?php echo $arrItemsListe[$intCtr]["minute"]?>
+                                à <?php if($arrItemsListe[$intCtr]["heure"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["heure"]; } else { echo $arrItemsListe[$intCtr]["heure"]; } ?>:<?php if($arrItemsListe[$intCtr]["minute"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["minute"]; } else{ echo $arrItemsListe[$intCtr]["minute"]; }  ?>
                             <?php } ?>
                     </li>
                 <?php } ?>
