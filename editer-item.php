@@ -187,8 +187,8 @@
 
                     <label>:</label>
                     <select name="minute" id="minute">
-                        <option value="0">Minute</option>
-                        <?php for($intCtr = 1; $intCtr <= 59; $intCtr++){?>
+                        <option value="-1">Minute</option>
+                        <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
                             <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["minute"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                         <?php } ?>
                     </select>
