@@ -47,7 +47,7 @@
     }
 
     //******************** Affichage des infos de l'item ********************
-    $strRequeteInfosItem = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois , YEAR(echeance) AS annee, t_item.id_liste, nom_liste
+    $strRequeteInfosItem = "SELECT id_item, nom_item, DAY(echeance) AS jour, MONTH(echeance) AS mois , YEAR(echeance) AS annee,  HOUR(echeance) AS heure,  MINUTE(echeance) AS minute, t_item.id_liste, nom_liste
                                         FROM t_item
                                         INNER JOIN t_liste ON t_liste.id_liste = t_item.id_liste
                                         WHERE id_item = :id_item";
@@ -152,7 +152,7 @@
                 <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
             </div>
 
-            <fieldset class="conteneurDate visuallyhidden">
+            <fieldset class="conteneurDate">
                 <legend>Date d'échéance (facultatif) </legend>
                 <div class="date">
                     <label for="jour" class="screen-reader-only">Jour</label>
@@ -181,15 +181,15 @@
                     <select name="heure" id="heure">
                         <option value="0">Heure</option>
                         <?php for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
-                            <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
+                            <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["heure"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                         <?php } ?>
                     </select>
 
                     <label>:</label>
-                    <select name="minute" id="heure">
+                    <select name="minute" id="minute">
                         <option value="0">Minute</option>
                         <?php for($intCtr = 1; $intCtr <= 59; $intCtr++){?>
-                            <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
+                            <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["minute"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                         <?php } ?>
                     </select>
                 </div>

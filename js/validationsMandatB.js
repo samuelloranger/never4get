@@ -40,21 +40,29 @@ var validationsMandatB = {
         $('#nom_item').on('blur', this.validerTache.bind(this));
 
         // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
-        $('#annee').on('blur', this.validerAnnee.bind(this));
+        $('#minute').on('blur', this.validerAnnee.bind(this));
 
         //Masque le fieldset à l'ouverture du fichier
-        $(".conteneurDate").addClass("visuallyhidden");
 
-        $(".conteneurDate").before('' +
-            '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                '<label class="visuallyhidden">Afficher/Cacher</label> ' +
-                '<input type="checkbox" class="cacherDateEcheance__btn" id="curseurCacherDateEchance"> ' +
-            '</div>');
+        if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0) {
+            $(".conteneurDate").before('' +
+                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
+                    '<label class="visuallyhidden">Afficher/Cacher</label> ' +
+                    '<input type="checkbox" class="cacherDateEcheance__btn" id="curseurCacherDateEchance"> ' +
+                '</div>');
+
+            $(".conteneurDate").toggleClass("visuallyhidden");
+        }
+        else{
+            $(".conteneurDate").before('' +
+                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
+                    '<label class="visuallyhidden">Afficher/Cacher</label> ' +
+                    '<input type="checkbox" class="cacherDateEcheance__btn--active" id="curseurCacherDateEchance"> ' +
+                '</div>');
+        }
 
         //teste le bouton pour cacher la date d'échéance
         $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
-
-
     },
 
     /******************************************************************************************
@@ -63,9 +71,9 @@ var validationsMandatB = {
      */
 
     cacherAfficherDateEcheance : function(){
-        $("#jour > option[value=0]").attr("selected", true);
-        $("#mois > option[value=0]").attr("selected", true);
-        $("#annee > option[value=0]").attr("selected", true);
+        $("#jour").val(0);
+        $("#mois").val(0);
+        $("#annee").val(0);
 
         $(".conteneurDate").toggleClass("visuallyhidden");
         $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
