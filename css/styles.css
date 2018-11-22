@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /**
- * @author Prénom Nom courriel
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
+ * @author Samuel Loranger <email>
  * @todo Compléter selon l'énoncé
 */
 /**
@@ -17,7 +18,8 @@
 @import "../node_modules/normalize.css";
 /****** Modules ******/
 /**
- * @author Gabriel Chouinard Létourneau / Samuel Loranger
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
+ * @author Samuel Loranger <email>
  * @todo Compléter selon l'énoncé
 */
 .cacherDateEcheance {
@@ -40,6 +42,7 @@
   border: none;
   user-select: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
   background-color: grey;
   transition-duration: 0.4s;
 }

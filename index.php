@@ -96,9 +96,9 @@ $pdosResultatEcheances->closeCursor();
     <a href="#contenu">Allez au contenu</a>
 
     <main>
-        <noscript>
+        <!-- <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
-        </noscript>
+        </noscript> -->
         <div class="urgentBandeau conteneur">
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
