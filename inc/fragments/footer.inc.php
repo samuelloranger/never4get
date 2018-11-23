@@ -1,10 +1,9 @@
 <footer>
-    <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="consulter-liste.php">Consulter une liste</a></li>
-        <li><a href="editer-liste.php">Éditer une liste</a></li>
-        <li><a href="ajouter-liste.php">Ajouter une liste</a></li>
-        <li><a href="editer-item.php">Éditer un item</a></li>
-        <li><a href="ajouter-item.php">Ajouter un item</a></li>
-    </ul>
+    <img src="images/logo/icon_never4get_x425.png" alt="Logo de never4get">
+    <p>
+        <small>
+            @Erreur400 - 2018
+            <span style="display: block;">Projet Final - TIM Cégep de Ste-Foy</span> 
+        </small>
+    </p>
 </footer>
