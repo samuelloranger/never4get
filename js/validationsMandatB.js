@@ -40,21 +40,29 @@ var validationsMandatB = {
         $('#nom_item').on('blur', this.validerTache.bind(this));
 
         // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
-        $('#annee').on('blur', this.validerAnnee.bind(this));
+        $('#minute').on('blur', this.validerAnnee.bind(this));
 
         //Masque le fieldset à l'ouverture du fichier
-        $(".conteneurDate").addClass("visuallyhidden");
 
-        $(".conteneurDate").before('' +
-            '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                '<label class="visuallyhidden">Afficher/Cacher</label> ' +
-                '<input type="checkbox" class="cacherDateEcheance__btn" id="curseurCacherDateEchance"> ' +
-            '</div>');
+        if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == 0 && $("#minute").val() == -1) {
+            $(".formulaire__dateEcheanceTitre").append('' +
+                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
+                    '<label class="cacherDateEcheance__btn"></label> ' +
+                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
+                '</div>');
+
+            $(".formulaire__conteneurDate").toggleClass("visuallyhidden");
+        }
+        else{
+            $(".formulaire__dateEcheanceTitre").append('' +
+                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
+                    '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
+                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
+                '</div>');
+        }
 
         //teste le bouton pour cacher la date d'échéance
         $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
-
-
     },
 
     /******************************************************************************************
@@ -63,11 +71,13 @@ var validationsMandatB = {
      */
 
     cacherAfficherDateEcheance : function(){
-        $("#jour > option[value=0]").attr("selected", true);
-        $("#mois > option[value=0]").attr("selected", true);
-        $("#annee > option[value=0]").attr("selected", true);
+        $("#jour").val(0);
+        $("#mois").val(0);
+        $("#annee").val(0);
+        $("#heure").val(0);
+        $("#minute").val(-1);
 
-        $(".conteneurDate").toggleClass("visuallyhidden");
+        $(".formulaire__conteneurDate").toggleClass("visuallyhidden");
         $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
         $(".cacherDateEcheance__btn").toggleClass("cacherDateEcheance__btn--active");
     },
@@ -158,8 +168,8 @@ var validationsMandatB = {
     afficherErreur : function($objJQueryDOM, message){
 
         // On remonte au conteneur parent puis et on cherche à l'intérieur le conteneur pour l'erreur
-        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('⚠ ' + message);
-        $parent = $objJQueryDOM.closest('.conteneurChamp');
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('⚠ ' + message);
+        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
         $legende = $parent.find('legend');
 
         if ($legende.length) {
@@ -180,7 +190,7 @@ var validationsMandatB = {
      */
     ajouterEncouragement : function ($objJQueryDOM){
 
-        $legende = $objJQueryDOM.closest('.conteneurChamp').find('legend');
+        $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('legend');
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
@@ -198,7 +208,7 @@ var validationsMandatB = {
      * @param $objJQueryDOM
      */
     effacerRetro : function ($objJQueryDOM){
-        $parent = $objJQueryDOM.closest('.conteneurChamp');
+        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
         $legende = $parent.find('legend');
 
         if($legende.length){
@@ -207,8 +217,8 @@ var validationsMandatB = {
             $objJQueryDOM.removeClass('erreurElement');
         }
 
-        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('');
-        $objJQueryDOM.closest('.conteneurChamp').find('.ok').remove();
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('');
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.ok').remove();
     },
 
 };

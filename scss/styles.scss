@@ -1,6 +1,6 @@
 /**
  * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
- * @author Samuel Loranger <email>
+ * @author Samuel Loranger <samuelloranger@gmail.com>
  * @todo Compléter selon l'énoncé
 */
 
@@ -30,8 +30,10 @@
 /****** Base ******/
 @import "base/general";
 @import "base/typo";
+@import "base/flaticon";
 
 /****** Grille ******/
 @import "grille/general";
 @import "grille/entete";
 @import "grille/pied";
+@import "grille/sidenav";

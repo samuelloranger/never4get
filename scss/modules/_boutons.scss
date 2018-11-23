@@ -1,6 +1,5 @@
 /**
- * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
- * @author Samuel Loranger <email>
+ * @author Gabriel Chouinard Létourneau / Samuel Loranger
  * @todo Compléter selon l'énoncé
 */
 .cacherDateEcheance{
@@ -17,20 +16,17 @@
         top: 0;
         left: 0;
         border-radius: 30px;
+        background-color: grey;
         width: 30px;
         height: 30px;
         border: none;
-        user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        background-color: grey;
         transition-duration: .4s;
         &:focus{
           outline: none;
           border: yellow;
         } 
         &--active{
-          background-color: blue; 
+          background-color: blue;
           transform: translateX(30px);
         }
     }

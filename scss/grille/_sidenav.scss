@@ -1,0 +1,37 @@
+/**
+ * @author Samuel Loranger <email>
+*/
+
+.sidenav{
+  background-color: #575757;
+  width: span(3 of 12);
+  @include clearfix;
+
+  &__liste{
+    list-style-type: none;
+    padding-left: 0;
+
+    &__item{
+      width: 100%;
+      padding-left: 25px;
+
+      &:first-child{
+        padding-top: 25px;
+      }
+
+      &:last-child{
+        padding-bottom: 25px;
+      }
+
+      &__active{
+        padding-left: 20px;
+        border-left: 5px #F7C94B solid;
+      }
+
+      &__lien{
+
+      }
+    }
+  }
+}
+
