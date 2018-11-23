@@ -9,7 +9,7 @@ html {
 
 body {
   @include fontSize(16px);
-  font-family: $fonteSecondaire;
+  font-family: $fonteRegular;
   line-height: 1.375;
   /* facteur multiplicateur de la taille de la police 1.375x16=22 */
   @media (min-width:$bureau) {
