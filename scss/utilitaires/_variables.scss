@@ -4,9 +4,23 @@
 */
 
 /** Polices de caractères **/
+/** Polices de caractères **/
+@font-face {
+    font-family: 'WorkSans--Regular';
+    src: url('../fonts/Work_Sans/WorkSans-Regular.ttf'); 
+}
+@font-face {
+    font-family: 'WorkSans--SemiBold';
+    src: url('../fonts/Work_Sans/WorkSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'WorkSans--Bold';  
+    src: url('../fonts/Work_Sans/WorkSans-Regular.ttf');
+} 
+$fontRegular: 'WorkSans--Regular', sans-serif;
+$fontSemiBold: 'WorkSans--SemiBold', sans-serif;
+$fontBold: 'WorkSans--Bold', sans-serif;
 
-$fontePrimaire: Helvetica, Arial, sans-serif;
-$fonteSecondaire: Helvetica, Arial, sans-serif;
 
 /** Palette de couleurs **/
 
@@ -16,8 +30,15 @@ $fonteSecondaire: Helvetica, Arial, sans-serif;
 // si la suggestion de name-that-color est trop étrange
 
 /* Couleurs de base */
+$bleu: #0047AB;
+$gris: #575757;
+$jauneAccent: #F7C94B;
 
 /* Autres couleurs */
+$bleuHover: transparentize($bleu, 0.25);
+$bleuActive: transparentize($bleu, 0.15);
+$jauneHover: transparentize($jauneAccent, 0.25);
+$jauneActive: transparentize($jauneAccent, 0.15);
 
 /** Points de rupture **/
 
