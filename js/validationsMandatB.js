@@ -45,18 +45,18 @@ var validationsMandatB = {
         //Masque le fieldset à l'ouverture du fichier
 
         if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == 0 && $("#minute").val() == -1) {
-            $(".dateEcheanceTitre").append('' +
+            $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
                     '<label class="cacherDateEcheance__btn"></label> ' +
                     '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
 
-            $(".conteneurDate").toggleClass("visuallyhidden");
+            $(".formulaire__conteneurDate").toggleClass("visuallyhidden");
         }
         else{
-            $(".dateEcheanceTitre").append('' +
+            $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label  class="cacherDateEcheance__btn--active"></label> ' +
+                    '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
                     '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
         }
@@ -77,7 +77,7 @@ var validationsMandatB = {
         $("#heure").val(0);
         $("#minute").val(-1);
 
-        $(".conteneurDate").toggleClass("visuallyhidden");
+        $(".formulaire__conteneurDate").toggleClass("visuallyhidden");
         $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
         $(".cacherDateEcheance__btn").toggleClass("cacherDateEcheance__btn--active");
     },
@@ -168,8 +168,8 @@ var validationsMandatB = {
     afficherErreur : function($objJQueryDOM, message){
 
         // On remonte au conteneur parent puis et on cherche à l'intérieur le conteneur pour l'erreur
-        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('⚠ ' + message);
-        $parent = $objJQueryDOM.closest('.conteneurChamp');
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('⚠ ' + message);
+        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
         $legende = $parent.find('legend');
 
         if ($legende.length) {
@@ -190,7 +190,7 @@ var validationsMandatB = {
      */
     ajouterEncouragement : function ($objJQueryDOM){
 
-        $legende = $objJQueryDOM.closest('.conteneurChamp').find('legend');
+        $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('legend');
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
@@ -208,7 +208,7 @@ var validationsMandatB = {
      * @param $objJQueryDOM
      */
     effacerRetro : function ($objJQueryDOM){
-        $parent = $objJQueryDOM.closest('.conteneurChamp');
+        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
         $legende = $parent.find('legend');
 
         if($legende.length){
@@ -217,8 +217,8 @@ var validationsMandatB = {
             $objJQueryDOM.removeClass('erreurElement');
         }
 
-        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('');
-        $objJQueryDOM.closest('.conteneurChamp').find('.ok').remove();
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('');
+        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.ok').remove();
     },
 
 };
