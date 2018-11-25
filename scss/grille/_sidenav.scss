@@ -6,31 +6,35 @@
   background-color: #575757;
   width: span(3 of 12);
   @include clearfix;
-
   &__liste{
     list-style-type: none;
-    padding-left: 0;
-
+    padding: 25px 0;  
+    color: #fff;
+    &Primaire{
+      padding-bottom: 25px;
+      border-bottom: 1px #fff solid;
+      &__item{
+        margin: 12px 0;
+      }
+    }
+    &Secondaire{
+      padding-top: 25px;
     &__item{
       width: 100%;
-      padding-left: 25px;
-
-      &:first-child{
-        padding-top: 25px;
-      }
-
-      &:last-child{
-        padding-bottom: 25px;
-      }
-
+      padding-left: 5px; 
+      margin: 12px 0;
       &__active{
-        padding-left: 20px;
-        border-left: 5px #F7C94B solid;
+        padding-left: 5px; 
+        border-left: 5px $jauneAccent solid;
       }
-
-      &__lien{
-
+      &__lien{ 
+        transition: .2s all ease-in-out;
+        &:hover{
+          max-width: 300px;
+          border-bottom: 5px $jauneAccent solid; 
+        } 
       }
+    }
     }
   }
 }

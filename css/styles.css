@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
- * @author Samuel Loranger <email>
+ * @author Samuel Loranger <samuelloranger@gmail.com>
  * @todo Compléter selon l'énoncé
 */
 /**
@@ -18,8 +18,7 @@
 @import "../node_modules/normalize.css";
 /****** Modules ******/
 /**
- * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
- * @author Samuel Loranger <email>
+ * @author Gabriel Chouinard Létourneau / Samuel Loranger
  * @todo Compléter selon l'énoncé
 */
 .cacherDateEcheance {
@@ -37,13 +36,10 @@
   top: 0;
   left: 0;
   border-radius: 30px;
+  background-color: grey;
   width: 30px;
   height: 30px;
   border: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  background-color: grey;
   transition-duration: 0.4s;
 }
 .cacherDateEcheance__btn:focus {
@@ -61,6 +57,19 @@
  * @todo Compléter selon l'énoncé
 */
 /** Polices de caractères **/
+/** Polices de caractères **/
+@font-face {
+  font-family: "WorkSans--Regular";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
+@font-face {
+  font-family: "WorkSans--SemiBold";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
+@font-face {
+  font-family: "WorkSans--Bold";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
 /** Palette de couleurs **/
 /* Couleurs de base */
 /* Autres couleurs */
@@ -111,6 +120,11 @@
  * @author Prénom Nom courriel
  * @todo ADAPTER ce fichier selon le projet
 **/
+a {
+  text-decoration: none;
+  color: unset;
+}
+
 .erreur {
   color: red;
 }
@@ -124,7 +138,7 @@
 }
 
 /**
- * @author Prénom Nom courriel
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
  * @todo Compléter selon l'énoncé
 */
 html {
@@ -134,7 +148,7 @@ html {
 body {
   font-size: 16px;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "WorkSans--Regular", sans-serif;
   line-height: 1.375;
   /* facteur multiplicateur de la taille de la police 1.375x16=22 */
 }
@@ -147,7 +161,111 @@ body {
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "WorkSans--Bold", sans-serif;
+}
+
+/*
+Flaticon icon font: Flaticon
+Creation date: 13/11/2018 20:15
+*/
+@font-face {
+  font-family: "Flaticon";
+  src: url("../../fonts/Flaticon/Flaticon.eot");
+  src: url("../../fonts/Flaticon/Flaticon.eot?#iefix") format("embedded-opentype"), url("../../fonts/Flaticon/Flaticon.woff") format("woff"), url("../../fonts/Flaticon/Flaticon.ttf") format("truetype"), url("../../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+.fi:before {
+  display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.flaticon-user:before {
+  content: "";
+}
+
+.flaticon-calendar:before {
+  content: "";
+}
+
+.flaticon-error:before {
+  content: "";
+}
+
+.flaticon-success:before {
+  content: "";
+}
+
+.flaticon-users:before {
+  content: "";
+}
+
+.flaticon-add:before {
+  content: "";
+}
+
+.flaticon-home:before {
+  content: "";
+}
+
+.flaticon-share:before {
+  content: "";
+}
+
+.flaticon-placeholder:before {
+  content: "";
+}
+
+.flaticon-cross:before {
+  content: "";
+}
+
+.flaticon-login:before {
+  content: "";
+}
+
+.flaticon-list:before {
+  content: "";
+}
+
+.flaticon-gear:before {
+  content: "";
+}
+
+.flaticon-folder:before {
+  content: "";
+}
+
+.flaticon-trash:before {
+  content: "";
+}
+
+.flaticon-more:before {
+  content: "";
+}
+
+.flaticon-minus:before {
+  content: "";
+}
+
+.flaticon-menu:before {
+  content: "";
 }
 
 /****** Grille ******/
@@ -190,5 +308,48 @@ html {
  * @author Prénom Nom courriel
  * @todo Compléter selon l'énoncé
 */
+/**
+ * @author Samuel Loranger <email>
+*/
+.sidenav {
+  background-color: #575757;
+  width: 23.7288135593%;
+}
+.sidenav:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.sidenav__liste {
+  list-style-type: none;
+  padding: 25px 0;
+  color: #fff;
+}
+.sidenav__listePrimaire {
+  padding-bottom: 25px;
+  border-bottom: 1px #fff solid;
+}
+.sidenav__listePrimaire__item {
+  margin: 12px 0;
+}
+.sidenav__listeSecondaire {
+  padding-top: 25px;
+}
+.sidenav__listeSecondaire__item {
+  width: 100%;
+  padding-left: 5px;
+  margin: 12px 0;
+}
+.sidenav__listeSecondaire__item__active {
+  padding-left: 5px;
+  border-left: 5px #F7C94B solid;
+}
+.sidenav__listeSecondaire__item__lien {
+  transition: 0.2s all ease-in-out;
+}
+.sidenav__listeSecondaire__item__lien:hover {
+  max-width: 300px;
+  border-bottom: 5px #F7C94B solid;
+}
 
 /*# sourceMappingURL=styles.css.map */

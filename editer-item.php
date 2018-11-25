@@ -153,16 +153,9 @@
     </noscript>
     <?php include($niveau . "inc/fragments/header.inc.php"); ?>
     <main class="conteneur">
-        <aside class="sidenav">
-                <ul class="sidenav__liste">
-                    <li class="sidenav__liste__item"><a class="sidenav__liste__item__lien fi flaticon-home" href="index.php">Accueil</a></li>
-                    <li class="sidenav__liste__item"><a class="sidenav__liste__item__lien fi flaticon-list" href="">Ajouter une liste</a></li>
-                    <?php for($intCtr = 0; $intCtr < count($arrListes); $intCtr++){?>
-                        <li class="sidenav__liste__item<?php if($arrInfosItem["id_liste"] == $arrListes[$intCtr]["id_liste"]) { echo "__active"; } ?>"><a  class="sidenav__liste__item__lien" href="consulter-liste.php?id_liste=<?php echo  $arrListes[$intCtr]["id_liste"] ?>"><?php echo $arrListes[$intCtr]["nom_liste"]; ?></a></li>
-                    <?php } ?>
-                </ul>
-        </aside>
 
+        <?php include($niveau . "inc/fragments/sideNav.inc.php"); ?>
+        
         <div class="contenu">
             <h1 id="contenu__titre">Éditer un item</h1>
             <h2 class="contenu__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
