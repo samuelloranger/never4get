@@ -11,7 +11,7 @@ var menu = {
 
         //Insère un bouton menu hamburger dans le html
         $(".header__liste").before(
-            '<div class="header__btnMenu">' +
+            '<div class="btnMenu">' +
                 '<span class="ligne"></span>' +
                 '<span class="ligne"></span>' +
                 '<span class="ligne"></span>' +
@@ -19,7 +19,7 @@ var menu = {
             '</div>');
 
         //Écouteur d'évènement du menu hamburger
-        $('.header__btnMenu').on('click', this.ouvrirFermerMenu.bind(this));
+        $('.btnMenu').on('click', this.ouvrirFermerMenu.bind(this));
     },
 
     ouvrirFermerMenu : function(evenement){
@@ -28,6 +28,6 @@ var menu = {
         $(".header__liste").toggleClass("header__liste--ferme");
 
         //Change l'état du menu hamburger
-        $(".header__btnMenu").toggleClass('open');
+        $(".btnMenu").toggleClass('open');
     }
 };
