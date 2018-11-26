@@ -96,9 +96,9 @@ $pdosResultatEcheances->closeCursor();
     <a href="#contenu">Allez au contenu</a>
 
     <main>
-        <!-- <noscript>
+        <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
-        </noscript> -->
+        </noscript>
         <div class="urgentBandeau conteneur">
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
@@ -126,10 +126,10 @@ $pdosResultatEcheances->closeCursor();
                     </li>
                 </ul>
                 <form action="index.php">
-                    <input type="hidden" name="idListe" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                    <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
                     <button>Supprimer</button>
                 </form>
-                <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
+                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
             <?php } ?>
         </div>
     </main>
@@ -151,6 +151,9 @@ $pdosResultatEcheances->closeCursor();
         /**
          *Initialiser les modules JavaScript ici: menu, accordéon...
          */
+        $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+
+        $(document).ready(menu.initialiser.bind(menu));
     });
     </script>
 </body>
