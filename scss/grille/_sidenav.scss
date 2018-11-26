@@ -28,7 +28,7 @@
         border-left: 5px $jauneAccent solid;
       }
       &__lien{ 
-        transition: .2s all ease-in-out;
+        transition: .2s all ease-in-out; 
         &:hover{
           max-width: 300px;
           border-bottom: 5px $jauneAccent solid; 
