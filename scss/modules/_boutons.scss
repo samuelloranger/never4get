@@ -31,3 +31,68 @@
         }
     }
 }
+
+//Bouton du menu qui passe du menu hamburger au x
+.btnMenu{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+
+    @media(min-width: 601px){
+        display: none;
+    }
+}
+
+
+//Définit les règles des span qui font les trois lignes du menu hamburger
+.btnMenu span{
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 40px;
+  background: white;
+  border-radius: 5px;
+  right: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+//Définit la hauteur du 2e et 3e lignes du menu hambuger
+.btnMenu span:nth-child(2), .btnMenu span:nth-child(3) {
+  top: 12px;
+}
+
+.btnMenu span:nth-child(1) {
+  top: 0px;
+}
+
+//Définit la hauteur de la 4e ligne du menu hambuger
+.btnMenu span:nth-child(4) {
+  top: 24px;
+}
+
+//Définit la hauteur de la 1ere ligne ouverte
+.btnMenu.open span:nth-child(1) {
+  top: 12px;
+  right: 20px;
+  width: 0%;
+}
+
+//Définit la hauteur de la 2e ligne ouverte
+.btnMenu.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+//Définit la hauteur de la 3e ligne ouverte
+.btnMenu.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+//Définit la hauteur de la 4e ligne ouverte
+.btnMenu.open span:nth-child(4) {
+  top: 12px;
+  right: 20px;
+  width: 0%;
+}

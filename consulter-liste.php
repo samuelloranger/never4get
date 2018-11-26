@@ -1,10 +1,10 @@
 <?php
     //******************** Déclarations des variables ********************
     // Inclusion du fichier de configuration
-     include($niveau . 'inc/scripts/config.inc.php');
+     include($strNiveau . 'inc/scripts/config.inc.php');
 
     //Déclaration de la variable niveau
-    $niveau = "./";
+    $strNiveau = "./";
 
     $arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
 
@@ -137,12 +137,12 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Never4Get</title>
     <link rel="stylesheet" href="css/styles.css">
-    <?php include($niveau . "inc/scripts/headlinks.php"); ?>
+    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
     <!--  HEADER  -->
     <?php include("inc/fragments/header.inc.php"); ?>
-    <main class="contenu">
+    <main class="conteneur contenu">
         <h1 id="contenu__titre"><?php echo $arrInfosListe["nom_liste"];?></h1>
         <p><?php echo $arrInfosListe["hexadecimale"]; ?></p>
 
@@ -185,13 +185,13 @@
         crossorigin="anonymous"></script>
 
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
-<!--    <script src="js/validationsMandatB.js"></script>-->
+    <script src="js/menu.js"></script>
     <script>
         $('body').addClass('js');
         /**
          * Initialiser les modules JavaScript ici: menu, accordéon...
          */
-        // $(document).ready(validationsMandatX.initialiser.bind(validationsMandatX));
+        $(document).ready(menu.initialiser.bind(menu));
     </script>
 </body>
 </html>

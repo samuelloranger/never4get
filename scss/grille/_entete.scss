@@ -3,6 +3,50 @@
  * @todo Compléter selon l'énoncé
 */
 
+body{
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.contenuTable{
+  @media(max-width: 601px){
+    display: none;
+  }
+  width: span(6 of 12);
+  height: 135px;
+  margin-left: span(1 of 12);
+  display: flex;
+  justify-content: space-between;
+
+  &__profil{
+    width: span(3 of 6);
+    height: 50%;
+    font-family: $fontBold;
+    @include fontSize(18px);
+    padding-top: 50px;
+  }
+
+  &__recherche{
+    padding-top: 50px;
+    width: span(3 of 6);
+    height: 50%;
+
+    input{
+      width: 100%;
+      height: 32px;
+      border-radius: 8px;
+      border: none;
+      background-image: url("../images/icones/028-search.png");
+      background-size: 25px 25px;
+      background-position-x: span(3 of 3) - 3%;
+      background-position-y: 35%;
+      background-repeat: no-repeat;
+      background-color: white;
+    }
+  }
+
+}
+
 .header{
   background-color: $bleu;
   color: white;
@@ -10,68 +54,13 @@
   height: 45px;
   padding-top: 3px;
 
- //Bouton du menu qui passe du menu hamburger au x
-  &__btnMenu{
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    right: 10px;
-    top: 8px;
-
-    @media(min-width: $bureau){
-      display: none;
+  @media (min-width: $bureau) {
+    height: 150px;
+    .conteneur{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
-  }
-
-  //Définit les règles des span qui font les trois lignes du menu hamburger
-  &__btnMenu .ligne{
-    display: block;
-    position: absolute;
-    height: 5px;
-    width: 40px;
-    background: white;
-    border-radius: 5px;
-    right: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-  }
-
-  //Définit la hauteur du 2e et 3e lignes du menu hambuger
-  &__btnMenu .ligne:nth-child(2),&__btnMenu .ligne:nth-child(3) {
-    top: 12px;
-  }
-
-  &__btnMenu .ligne:nth-child(1) {
-    top: 0px;
-  }
-
-  //Définit la hauteur de la 4e ligne du menu hambuger
-  &__btnMenu .ligne:nth-child(4) {
-    top: 24px;
-  }
-
-  //Définit la hauteur de la 1ere ligne ouverte
-  &__btnMenu.open .ligne:nth-child(1) {
-    top: 12px;
-    right: 20px;
-    width: 0%;
-  }
-
-  //Définit la hauteur de la 2e ligne ouverte
-  &__btnMenu.open .ligne:nth-child(2) {
-    transform: rotate(45deg);
-  }
-
-  //Définit la hauteur de la 3e ligne ouverte
-  &__btnMenu.open .ligne:nth-child(3) {
-    transform: rotate(-45deg);
-  }
-
-  //Définit la hauteur de la 4e ligne ouverte
-  &__btnMenu.open .ligne:nth-child(4) {
-    top: 12px;
-    right: 20px;
-    width: 0%;
   }
 
   &__logo{
@@ -81,11 +70,17 @@
     margin-left: 10px;
     background-image: url("../images/logo/icon_never4get_x425.png");
     background-size: 40px 40px;
+
+    @media(min-width: $bureau){
+      width: span(5 of 12);
+      height: 135px;
+      background-image: url("../images/logo/logo_never4get_x1200.png");
+      background-size: 405px 135px;
+    }
   }
 
   &__liste{
     width: 100%;
-    //height: 200%;
     list-style-type: none;
     padding-left: 0;
     margin-top: 0;
@@ -96,34 +91,44 @@
     transition-duration: 0.4s;
     z-index: 1;
 
+    @media(min-width: $bureau){
+      display:none;
+    }
+
     &--ferme{
       right: -100%;
     }
 
-    &__item{
+    &Item {
       background-color: $gris;
       width: 85%;
       margin: 0 auto;
-      @include fontSize(20px);
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      @include fontSize(18px);
 
-      &__itemMenu{
-        font-weight: bold;
+      &--active{
+        border-left: 6px $jauneAccent solid;
+        padding-left: 4px;
+      }
+
+      &:nth-child(1) a, &:nth-child(2) a, &:nth-child(3) a{
+        font-family: $fontBold;
+
+        &:before{
+          padding-right: 8px;
+        }
+      }
+
+      &:nth-child(1){
+        margin-top: 5px;
       }
 
       &:nth-child(3){
-       padding-bottom: 20px;
+        padding-bottom: 10px;
         border-bottom: 1px solid white;
       }
-
-      &:nth-child(4){
-        padding-top: 20px;
-      }
-
-      &:last-child{
-        padding-bottom:100%;
-      }
-
     }
   }
-
 }

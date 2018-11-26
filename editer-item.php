@@ -1,10 +1,10 @@
 <?php
     //******************** Déclarations des variables ********************
     // Inclusion du fichier de configuration
-     include($niveau . 'inc/scripts/config.inc.php');
+     include($strNiveau . 'inc/scripts/config.inc.php');
 
     //Déclaration de la variable niveau
-    $niveau = "./";
+    $strNiveau = "./";
 
     //Déclaration de la variable d'éxécution
     $strCodeOperation = "";
@@ -25,7 +25,7 @@
     }
 
     //******************** Gestion des messages d'erreur ********************
-    $strFichierJson = file_get_contents($niveau. "js/objJSONMessages.json");
+    $strFichierJson = file_get_contents($strNiveau. "js/objJSONMessages.json");
     $jsonMessageErreur = json_decode($strFichierJson);
 
     $arrChampErreur = array();
@@ -90,7 +90,7 @@
         //Validation
         if(!preg_match("/^[a-zA-Zà-ÿ0-9 \'\- #]{1,55}$/", $arrInfosItem["nom_item"])){
             $strCodeErreur = "-1";
-            array_push($arrChampErreur, "nom");
+            array_push($arrChampErreur, "nomItem");
         }
 
         if( $arrInfosItem["echeance"] != null){
@@ -133,8 +133,8 @@
     }
     else{
         if(isset($_GET["ajouterEcheance"])){
-            header("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
-            //echo ("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
+            header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
+            //echo ("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
         }
 }
 ?>
@@ -145,16 +145,16 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Démonstration - Validations avec jQuery</title>
     <link rel="stylesheet" href="css/styles.css">
-    <?php include($niveau . "inc/scripts/headlinks.php"); ?>
+    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
     <noscript>
         <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
     </noscript>
-    <?php include($niveau . "inc/fragments/header.inc.php"); ?>
+    <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
     <main class="conteneur">
 
-        <?php include($niveau . "inc/fragments/sideNav.inc.php"); ?>
+        <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
         
         <div class="contenu">
             <h1 id="contenu__titre">Éditer un item</h1>
@@ -170,7 +170,7 @@
                     <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
                 </div>
 
-                <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif) </p>
+                <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
                 <fieldset class="formulaire__conteneurDate">
                     <div class="date">
                         <label for="jour" class="screen-reader-only">Jour</label>
@@ -220,7 +220,7 @@
         </div>
     </main>
 
-    <?php include($niveau . "inc/fragments/footer.inc.php"); ?>
+    <?php include($strNiveau . "inc/fragments/footer.inc.php"); ?>
 
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"

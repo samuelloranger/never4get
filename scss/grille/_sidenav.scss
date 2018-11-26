@@ -29,9 +29,9 @@
       padding-left: 5px; 
       margin: 12px 0;
       &--active{
-               padding-left: 5px;
-               border-left: 5px $jauneAccent solid;
-             }
+        padding-left: 5px;
+        border-left: 5px $jauneAccent solid;
+      }
       &__lien{ 
         transition: .2s all ease-in-out; 
         &:hover{
