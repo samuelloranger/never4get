@@ -1,10 +1,10 @@
 <?php
 //******************** Déclarations des variables ********************
 // Inclusion du fichier de configuration
-include($niveau . 'inc/scripts/config.inc.php');
+include($strNiveau . 'inc/scripts/config.inc.php');
 
 //Déclaration de la variable niveau
-$niveau = "./";
+$strNiveau = "./";
 
 //Déclaration de la variable d'éxécution
 $strCodeOperation = "";
@@ -25,7 +25,7 @@ if(isset($_GET["id_liste"])){
 }
 
 //******************** Gestion des messages d'erreur ********************
-$strFichierJson = file_get_contents($niveau. "js/objJSONMessages.json");
+$strFichierJson = file_get_contents($strNiveau. "js/objJSONMessages.json");
 $jsonMessageErreur = json_decode($strFichierJson);
 
 $arrChampErreur = array();
@@ -65,7 +65,7 @@ if (isset($_GET["ajouterEcheance"])) {
     $arrInfosItem["annee"] =  $_GET["annee"];
     $arrInfosItem["heure"] =  $_GET["heure"];
     $arrInfosItem["minute"] =  $_GET["minute"];
-    if($arrInfosItem["annee"] == 0 AND $arrInfosItem["mois"] == 0 AND $arrInfosItem["jour"] == 0 AND $arrInfosItem["heure"] == 0 AND $arrInfosItem["minute"] == 0){
+    if($arrInfosItem["annee"] == "0" AND $arrInfosItem["mois"] == "0" AND $arrInfosItem["jour"] == "0" AND $arrInfosItem["heure"] == "0" AND $arrInfosItem["minute"] == "-1"){
         $arrInfosItem["echeance"] = null;
     }
     else{
@@ -106,10 +106,9 @@ if($strCodeErreur != "00000"){
 }
 else{
     if(isset($_GET["ajouterEcheance"])){
-        header("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
-//            echo ("Location:" . $niveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
+        header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
+        //echo ("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
     }
-//
 }
 ?>
 <!DOCTYPE html>
@@ -119,61 +118,66 @@ else{
     <meta name="viewport" content="width=device-width"/>
     <title>Démonstration - Validations avec jQuery</title>
     <link rel="stylesheet" href="css/styles.css">
-    <?php include($niveau . "inc/scripts/headlinks.php"); ?>
+    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
 <noscript>
     <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
 </noscript>
-<?php include($niveau . "inc/fragments/header.inc.php"); ?>
-<main class="contenu">
-    <h1 id="contenu__titre">Ajouter un item</h1>
-    <h2 class="contenu__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
+<?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
 
-    <form id="formDemoValidation" action="ajouter-item.php">
+<main class="flexEditerItem conteneur">
+
+    <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
+
+    <div class="editerItem contenu">
+        <h1 class="editerItem__titre">Ajouter un item</h1>
+        <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
+
+    <form  class="formulaire" id="formDemoValidation" action="ajouter-item.php">
         <input type="hidden" name="id_liste" value="<?php echo $strIdListe; ?>">
 
-        <div class="conteneurChamp">
-            <label class="conteneurChamp__nomItem__label" for="nomListe">Nom de l'item: </label>
-            <input class="conteneurChamp__nomItem__input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" required>
+        <div class="formulaire__conteneurChamp">
+            <label class="label" for="nomListe">Nom de l'item: </label>
+            <input class="input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" required>
             <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
         </div>
 
-        <fieldset class="conteneurDate">
-            <legend>Date d'échéance (facultatif) </legend>
-            <div class="date">
+        <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
+        <fieldset class="formulaire__conteneurDate">
+            <div class="date__conteneurSelectDate">
                 <label for="jour" class="screen-reader-only">Jour</label>
-                <select name="jour" id="jour">
+                <select name="jour" id="jour" class="date__jour">
                     <option value="0">Jour</option>
                     <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
                         <option value="<?php echo $intCtr; ?>"><?php echo $intCtr; ?></option>
                     <?php } ?>
                 </select>
                 <label for="mois" class="screen-reader-only">Mois</label>
-                <select name="mois" id="mois">
+                <select name="mois" id="mois" class="date__mois">
                     <option value="0">Mois</option>
                     <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
                         <option value="<?php echo $intCtr;?>"><?php echo $arrMois[$intCtr-1];?></option>
                     <?php }?>
                 </select>
                 <label for="annee" class="screen-reader-only">Année</label>
-                <select name="annee" id="annee">
+                <select name="annee" id="annee" class="date__annee">
                     <option value="0">Année</option>
                     <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
-                        <option value="<?php echo $intCtr?>" ><?php echo $intCtr?></option>
+                        <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
                     <?php } ?>
                 </select>
 
-                <label>à</label>
-                <select name="heure" id="heure">
+                <label class="date__heure--label">à</label>
+                <select name="heure" id="heure" class="date__heure">
                     <option value="0">Heure</option>
                     <?php for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
                         <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                     <?php } ?>
                 </select>
 
-                <label>:</label>
-                <select name="minute" id="minute">
+                <label class="date__minute--label">:</label>
+                <select name="minute" id="minute" class="date__minute">
                     <option value="-1">Minute</option>
                     <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
                         <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
@@ -182,13 +186,15 @@ else{
             </div>
             <p class="erreur"><?php echo $arrMessageErreur["echeance"]?></p>
         </fieldset>
-        <p>
-            <button name="ajouterEcheance" value="ajouterEcheance">Ajouter l'item</button>
-        </p>
+        <div class="conteneurBoutons">
+            <button class="btnModifier" name="ajouterEcheance" value="ajouterEcheance">Ajouter l'item</button>
+            <a class="btnAnnuler" name="ajouterEcheance" >Annuler</a>
+        </div>
     </form>
+    </div>
 </main>
 
-<?php include($niveau . "inc/fragments/footer.inc.php"); ?>
+<?php include($strNiveau . "inc/fragments/footer.inc.php"); ?>
 
 <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -197,12 +203,15 @@ else{
 
 <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
 <script src="js/validationsMandatB.js"></script>
+<script src="js/menu.js"></script>
 <script>
     $('body').addClass('js');
     /**
      * Initialiser les modules JavaScript ici: menu, accordéon...
      */
     $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+
+    $(document).ready(menu.initialiser.bind(menu));
 </script>
 
 </body>

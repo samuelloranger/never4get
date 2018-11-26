@@ -3,11 +3,6 @@
  * @todo Compléter selon l'énoncé
 */
 
-body{
-  overflow-x: hidden;
-  margin: 0;
-}
-
 .contenuTable{
   @media(max-width: 601px){
     display: none;
@@ -16,10 +11,10 @@ body{
   height: 135px;
   margin-left: span(1 of 12);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   &__profil{
-    width: span(3 of 6);
+    width: span(2 of 6);
     height: 50%;
     font-family: $fontBold;
     @include fontSize(18px);
@@ -66,6 +61,7 @@ body{
   }
 
   &__logo{
+    display: inline-block;
     padding-top: 5px;
     width: 40px;
     height: 40px;

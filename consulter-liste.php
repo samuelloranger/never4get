@@ -142,38 +142,44 @@
 <body>
     <!--  HEADER  -->
     <?php include("inc/fragments/header.inc.php"); ?>
-    <main class="conteneur contenu">
-        <h1 id="contenu__titre"><?php echo $arrInfosListe["nom_liste"];?></h1>
-        <p><?php echo $arrInfosListe["hexadecimale"]; ?></p>
+    <div class="couleurListe" style="background-color: #<?php echo $arrInfosListe["hexadecimale"]; ?>"></div>
+    <main class="flexConsulterListe conteneur">
 
-        <?php if($strCodeOperation == "updateItem"){ ?>
-            <p>Mise à jour réussie avec succès!</p>
-        <?php } ?>
+        <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
+        <div class="consulterListe contenu">
+            <h1 class="consulterListe__titre"><?php echo $arrInfosListe["nom_liste"];?></h1>
 
-        <?php
-        for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
-            <ul>
-                <li><?php echo $arrItemsListe[$intCtr]["id_item"]; ?></li>
-                <li><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></li>
-                <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
-                    <li><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
-                            <?php if($arrItemsListe[$intCtr]["heure"] != "0"){ ?>
-                                à <?php if($arrItemsListe[$intCtr]["heure"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["heure"]; } else { echo $arrItemsListe[$intCtr]["heure"]; } ?>:<?php if($arrItemsListe[$intCtr]["minute"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["minute"]; } else{ echo $arrItemsListe[$intCtr]["minute"]; }  ?>
-                            <?php } ?>
-                    </li>
+
+            <?php if($strCodeOperation == "updateItem"){ ?>
+                <p>Mise à jour réussie avec succès!</p>
+            <?php } ?>
+
+            <div class="conteneurListes">
+            <?php
+            for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
+                <div class="conteneurListes__item">
+                    <ul>
+                        <li class="conteneurListes__itemTitre"><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></li>
+                        <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
+                            <li class="conteneurListes__itemDateEcheance"><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
+                                    <?php if($arrItemsListe[$intCtr]["heure"] != "0"){ ?>
+                                        à <?php if($arrItemsListe[$intCtr]["heure"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["heure"]; } else { echo $arrItemsListe[$intCtr]["heure"]; } ?>:<?php if($arrItemsListe[$intCtr]["minute"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["minute"]; } else{ echo $arrItemsListe[$intCtr]["minute"]; }  ?>
+                                    <?php } ?>
+                            </li>
+                        <?php } ?>
+                        <li class="conteneurListes__itemEtat"><?php if($arrItemsListe[$intCtr]["est_complete"] == "1"){ echo "Est complété"; } else { echo "À compléter"; }?></li>
+                    </ul>
+                    <form action="consulter-liste.php" method="GET">
+                        <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
+                        <input type="hidden" name="id_item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
+                        <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
+                        <button name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
+                        <button name="btnOperation" value="supprimer">Supprimer</button>
+                        <a href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
+                    </form>
+                </div>
                 <?php } ?>
-                <li><?php echo $arrItemsListe[$intCtr]["est_complete"]; ?></li>
-            </ul>
-            <form action="consulter-liste.php" method="GET">
-                <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
-                <input type="hidden" name="id_item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
-                <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
-                <button name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
-                <button name="btnOperation" value="supprimer">Supprimer</button>
-                <a href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
-            </form>
-        <?php } ?>
-
+            </div>
     </main>
 
     <!--  FOOTER  -->

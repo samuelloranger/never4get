@@ -1,0 +1,60 @@
+/**
+ * @author Samuel Loranger
+*/
+.flexConsulterListe{
+  @media(min-width: 601px){
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+  }
+}
+
+.consulterListe{
+  margin-left: 5%;
+  margin-right: 5%;
+  @media(min-width: 601px){
+    //margin-left: 5%;
+    margin-right: 0%;
+    width: span(8 of 12);
+    margin-left: span(1 of 12);
+  }
+
+  &__titre{
+    text-align: center;
+  }
+}
+
+.couleurListe{
+  height: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.conteneurListes{
+
+  @media(min-width: 601px){
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+
+  &__item{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 5%;
+
+    @media(min-width: 601px) {
+      width: span(4 of 12);
+      border: 1px solid black;
+      border-radius: 5px;
+      margin-bottom: 2%;
+      margin-right: gutter(1 of 12);
+
+      &:nth-child(3n){
+        margin-right: 0;
+      }
+    }
+  }
+}

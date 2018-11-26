@@ -9,10 +9,11 @@
 .editerItem{
   margin-left: 5%;
   margin-right: 5%;
+  width: 100%;
 
   @media(min-width: 601px){
     width: span(5 of 12);
-    margin-left: span(1 of 12);
+    margin-left: span(1 of 12) + gutter(12) + gutter(12);
   }
 
   &__titre{

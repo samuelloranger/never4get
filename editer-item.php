@@ -124,19 +124,7 @@
     }
 
     $pdosResultatListes -> closeCursor();
-// *************************** Gestion des messages d'erreur **********************
-    if($strCodeErreur != "00000"){
-        for($intCtr = 0; $intCtr < count($arrChampErreur); $intCtr++){
-            $champ = $arrChampErreur[$intCtr];
-//            $arrMessageErreur[$champ] = $jsonMessageErreur -> {$champ};
-        }
-    }
-    else{
-        if(isset($_GET["ajouterEcheance"])){
-            header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&btnOperation=updateItem");
-            //echo ("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] . "&strCodeOperation=update");
-        }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
