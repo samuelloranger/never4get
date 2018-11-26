@@ -152,59 +152,60 @@
         <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
     </noscript>
     <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
-    <main class="conteneur">
+
+    <main class="flexEditerItem conteneur">
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
-        
-        <div class="contenu">
-            <h1 id="contenu__titre">Éditer un item</h1>
-            <h2 class="contenu__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
+
+        <div class="editerItem contenu">
+            <h1 class="editerItem__titre">Éditer un item</h1>
+            <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
 
             <form class="formulaire" id="formDemoValidation" action="editer-item.php">
                 <input type="hidden" name="id_item" value="<?php echo $arrInfosItem["id_item"]; ?>">
                 <input type="hidden" name="id_liste" value="<?php echo $arrInfosItem["id_liste"]; ?>">
 
                 <div class="formulaire__conteneurChamp">
-                    <label class="conteneurChamp__nomItem__label" for="nomListe">Nom de l'item: </label>
-                    <input class="conteneurChamp__nomItem__input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" value="<?php echo $arrInfosItem["nom_item"]?>" required>
+                    <label class="label" for="nomListe">Nom de l'item: </label>
+                    <input class="input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" value="<?php echo $arrInfosItem["nom_item"]?>" required>
                     <p class="erreur"><?php echo $arrMessageErreur["nom_item"]?></p>
                 </div>
 
                 <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
                 <fieldset class="formulaire__conteneurDate">
-                    <div class="date">
+                    <div class="date__conteneurSelectDate">
                         <label for="jour" class="screen-reader-only">Jour</label>
-                        <select name="jour" id="jour">
+                        <select name="jour" id="jour" class="date__jour">
                             <option value="0">Jour</option>
                             <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
                                 <option value="<?php echo $intCtr; ?>" <?php if($arrInfosItem["jour"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr; ?></option>
                             <?php } ?>
                         </select>
                         <label for="mois" class="screen-reader-only">Mois</label>
-                        <select name="mois" id="mois">
+                        <select name="mois" id="mois" class="date__mois">
                             <option value="0">Mois</option>
                             <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
                                 <option value="<?php echo $intCtr;?>" <?php if($arrInfosItem["mois"] == $intCtr){ echo "selected='selected'";}?>><?php echo $arrMois[$intCtr-1];?></option>
                             <?php }?>
                         </select>
                         <label for="annee" class="screen-reader-only">Année</label>
-                        <select name="annee" id="annee">
+                        <select name="annee" id="annee" class="date__annee">
                             <option value="0">Année</option>
                             <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
                                 <option value="<?php echo $intCtr?>"  <?php if($arrInfosItem["annee"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr?></option>
                             <?php } ?>
                         </select>
 
-                        <label>à</label>
-                        <select name="heure" id="heure">
+                        <label class="date__heure--label">à</label>
+                        <select name="heure" id="heure" class="date__heure">
                             <option value="0">Heure</option>
                             <?php for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
                                 <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["heure"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                             <?php } ?>
                         </select>
 
-                        <label>:</label>
-                        <select name="minute" id="minute">
+                        <label class="date__minute--label">:</label>
+                        <select name="minute" id="minute" class="date__minute">
                             <option value="-1">Minute</option>
                             <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
                                 <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["minute"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
@@ -213,9 +214,11 @@
                     </div>
                     <p class="erreur"><?php echo $arrMessageErreur["echeance"]?></p>
                 </fieldset>
-                <p>
-                    <button name="ajouterEcheance" value="ajouterEcheance">Modifier l'item</button>
-                </p>
+
+                <div class="conteneurBoutons">
+                    <button class="btnModifier" name="ajouterEcheance" value="ajouterEcheance">Modifier l'item</button>
+                    <a class="btnAnnuler" name="ajouterEcheance" >Annuler</a>
+                </div>
             </form>
         </div>
     </main>

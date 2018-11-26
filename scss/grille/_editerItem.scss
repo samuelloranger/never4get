@@ -1,0 +1,140 @@
+/**
+ * @author Samuel Loranger
+*/
+.flexEditerItem{
+  display: flex;
+  padding-top: 2%;
+}
+
+.editerItem{
+  margin-left: 5%;
+  margin-right: 5%;
+
+  @media(min-width: 601px){
+    width: span(5 of 12);
+    margin-left: span(1 of 12);
+  }
+
+  &__titre{
+    margin-top: 5%;
+    text-align: center;
+  }
+}
+
+.formulaire{
+  &__conteneurChamp{
+    display: flex;
+    flex-direction: column;
+    width: span(4);
+
+    label{
+      width: span(4 of 4);
+    }
+
+    input{
+      height: 42px;
+      font-size: 14px;
+    }
+  }
+
+  &__dateEcheanceTitre{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__conteneurDate{
+    border: none;
+    padding: 0;
+  }
+}
+
+.date{
+  &__conteneurSelectDate{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+  }
+
+  label{
+    padding-top: 15px;
+    vertical-align: center;
+  }
+
+  font-size: 14px;
+  border-radius:4px;
+  height: 42px;
+  border: 1px solid black;
+  border-radius: 0;
+
+  &__jour{
+    width: 50px;
+    height: 42px;
+    background: white;
+  }
+
+  &__mois{
+    width: 80px;
+    height: 42px;
+    background: white;
+  }
+
+  &__annee{
+    width: 58px;
+    height: 42px;
+    background: white;
+  }
+
+  &__heure{
+    width: 54px;
+    height: 42px;
+    background: white;
+
+    &--label{
+      padding-top: 12px;
+    }
+  }
+
+  &__minute{
+    width: 62px;
+    height: 42px;
+    background: white;
+
+    &--label{
+      padding-top: 10px;
+    }
+  }
+}
+
+.conteneurBoutons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+
+  .btnModifier{
+    font-size: 16px;
+    width: 166px;
+    height: 38px;
+    background-color: #F7C94B;
+    border-radius: 5px;
+    border: 0px;
+    margin-bottom: 5%;
+  }
+
+  .btnAnnuler{
+    display: flex;
+    position: relative;
+    color: white;
+    font-size: 16px;
+    width: 166px;
+    height: 38px;
+    background-color: #575757;
+    border-radius: 5px;
+    border: 0px;
+    justify-content: center;
+    padding-top: 8px;
+  }
+}

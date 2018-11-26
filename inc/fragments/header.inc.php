@@ -16,7 +16,7 @@ $pdosResultatListes -> closeCursor();
 
 <header class="header bleed">
     <div class="conteneur">
-        <div class="header__logo"></div>
+        <a href="index.php" class="header__logo"></a>
 
         <div class="contenuTable">
             <div class="contenuTable__profil fi flaticon-user">

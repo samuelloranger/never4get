@@ -190,7 +190,7 @@ var validationsMandatB = {
      */
     ajouterEncouragement : function ($objJQueryDOM){
 
-        $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('legend');
+        $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('label');
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
@@ -198,7 +198,7 @@ var validationsMandatB = {
         }
         else {
             // Sinon on travaille directement sur l'élément de formulaire
-            $objJQueryDOM.after('<span class="ok"> ✓ </span>');
+            $objJQueryDOM.append('<span class="ok"> ✓ </span>');
         }
 
     },
