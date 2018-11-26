@@ -340,7 +340,7 @@ html {
   padding-left: 5px;
   margin: 12px 0;
 }
-.sidenav__listeSecondaire__item__active {
+.sidenav__listeSecondaire__item--active {
   padding-left: 5px;
   border-left: 5px #F7C94B solid;
 }

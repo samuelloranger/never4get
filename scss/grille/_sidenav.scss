@@ -20,10 +20,10 @@
     &Secondaire{
       padding-top: 25px;
     &__item{
-      width: 100%;
+      width: 100%; 
       padding-left: 5px; 
       margin: 12px 0;
-      &__active{
+      &--active{
         padding-left: 5px; 
         border-left: 5px $jauneAccent solid;
       }
