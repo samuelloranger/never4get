@@ -6,6 +6,11 @@
   background-color: #575757;
   width: span(3 of 12);
   @include clearfix;
+
+  @media(max-width: $bureau){
+    display: none;
+  }
+
   &__liste{
     list-style-type: none;
     padding: 25px 0;  
@@ -24,9 +29,9 @@
       padding-left: 5px; 
       margin: 12px 0;
       &--active{
-        padding-left: 5px; 
-        border-left: 5px $jauneAccent solid;
-      }
+               padding-left: 5px;
+               border-left: 5px $jauneAccent solid;
+             }
       &__lien{ 
         transition: .2s all ease-in-out; 
         &:hover{

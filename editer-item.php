@@ -229,12 +229,15 @@
 
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
     <script src="js/validationsMandatB.js"></script>
+    <script src="js/menu.js"></script>
     <script>
         $('body').addClass('js');
         /**
          * Initialiser les modules JavaScript ici: menu, accordéon...
          */
         $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+
+        $(document).ready(menu.initialiser.bind(menu));
     </script>
 
 </body>
