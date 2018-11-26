@@ -1,24 +1,33 @@
 /**
- * @file Objet de validations avec jQuery
+ * @file Fichier qui gère le menu hamburger
  * @author Samuel Loranger <samuelloranger@gmail.com>
  */
 
 var menu = {
     /**
      * dans la méthode initialiser, on peut définir les attributs de l'objet et ajouter les écouteurs d'événements
-     * @param evenement {Objet Event 'ready'}
      */
-
     initialiser : function(evenement){
-        // pour les champs de saisie, on peut se servir du id #
 
-        $(".header__liste").before('' +
-            '<span class="header__btnMenu" id="header__btnMenu">');
+        //Insère un bouton menu hamburger dans le html
+        $(".header__liste").before(
+            '<div class="header__btnMenu">' +
+                '<span class="ligne"></span>' +
+                '<span class="ligne"></span>' +
+                '<span class="ligne"></span>' +
+                '<span class="ligne"></span>' +
+            '</div>');
 
-        $('#header__btnMenu').on('click', this.ouvrirFermerMenu.bind(this));
+        //Écouteur d'évènement du menu hamburger
+        $('.header__btnMenu').on('click', this.ouvrirFermerMenu.bind(this));
     },
 
     ouvrirFermerMenu : function(evenement){
+
+        //Affiche ou cache la liste
         $(".header__liste").toggleClass("header__liste--ferme");
+
+        //Change l'état du menu hamburger
+        $(".header__btnMenu").toggleClass('open');
     }
 };

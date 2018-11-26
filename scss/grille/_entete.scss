@@ -3,30 +3,88 @@
  * @todo Compléter selon l'énoncé
 */
 body{
-  margin: 0;
-  overflow-x: hidden;
+  //margin: 0;
+  //overflow-x: hidden;
 }
 
 .header{
   background-color: $bleu;
   color: white;
   position: relative;
+  height: 45px;
+  padding-top: 3px;
 
+ //Bouton du menu qui passe du menu hamburger au x
   &__btnMenu{
     width: 40px;
     height: 40px;
-    background-image: url("../images/icones/026-menu.png");
-    background-repeat: no-repeat;
-    background-size: 40px 40px;
     position: absolute;
+    right: 10px;
+    top: 8px;
+
+    @media(min-width: $bureau){
+      display: none;
+    }
+  }
+
+  //Définit les règles des span qui font les trois lignes du menu hamburger
+  &__btnMenu .ligne{
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 40px;
+    background: white;
+    border-radius: 5px;
     right: 0;
-    margin-right: 10px;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+  }
+
+  //Définit la hauteur du 2e et 3e lignes du menu hambuger
+  &__btnMenu .ligne:nth-child(2),&__btnMenu .ligne:nth-child(3) {
+    top: 12px;
+  }
+
+  &__btnMenu .ligne:nth-child(1) {
+    top: 0px;
+  }
+
+  //Définit la hauteur de la 4e ligne du menu hambuger
+  &__btnMenu .ligne:nth-child(4) {
+    top: 24px;
+  }
+
+  //Définit la hauteur de la 1ere ligne ouverte
+  &__btnMenu.open .ligne:nth-child(1) {
+    top: 12px;
+    right: 20px;
+    width: 0%;
+  }
+
+  //Définit la hauteur de la 2e ligne ouverte
+  &__btnMenu.open .ligne:nth-child(2) {
+    transform: rotate(45deg);
+  }
+
+  //Définit la hauteur de la 3e ligne ouverte
+  &__btnMenu.open .ligne:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  //Définit la hauteur de la 4e ligne ouverte
+  &__btnMenu.open .ligne:nth-child(4) {
+    top: 12px;
+    right: 20px;
+    width: 0%;
   }
 
   &__logo{
+    padding-top: 5px;
     width: 40px;
     height: 40px;
     margin-left: 10px;
+    background-image: url("../images/logo/icon_never4get_x425.png");
+    background-size: 40px 40px;
   }
 
   &__liste{
@@ -36,19 +94,25 @@ body{
     padding-left: 0;
     margin-top: 0;
     position: absolute;
-    top: 46px;
+    top: 45px;
+    right: 0px;
     background-color: $bleu;
     transition-duration: 0.4s;
     z-index: 1;
 
     &--ferme{
-      top: -800px;
+      right: -100%;
     }
 
     &__item{
       background-color: $gris;
       width: 85%;
       margin: 0 auto;
+      @include fontSize(20px);
+
+      &__itemMenu{
+        font-weight: bold;
+      }
 
       &:nth-child(3){
        padding-bottom: 20px;
@@ -57,6 +121,10 @@ body{
 
       &:nth-child(4){
         padding-top: 20px;
+      }
+
+      &:last-child{
+        padding-bottom:100%;
       }
 
     }
