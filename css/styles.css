@@ -119,11 +119,12 @@
 .editerItem {
   margin-left: 5%;
   margin-right: 5%;
+  width: 100%;
 }
 @media (min-width: 601px) {
   .editerItem {
     width: 40.6779661017%;
-    margin-left: 6.7796610169%;
+    margin-left: 10.1694915254%;
   }
 }
 .editerItem__titre {
@@ -231,9 +232,67 @@
   padding-top: 8px;
 }
 
+/**
+ * @author Samuel Loranger
+*/
+@media (min-width: 601px) {
+  .flexConsulterListe {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+  }
+}
+
+.consulterListe {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+@media (min-width: 601px) {
+  .consulterListe {
+    margin-right: 0%;
+    width: 66.1016949153%;
+    margin-left: 6.7796610169%;
+  }
+}
+.consulterListe__titre {
+  text-align: center;
+}
+
+.couleurListe {
+  height: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 601px) {
+  .conteneurListes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+.conteneurListes__item {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 5%;
+}
+@media (min-width: 601px) {
+  .conteneurListes__item {
+    width: 32.2033898305%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    margin-right: 1.6949152542%;
+  }
+  .conteneurListes__item:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
 /**** Utilitaires ****/
 /**
- * @author Prénom Nom courriel
+ * @author Gabriel Chouinard Létourneau
  * @todo Compléter selon l'énoncé
 */
 /** Polices de caractères **/
@@ -300,11 +359,6 @@
  * @author Gabriel Chouinard Létourneau
  * @todo ADAPTER ce fichier selon le projet
 **/
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
 a {
   text-decoration: none;
   color: unset;
@@ -347,6 +401,39 @@ h1, .h1,
 h2, .h2,
 h3, .h3 {
   font-family: "WorkSans--Bold", sans-serif;
+}
+
+h1, .h1 {
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+@media (min-width: 600px) {
+  h1, .h1 {
+    font-size: 32px;
+    font-size: 3.2rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 20px;
+  font-size: 2rem;
+}
+@media (min-width: 600px) {
+  h2, .h2 {
+    font-size: 24px;
+    font-size: 2.4rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+@media (min-width: 600px) {
+  h3, .h3 {
+    font-size: 20px;
+    font-size: 2rem;
+  }
 }
 
 /*
@@ -480,17 +567,12 @@ html {
  * @author Samuel Loranger
  * @todo Compléter selon l'énoncé
 */
-body {
-  overflow-x: hidden;
-  margin: 0;
-}
-
 .contenuTable {
   width: 49.1525423729%;
   height: 135px;
   margin-left: 6.7796610169%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 @media (max-width: 601px) {
   .contenuTable {
@@ -498,7 +580,7 @@ body {
   }
 }
 .contenuTable__profil {
-  width: 48.275862069%;
+  width: 31.0344827586%;
   height: 50%;
   font-family: "WorkSans--Bold", sans-serif;
   font-size: 18px;
@@ -543,6 +625,7 @@ body {
   }
 }
 .header__logo {
+  display: inline-block;
   padding-top: 5px;
   width: 40px;
   height: 40px;
