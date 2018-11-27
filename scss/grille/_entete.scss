@@ -60,21 +60,20 @@
     }
   }
 
-  &__logo{
-    display: inline-block;
-    padding-top: 5px;
-    width: 40px;
-    height: 40px;
-    margin-left: 10px;
-    background-image: url("../images/logo/icon_never4get_x425.png");
-    background-size: 40px 40px;
 
+  &__logo{
+    width: span(1 of 4);
+    display: block;
     @media(min-width: $bureau){
       width: span(5 of 12);
-      height: 135px;
-      background-image: url("../images/logo/logo_never4get_x1200.png");
-      background-size: 405px 135px;
     }
+
+    img{
+      margin-left: 25%;
+      @media(min-width: $bureau){
+        width: 100%;
+      }
+   }
   }
 
   &__liste{
