@@ -16,7 +16,14 @@ $pdosResultatListes -> closeCursor();
 
 <header class="header bleed">
     <div class="conteneur">
-        <a href="index.php" class="header__logo"></a>
+        <div class="header__logo">
+            <a href="index.php" >
+                <picture>
+                    <source srcset="images/logo/icon_never4get_x1200.png" media="(min-width: 601px)">
+                    <img src="images/logo/icon_never4get_x40.png">
+                </picture>
+            </a>
+        </div>
 
         <div class="contenuTable">
             <div class="contenuTable__profil fi flaticon-user">
