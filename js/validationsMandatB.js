@@ -77,7 +77,8 @@ var validationsMandatB = {
         $("#heure").val(0);
         $("#minute").val(-1);
 
-        $(".formulaire__conteneurDate").toggleClass("visuallyhidden");
+        $(".formulaire__conteneurDate").toggleClass("formulaire__conteneurDate--cacher");
+        $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");
         $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
         $(".cacherDateEcheance__btn").toggleClass("cacherDateEcheance__btn--active");
     },

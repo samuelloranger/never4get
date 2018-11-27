@@ -15,19 +15,31 @@
     list-style-type: none;
     padding: 25px 0;  
     color: #fff;
+    font-size: 20px;
+    //padding-left: 5px;
+
     &Primaire{
       padding-bottom: 25px;
       border-bottom: 1px #fff solid;
       &__item{
         margin: 12px 0;
+        padding-left: 14px;
+        &__lien{
+          transition: .2s all ease-in-out;
+          &:hover{
+            border-bottom: 5px $jauneAccent solid;
+          }
+        }
       }
     }
     &Secondaire{
       padding-top: 25px;
     &__item{
       width: 100%; 
-      padding-left: 5px; 
+      //padding-left: 5px;
       margin: 12px 0;
+      padding-left: 14px;
+
       &--active{
         padding-left: 5px;
         border-left: 5px $jauneAccent solid;

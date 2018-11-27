@@ -4,7 +4,7 @@
 */
 
 .contenuTable{
-  @media(max-width: 601px){
+  @media(max-width: $bureau){
     display: none;
   }
   width: span(6 of 12);

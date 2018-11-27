@@ -2,7 +2,7 @@
  * @author Samuel Loranger
 */
 .flexConsulterListe{
-  @media(min-width: 601px){
+  @media(min-width: $bureau){
     display: flex;
     justify-content: space-between;
     padding-top: 2%;
@@ -12,7 +12,7 @@
 .consulterListe{
   margin-left: 5%;
   margin-right: 5%;
-  @media(min-width: 601px){
+  @media(min-width: $bureau){
     //margin-left: 5%;
     margin-right: 0%;
     width: span(8 of 12);
@@ -21,6 +21,9 @@
 
   &__titre{
     text-align: center;
+    @media(min-width: $bureau){
+      text-align: unset;
+    }
   }
 }
 
@@ -31,24 +34,33 @@
 }
 
 .conteneurListes{
-
-  @media(min-width: 601px){
+  @media(min-width: $bureau){
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
+
+    ul{
+      padding-left: 0;
+      list-style-type: none;
+    }
+
+    &Titre{
+      color: $jauneAccent;
+    }
   }
+
 
 
   &__item{
     border: 1px solid black;
-    border-radius: 5px;
     margin-bottom: 5%;
+    padding-left: 5px;
+    padding-right: 5px;
 
-    @media(min-width: 601px) {
+    @media(min-width: $bureau) {
       width: span(4 of 12);
-      border: 1px solid black;
-      border-radius: 5px;
+      border: 2px solid black;
       margin-bottom: 2%;
       margin-right: gutter(1 of 12);
 

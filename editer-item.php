@@ -15,6 +15,7 @@
     //Définit l'année de départ
     $dateAjd = new DateTime();
     $anneeAjd = $dateAjd -> format('Y');
+    $dateAjd = date("Y-m-d H:i:s");
 
     //Tableau des mois pour affichage
     $arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");

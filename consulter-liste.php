@@ -159,7 +159,7 @@
             for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
                 <div class="conteneurListes__item">
                     <ul>
-                        <li class="conteneurListes__itemTitre"><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></li>
+                        <li class="conteneurListes__itemTitre"><h3><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></h3></li>
                         <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
                             <li class="conteneurListes__itemDateEcheance"><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
                                     <?php if($arrItemsListe[$intCtr]["heure"] != "0"){ ?>
