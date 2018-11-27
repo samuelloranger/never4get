@@ -68,13 +68,14 @@
 
     //**************DONNÉES SUR LES COULEURS**************/
     $strRequeteCouleurs=
-    'SELECT nom_couleur_fr, hexadecimale
+    'SELECT id_couleur, nom_couleur_fr, hexadecimale
     FROM t_couleur';
 
     //Éxécution de la requête
     $pdosResultatCouleurs=$pdoConnexion->query($strRequeteCouleurs);
 
     for($intCpt=0;$ligne=$pdosResultatCouleurs->fetch();$intCpt++){
+        $arrCouleurs[$intCpt]['id_couleur']=$ligne['id_couleur'];
         $arrCouleurs[$intCpt]['nom_couleur_fr']=$ligne['nom_couleur_fr'];
         $arrCouleurs[$intCpt]['hexadecimale']=$ligne['hexadecimale'];
     }
@@ -84,6 +85,43 @@
 
     $pdosResultatCouleurs->closeCursor();
 
+    //**************MODIFICATION DE LA LISTE**************/
+    if($strCodeOperation=='modifier'){
+        //Récupération des données dans la querystring
+        $arrListe['nom_liste']=$_GET['nomListe'];
+        $arrListe['id_couleur']=$_GET['couleur'];
+
+
+        //Requête SQL utilisée pour les modifications de la BD
+        $strRequeteUpdate=
+        'UPDATE t_participant SET '.
+        "nom_liste='".$arrListe['nom_liste']."',".
+        "nom_couleur_fr='".$arrListe['id']."',".
+        "sexe_participant='".$arrParticipant['sexe_participant']."',".
+        "telephone_participant='".$arrParticipant['telephone_participant']."',".
+        "codepostal_participant='".$arrParticipant['codepostal_participant']."',".
+        "naissance_participant='".$arrParticipant['naissance_participant']."',".
+        "id_categorie=".$arrParticipant['id_categorie'].",".
+        "id_sport=".$arrParticipant['id_sport'].
+        " WHERE id_participant=?";
+
+        //Préparation de la requête
+        $pdosResultatUpdate=$pdoConnexion->prepare($strRequeteUpdate);
+
+        //Liaison de la valeur de l'id
+        $pdosResultatUpdate->bindValue(1, $strIdParticipant); 
+        
+        //Éxécution de la requête
+        $pdosResultatUpdate->execute();
+
+        //Récupération de l'erreur, s'il y a lieu
+        $strCodeErreur=$pdosResultatUpdate->errorCode();
+        // var_dump($pdosResultatUpdate->errorInfo());
+
+        //Message pour confirmer les modifications 
+        $strMessage=$jsonMessagesErreurs->{"modifier"};
+
+    }
     //****************************************************************
     //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
     //****************************************************************
@@ -133,7 +171,7 @@
             <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
             <label for="nomListe">Nom de la liste</label>
-            <input type="text" value="<?php echo $arrListe['nom_liste']; ?>">
+            <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" name="nomListe">
             <p class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></p>
 
             <fieldset>
@@ -142,7 +180,7 @@
                     <?php
                         for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
                             <li>
-                                <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?>>
+                                <input type="radio" id="couleur" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?> name="couleur">
                                 <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
                                 <span style="display: inline-block;width:20px; height: 10px; background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>;"></span>
                             </li>
@@ -165,6 +203,9 @@
 
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
 
+    <script src="js/validationsMandatA.js"></script>
+    <script src="js/menu.js"></script>
+
     <script>
     $('body').addClass('js');
     $(document).ready(function()
@@ -172,7 +213,7 @@
         /**
          *Initialiser les modules JavaScript ici: menu, accordéon...
          */
-        $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+        $(document).ready(validationsMandatA.initialiser.bind(validationsMandatA));
 
         $(document).ready(menu.initialiser.bind(menu));
     });

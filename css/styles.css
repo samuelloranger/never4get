@@ -15,230 +15,7 @@
  * Grille
  */
 /****** Librairies ******/
-@import url(../node_modules/normalize.css);
-/****** Modules ******/
-/**
- * @author Gabriel Chouinard Létourneau / Samuel Loranger
- * @todo Compléter selon l'énoncé
-*/
-.cacherDateEcheance {
-  width: 62px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-  border-radius: 25px;
-  position: relative; }
-  .cacherDateEcheance__btn {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    border-radius: 30px;
-    background-color: grey;
-    width: 30px;
-    height: 30px;
-    border: none;
-    transition-duration: .4s; }
-    .cacherDateEcheance__btn:focus {
-      outline: none;
-      border: yellow; }
-    .cacherDateEcheance__btn--active {
-      background-color: blue;
-      transform: translateX(30px); }
-
-.btnMenu {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 10px;
-  top: 8px; }
-  @media (min-width: 601px) {
-    .btnMenu {
-      display: none; } }
-
-.btnMenu span {
-  display: block;
-  position: absolute;
-  height: 5px;
-  width: 40px;
-  background: white;
-  border-radius: 5px;
-  right: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out; }
-
-.btnMenu span:nth-child(2), .btnMenu span:nth-child(3) {
-  top: 12px; }
-
-.btnMenu span:nth-child(1) {
-  top: 0px; }
-
-.btnMenu span:nth-child(4) {
-  top: 24px; }
-
-.btnMenu.open span:nth-child(1) {
-  top: 12px;
-  right: 20px;
-  width: 0%; }
-
-.btnMenu.open span:nth-child(2) {
-  transform: rotate(45deg); }
-
-.btnMenu.open span:nth-child(3) {
-  transform: rotate(-45deg); }
-
-.btnMenu.open span:nth-child(4) {
-  top: 12px;
-  right: 20px;
-  width: 0%; }
-
-/**
- * @author Samuel Loranger
-*/
-.flexEditerItem {
-  display: flex;
-  padding-top: 2%; }
-
-.editerItem {
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 100%; }
-  @media (min-width: 601px) {
-    .editerItem {
-      width: 40.6779661017%;
-      margin-left: 10.1694915254%; } }
-  .editerItem__titre {
-    margin-top: 5%;
-    text-align: center; }
-
-.formulaire__conteneurChamp {
-  display: flex;
-  flex-direction: column;
-  width: 100%; }
-  .formulaire__conteneurChamp label {
-    width: 100%; }
-  .formulaire__conteneurChamp input {
-    height: 42px;
-    font-size: 14px; }
-.formulaire__dateEcheanceTitre {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-.formulaire__conteneurDate {
-  border: none;
-  padding: 0; }
-
-.date {
-  font-size: 14px;
-  border-radius: 4px;
-  height: 42px;
-  border: 1px solid black;
-  border-radius: 0; }
-  .date__conteneurSelectDate {
-    display: flex;
-    justify-content: space-between;
-    vertical-align: center; }
-  .date label {
-    padding-top: 15px;
-    vertical-align: center; }
-  .date__jour {
-    width: 50px;
-    height: 42px;
-    background: white; }
-  .date__mois {
-    width: 80px;
-    height: 42px;
-    background: white; }
-  .date__annee {
-    width: 58px;
-    height: 42px;
-    background: white; }
-  .date__heure {
-    width: 54px;
-    height: 42px;
-    background: white; }
-    .date__heure--label {
-      padding-top: 12px; }
-  .date__minute {
-    width: 62px;
-    height: 42px;
-    background: white; }
-    .date__minute--label {
-      padding-top: 10px; }
-
-.conteneurBoutons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%; }
-  .conteneurBoutons .btnModifier {
-    font-size: 16px;
-    width: 166px;
-    height: 38px;
-    background-color: #F7C94B;
-    border-radius: 5px;
-    border: 0px;
-    margin-bottom: 5%; }
-  .conteneurBoutons .btnAnnuler {
-    display: flex;
-    position: relative;
-    color: white;
-    font-size: 16px;
-    width: 166px;
-    height: 38px;
-    background-color: #575757;
-    border-radius: 5px;
-    border: 0px;
-    justify-content: center;
-    padding-top: 8px; }
-
-/**
- * @author Samuel Loranger
-*/
-@media (min-width: 601px) {
-  .flexConsulterListe {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 2%; } }
-
-.consulterListe {
-  margin-left: 5%;
-  margin-right: 5%; }
-  @media (min-width: 601px) {
-    .consulterListe {
-      margin-right: 0%;
-      width: 66.1016949153%;
-      margin-left: 6.7796610169%; } }
-  .consulterListe__titre {
-    text-align: center; }
-
-.couleurListe {
-  height: 25px;
-  max-width: 1000px;
-  margin: 0 auto; }
-
-@media (min-width: 601px) {
-  .conteneurListes {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap; } }
-.conteneurListes__item {
-  border: 1px solid black;
-  border-radius: 5px;
-  margin-bottom: 5%; }
-  @media (min-width: 601px) {
-    .conteneurListes__item {
-      width: 32.2033898305%;
-      border: 1px solid black;
-      border-radius: 5px;
-      margin-bottom: 2%;
-      margin-right: 1.6949152542%; }
-      .conteneurListes__item:nth-child(3n) {
-        margin-right: 0; } }
-
+@import "../node_modules/normalize.css";
 /**** Utilitaires ****/
 /**
  * @author Gabriel Chouinard Létourneau
@@ -247,14 +24,17 @@
 /** Polices de caractères **/
 /** Polices de caractères **/
 @font-face {
-  font-family: 'WorkSans--Regular';
-  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf"); }
+  font-family: "WorkSans--Regular";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
 @font-face {
-  font-family: 'WorkSans--SemiBold';
-  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf"); }
+  font-family: "WorkSans--SemiBold";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
 @font-face {
-  font-family: 'WorkSans--Bold';
-  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf"); }
+  font-family: "WorkSans--Bold";
+  src: url("../fonts/Work_Sans/WorkSans-Regular.ttf");
+}
 /** Palette de couleurs **/
 /* Couleurs de base */
 /* Autres couleurs */
@@ -286,18 +66,112 @@
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px; }
-  .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus,
-  .screen-reader-only.focusable:active,
-  .screen-reader-only.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto; }
+  width: 1px;
+}
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus,
+.screen-reader-only.focusable:active,
+.screen-reader-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
 
 /******** Typographie *********/
+/****** Modules ******/
+/**
+ * @author Gabriel Chouinard Létourneau / Samuel Loranger
+ * @todo Compléter selon l'énoncé
+*/
+.cacherDateEcheance {
+  width: 62px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 25px;
+  position: relative;
+}
+.cacherDateEcheance__btn {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  background-color: grey;
+  width: 30px;
+  height: 30px;
+  border: none;
+  transition-duration: 0.4s;
+}
+.cacherDateEcheance__btn:focus {
+  outline: none;
+  border: yellow;
+}
+.cacherDateEcheance__btn--active {
+  background-color: blue;
+  transform: translateX(30px);
+}
+
+.btnMenu {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+@media (min-width: 601px) {
+  .btnMenu {
+    display: none;
+  }
+}
+
+.btnMenu span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 40px;
+  background: white;
+  border-radius: 5px;
+  right: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.btnMenu span:nth-child(2), .btnMenu span:nth-child(3) {
+  top: 12px;
+}
+
+.btnMenu span:nth-child(1) {
+  top: 0px;
+}
+
+.btnMenu span:nth-child(4) {
+  top: 24px;
+}
+
+.btnMenu.open span:nth-child(1) {
+  top: 12px;
+  right: 20px;
+  width: 0%;
+}
+
+.btnMenu.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.btnMenu.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.btnMenu.open span:nth-child(4) {
+  top: 12px;
+  right: 20px;
+  width: 0%;
+}
+
 /****** Base ******/
 /**
  * @author Gabriel Chouinard Létourneau
@@ -305,62 +179,80 @@
 **/
 a {
   text-decoration: none;
-  color: unset; }
+  color: unset;
+}
 
 .erreur {
-  color: red; }
+  color: red;
+}
 
 .erreurElement {
-  border: 1px solid red; }
+  border: 1px solid red;
+}
 
 .ok {
-  color: green; }
+  color: green;
+}
 
 /**
  * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
  * @todo Compléter selon l'énoncé
 */
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   font-size: 16px;
   font-size: 1.6rem;
   font-family: "WorkSans--Regular", sans-serif;
   line-height: 1.375;
-  /* facteur multiplicateur de la taille de la police 1.375x16=22 */ }
-  @media (min-width: 600px) {
-    body {
-      line-height: 1.5; } }
+  /* facteur multiplicateur de la taille de la police 1.375x16=22 */
+}
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
+}
 
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  font-family: "WorkSans--Bold", sans-serif; }
+  font-family: "WorkSans--Bold", sans-serif;
+}
 
 h1, .h1 {
   font-size: 24px;
-  font-size: 2.4rem; }
-  @media (min-width: 600px) {
-    h1, .h1 {
-      font-size: 32px;
-      font-size: 3.2rem; } }
+  font-size: 2.4rem;
+}
+@media (min-width: 600px) {
+  h1, .h1 {
+    font-size: 32px;
+    font-size: 3.2rem;
+  }
+}
 
 h2, .h2 {
   font-size: 20px;
-  font-size: 2rem; }
-  @media (min-width: 600px) {
-    h2, .h2 {
-      font-size: 24px;
-      font-size: 2.4rem; } }
+  font-size: 2rem;
+}
+@media (min-width: 600px) {
+  h2, .h2 {
+    font-size: 24px;
+    font-size: 2.4rem;
+  }
+}
 
 h3, .h3 {
   font-size: 18px;
-  font-size: 1.8rem; }
-  @media (min-width: 600px) {
-    h3, .h3 {
-      font-size: 20px;
-      font-size: 2rem; } }
+  font-size: 1.8rem;
+}
+@media (min-width: 600px) {
+  h3, .h3 {
+    font-size: 20px;
+    font-size: 2rem;
+  }
+}
 
 /*
 @author Samuel Loranger <samuelloranger@gmail.com>
@@ -372,11 +264,14 @@ Creation date: 13/11/2018 20:15
   src: url("../fonts/Flaticon/Flaticon.eot");
   src: url("../fonts/Flaticon/Flaticon.eot?#iefix") format("embedded-opentype"), url("../fonts/Flaticon/Flaticon.woff") format("woff"), url("../fonts/Flaticon/Flaticon.ttf") format("truetype"), url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg"); } }
+    src: url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
+  }
+}
 .fi:before {
   display: inline-block;
   font-family: "Flaticon";
@@ -389,61 +284,80 @@ Creation date: 13/11/2018 20:15
   text-transform: none;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased; }
+  font-smoothing: antialiased;
+}
 
 .flaticon-user:before {
-  content: "\f100"; }
+  content: "";
+}
 
 .flaticon-calendar:before {
-  content: "\f101"; }
+  content: "";
+}
 
 .flaticon-error:before {
-  content: "\f102"; }
+  content: "";
+}
 
 .flaticon-success:before {
-  content: "\f103"; }
+  content: "";
+}
 
 .flaticon-users:before {
-  content: "\f104"; }
+  content: "";
+}
 
 .flaticon-add:before {
-  content: "\f105"; }
+  content: "";
+}
 
 .flaticon-home:before {
-  content: "\f106"; }
+  content: "";
+}
 
 .flaticon-share:before {
-  content: "\f107"; }
+  content: "";
+}
 
 .flaticon-placeholder:before {
-  content: "\f108"; }
+  content: "";
+}
 
 .flaticon-cross:before {
-  content: "\f109"; }
+  content: "";
+}
 
 .flaticon-login:before {
-  content: "\f10a"; }
+  content: "";
+}
 
 .flaticon-list:before {
-  content: "\f10b"; }
+  content: "";
+}
 
 .flaticon-gear:before {
-  content: "\f10c"; }
+  content: "";
+}
 
 .flaticon-folder:before {
-  content: "\f10d"; }
+  content: "";
+}
 
 .flaticon-trash:before {
-  content: "\f10e"; }
+  content: "";
+}
 
 .flaticon-more:before {
-  content: "\f10f"; }
+  content: "";
+}
 
 .flaticon-minus:before {
-  content: "\f110"; }
+  content: "";
+}
 
 .flaticon-menu:before {
-  content: "\f111"; }
+  content: "";
+}
 
 /****** Grille ******/
 /**
@@ -451,27 +365,26 @@ Creation date: 13/11/2018 20:15
  * @todo Compléter selon l'énoncé
 */
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
-@media (max-width: 599px) {
-  .conteneur {
-    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" width="100%" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="21.0526315789%" height="100%"/%3E%3Crect x="26.3157894737%" width="21.0526315789%" height="100%"/%3E%3Crect x="52.6315789474%" width="21.0526315789%" height="100%"/%3E%3Crect x="78.9473684211%" width="21.0526315789%" height="100%"/%3E%3C/svg%3E') no-repeat scroll; } }
-@media (min-width: 600px) {
-  .conteneur {
-    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="url(%23susy-svg-gradient)" width="100%" %3E%3Cdefs%3E%3ClinearGradient spreadMethod="pad" id="susy-svg-gradient" x1="0%" y1="0%" x2="100%" y2="0%"%3E%3Cstop offset="0%" style="stop-color:rgba(64, 191, 64, 0.5);" /%3E%3Cstop offset="100%" style="stop-color:rgba(159, 223, 159, 0.5);" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="0" width="6.7796610169%" height="100%"/%3E%3Crect x="8.4745762712%" width="6.7796610169%" height="100%"/%3E%3Crect x="16.9491525424%" width="6.7796610169%" height="100%"/%3E%3Crect x="25.4237288136%" width="6.7796610169%" height="100%"/%3E%3Crect x="33.8983050847%" width="6.7796610169%" height="100%"/%3E%3Crect x="42.3728813559%" width="6.7796610169%" height="100%"/%3E%3Crect x="50.8474576271%" width="6.7796610169%" height="100%"/%3E%3Crect x="59.3220338983%" width="6.7796610169%" height="100%"/%3E%3Crect x="67.7966101695%" width="6.7796610169%" height="100%"/%3E%3Crect x="76.2711864407%" width="6.7796610169%" height="100%"/%3E%3Crect x="84.7457627119%" width="6.7796610169%" height="100%"/%3E%3Crect x="93.2203389831%" width="6.7796610169%" height="100%"/%3E%3C/svg%3E') no-repeat scroll; } }
 body {
   overflow-x: hidden;
-  margin: 0; }
+  margin: 0;
+}
 
 .conteneur {
   margin: 0 auto;
-  max-width: 1000px; }
+  max-width: 1000px;
+}
 
 .visuallyHidden {
-  display: none; }
+  display: none;
+}
 
 /**
  * @author Samuel Loranger
@@ -482,155 +395,452 @@ body {
   height: 135px;
   margin-left: 6.7796610169%;
   display: flex;
-  justify-content: flex-end; }
-  @media (max-width: 601px) {
-    .contenuTable {
-      display: none; } }
-  .contenuTable__profil {
-    width: 31.0344827586%;
-    height: 50%;
-    font-family: "WorkSans--Bold", sans-serif;
-    font-size: 18px;
-    font-size: 1.8rem;
-    padding-top: 50px; }
-  .contenuTable__recherche {
-    padding-top: 50px;
-    width: 48.275862069%;
-    height: 50%; }
-    .contenuTable__recherche input {
-      width: 100%;
-      height: 32px;
-      border-radius: 8px;
-      border: none;
-      padding-left: 5px;
-      font-size: 15px;
-      background-image: url("../images/icones/028-search.png");
-      background-size: 25px 25px;
-      background-position-x: 97%;
-      background-position-y: 35%;
-      background-repeat: no-repeat;
-      background-color: white; }
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  .contenuTable {
+    display: none;
+  }
+}
+.contenuTable__profil {
+  width: 31.0344827586%;
+  height: 50%;
+  font-family: "WorkSans--Bold", sans-serif;
+  font-size: 18px;
+  font-size: 1.8rem;
+  padding-top: 50px;
+}
+.contenuTable__recherche {
+  padding-top: 50px;
+  width: 48.275862069%;
+  height: 50%;
+}
+.contenuTable__recherche input {
+  width: 100%;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  padding-left: 5px;
+  font-size: 15px;
+  background-image: url("../images/icones/028-search.png");
+  background-size: 25px 25px;
+  background-position-x: 97%;
+  background-position-y: 35%;
+  background-repeat: no-repeat;
+  background-color: white;
+}
 
 .header {
   background-color: #0047AB;
   color: white;
   position: relative;
   height: 45px;
-  padding-top: 3px; }
-  @media (min-width: 600px) {
-    .header {
-      height: 150px; }
-      .header .conteneur {
-        width: 100%;
-        display: flex;
-        justify-content: space-between; } }
-  .header__logo {
-    width: 21.0526315789%;
-    display: block; }
-    @media (min-width: 600px) {
-      .header__logo {
-        width: 40.6779661017%; } }
-    .header__logo img {
-      margin-left: 25%; }
-      @media (min-width: 600px) {
-        .header__logo img {
-          width: 100%; } }
-  .header__liste {
+  padding-top: 3px;
+}
+@media (min-width: 600px) {
+  .header {
+    height: 150px;
+  }
+  .header .conteneur {
     width: 100%;
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 0;
-    position: absolute;
-    top: 45px;
-    right: 0px;
-    background-color: #0047AB;
-    transition-duration: 0.4s;
-    z-index: 1; }
-    @media (min-width: 600px) {
-      .header__liste {
-        display: none; } }
-    .header__liste--ferme {
-      right: -100%; }
-    .header__listeItem {
-      background-color: #575757;
-      width: 85%;
-      margin: 0 auto;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      font-size: 18px;
-      font-size: 1.8rem; }
-      .header__listeItem--active {
-        border-left: 6px #F7C94B solid;
-        padding-left: 4px; }
-      .header__listeItem:nth-child(1) a, .header__listeItem:nth-child(2) a, .header__listeItem:nth-child(3) a {
-        font-family: "WorkSans--Bold", sans-serif; }
-        .header__listeItem:nth-child(1) a:before, .header__listeItem:nth-child(2) a:before, .header__listeItem:nth-child(3) a:before {
-          padding-right: 8px; }
-      .header__listeItem:nth-child(1) {
-        margin-top: 5px; }
-      .header__listeItem:nth-child(3) {
-        padding-bottom: 10px;
-        border-bottom: 1px solid white; }
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.header__logo {
+  width: 21.0526315789%;
+  display: block;
+}
+@media (min-width: 600px) {
+  .header__logo {
+    width: 40.6779661017%;
+  }
+}
+.header__logo img {
+  margin-left: 25%;
+}
+@media (min-width: 600px) {
+  .header__logo img {
+    width: 100%;
+  }
+}
+.header__liste {
+  width: 100%;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  background-color: #0047AB;
+  transition-duration: 0.4s;
+  z-index: 1;
+}
+@media (min-width: 600px) {
+  .header__liste {
+    display: none;
+  }
+}
+.header__liste--ferme {
+  right: -100%;
+}
+.header__listeItem {
+  background-color: #575757;
+  width: 85%;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.header__listeItem--active {
+  border-left: 6px #F7C94B solid;
+  padding-left: 4px;
+}
+.header__listeItem:nth-child(1) a, .header__listeItem:nth-child(2) a, .header__listeItem:nth-child(3) a {
+  font-family: "WorkSans--Bold", sans-serif;
+}
+.header__listeItem:nth-child(1) a:before, .header__listeItem:nth-child(2) a:before, .header__listeItem:nth-child(3) a:before {
+  padding-right: 8px;
+}
+.header__listeItem:nth-child(1) {
+  margin-top: 5px;
+}
+.header__listeItem:nth-child(3) {
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
 
 /**
- * @author Prénom Nom courriel
- * @todo Compléter selon l'énoncé
+ * @author Samue Loranger  <samuelloranger@gmail.com>
 */
 .footer {
   background-color: #0047AB;
   width: 100%;
-  margin-top: 2%; }
+  margin-top: 2%;
+}
+.footer__logo {
+  display: none;
+}
+@media (min-width: 601px) {
   .footer__logo {
-    display: none; }
-    @media (min-width: 601px) {
-      .footer__logo {
-        display: block;
-        margin: 0 auto;
-        width: 125px;
-        height: 125px; } }
-  .footer__credits {
-    color: white;
-    display: inline-block;
+    display: block;
     margin: 0 auto;
-    text-align: center;
-    min-width: 100%; }
+    width: 125px;
+    height: 125px;
+  }
+}
+.footer__credits {
+  color: white;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  min-width: 100%;
+}
 
 /**
  * @author Samuel Loranger <email>
 */
 .sidenav {
   background-color: #575757;
-  width: 23.7288135593%; }
-  .sidenav:after {
-    content: " ";
-    display: table;
-    clear: both; }
-  @media (max-width: 600px) {
-    .sidenav {
-      display: none; } }
-  .sidenav__liste {
+  width: 23.7288135593%;
+}
+.sidenav:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+@media (max-width: 600px) {
+  .sidenav {
+    display: none;
+  }
+}
+.sidenav__liste {
+  list-style-type: none;
+  padding: 25px 0;
+  color: #fff;
+  font-size: 20px;
+}
+.sidenav__listePrimaire {
+  padding-bottom: 25px;
+  border-bottom: 1px #fff solid;
+}
+.sidenav__listePrimaire__item {
+  margin: 12px 0;
+  padding-left: 14px;
+}
+.sidenav__listePrimaire__item__lien {
+  transition: 0.2s all ease-in-out;
+}
+.sidenav__listePrimaire__item__lien:hover {
+  border-bottom: 5px #F7C94B solid;
+}
+.sidenav__listeSecondaire {
+  padding-top: 25px;
+}
+.sidenav__listeSecondaire__item {
+  width: 100%;
+  margin: 12px 0;
+  padding-left: 14px;
+}
+.sidenav__listeSecondaire__item--active {
+  padding-left: 5px;
+  border-left: 5px #F7C94B solid;
+}
+.sidenav__listeSecondaire__item__lien {
+  transition: 0.2s all ease-in-out;
+}
+.sidenav__listeSecondaire__item__lien:hover {
+  max-width: 300px;
+  border-bottom: 5px #F7C94B solid;
+}
+
+/**
+ * @author Samuel Loranger
+*/
+.flexEditerItem {
+  display: flex;
+  padding-top: 2%;
+}
+
+.editerItem {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .editerItem {
+    width: 40.6779661017%;
+    margin-left: 10.1694915254%;
+  }
+}
+.editerItem__titre {
+  margin-top: 5%;
+  text-align: center;
+}
+
+.formulaire__conteneurChamp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.formulaire__conteneurChamp label {
+  width: 100%;
+}
+.formulaire__conteneurChamp input {
+  height: 42px;
+  font-size: 14px;
+}
+.formulaire__dateEcheanceTitre {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.formulaire__conteneurDate {
+  border: none;
+  padding: 0;
+  transition: 0.4s all ease-in-out;
+  display: block;
+  animation: animation-afficherDate 0.4s;
+  animation-timing-function: ease-in-out;
+}
+.formulaire__conteneurDate--cacher {
+  animation: animation-cacherDate 0.4s;
+  height: 0;
+}
+
+.date {
+  font-size: 14px;
+  border-radius: 4px;
+  height: 42px;
+  border: 1px solid black;
+  border-radius: 0;
+}
+.date__conteneurSelectDate {
+  display: flex;
+  justify-content: space-between;
+  animation: animation-afficherDate 0.4s;
+  animation-timing-function: ease-in-out;
+}
+.date__conteneurSelectDate--cacher {
+  animation: animation-cacherDate 0.4s;
+  opacity: 0;
+}
+.date label {
+  padding-top: 15px;
+  vertical-align: center;
+}
+.date__jour {
+  width: 50px;
+  height: 4.2em;
+  background: white;
+}
+.date__mois {
+  width: 80px;
+  height: 4.2em;
+  background: white;
+}
+.date__annee {
+  width: 58px;
+  height: 4.2em;
+  background: white;
+}
+.date__heure {
+  width: 54px;
+  height: 4.2em;
+  background: white;
+}
+.date__heure--label {
+  padding-top: 12px;
+}
+.date__minute {
+  width: 62px;
+  height: 42px;
+  background: white;
+}
+.date__minute--label {
+  padding-top: 10px;
+}
+
+.conteneurBoutons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+.conteneurBoutons .btnModifier {
+  font-size: 16px;
+  width: 166px;
+  height: 38px;
+  background-color: #F7C94B;
+  border-radius: 5px;
+  border: 0px;
+  margin-bottom: 5%;
+}
+.conteneurBoutons .btnAnnuler {
+  display: flex;
+  position: relative;
+  color: white;
+  font-size: 16px;
+  width: 166px;
+  height: 38px;
+  background-color: #575757;
+  border-radius: 5px;
+  border: 0px;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+@-webkit-keyframes animation-cacherDate {
+  from {
+    opacity: 1;
+    height: 60px;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+  }
+}
+@keyframes animation-cacherDate {
+  from {
+    opacity: 1;
+    height: 60px;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+  }
+}
+@-webkit-keyframes animation-afficherDate {
+  from {
+    opacity: 0;
+    height: 0px;
+  }
+  to {
+    opacity: 1;
+    height: 60px;
+  }
+}
+@keyframes animation-afficherDate {
+  from {
+    opacity: 0;
+    height: 0px;
+  }
+  to {
+    opacity: 1;
+    height: 60px;
+  }
+}
+/**
+ * @author Samuel Loranger
+*/
+@media (min-width: 600px) {
+  .flexConsulterListe {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+  }
+}
+
+.consulterListe {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+@media (min-width: 600px) {
+  .consulterListe {
+    margin-right: 0%;
+    width: 66.1016949153%;
+    margin-left: 6.7796610169%;
+  }
+}
+.consulterListe__titre {
+  text-align: center;
+}
+@media (min-width: 600px) {
+  .consulterListe__titre {
+    text-align: unset;
+  }
+}
+
+.couleurListe {
+  height: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .conteneurListes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .conteneurListes ul {
+    padding-left: 0;
     list-style-type: none;
-    padding: 25px 0;
-    color: #fff; }
-    .sidenav__listePrimaire {
-      padding-bottom: 25px;
-      border-bottom: 1px #fff solid; }
-      .sidenav__listePrimaire__item {
-        margin: 12px 0; }
-    .sidenav__listeSecondaire {
-      padding-top: 25px; }
-      .sidenav__listeSecondaire__item {
-        width: 100%;
-        padding-left: 5px;
-        margin: 12px 0; }
-        .sidenav__listeSecondaire__item--active {
-          padding-left: 5px;
-          border-left: 5px #F7C94B solid; }
-        .sidenav__listeSecondaire__item__lien {
-          transition: .2s all ease-in-out; }
-          .sidenav__listeSecondaire__item__lien:hover {
-            max-width: 300px;
-            border-bottom: 5px #F7C94B solid; }
+  }
+  .conteneurListesTitre {
+    color: #F7C94B;
+  }
+}
+.conteneurListes__item {
+  border: 1px solid black;
+  margin-bottom: 5%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+@media (min-width: 600px) {
+  .conteneurListes__item {
+    width: 32.2033898305%;
+    border: 2px solid black;
+    margin-bottom: 2%;
+    margin-right: 1.6949152542%;
+  }
+  .conteneurListes__item:nth-child(3n) {
+    margin-right: 0;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
