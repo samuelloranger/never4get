@@ -5,7 +5,7 @@ $strRequeteListes = "SELECT id_liste, nom_liste FROM t_liste";
 
 $pdosResultatListes = $pdoConnexion -> query($strRequeteListes);
 
-$arrListes = array();
+$arrListesHeader = array();
 for($intCtr = 0; $ligne = $pdosResultatListes -> fetch(); $intCtr++){
     $arrListes[$intCtr]["id_liste"] = $ligne["id_liste"];
     $arrListes[$intCtr]["nom_liste"] = $ligne["nom_liste"];
