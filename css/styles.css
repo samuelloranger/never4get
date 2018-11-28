@@ -75,104 +75,6 @@
     width: auto; }
 
 /******** Typographie *********/
-/****** Modules ******/
-/**
- * @author Gabriel Chouinard Létourneau / Samuel Loranger
- * @todo Compléter selon l'énoncé
-*/
-.cacherDateEcheance {
-  width: 62px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-  border-radius: 25px;
-  position: relative; }
-  .cacherDateEcheance__btn {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    border-radius: 30px;
-    background-color: grey;
-    width: 30px;
-    height: 30px;
-    border: none;
-    transition-duration: .4s; }
-    .cacherDateEcheance__btn:focus {
-      outline: none;
-      border: yellow; }
-    .cacherDateEcheance__btn--active {
-      background-color: blue;
-      transform: translateX(30px); }
-
-.btnMenu {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 10px;
-  top: 8px; }
-  @media (min-width: 601px) {
-    .btnMenu {
-      display: none; } }
-
-.btnOperation {
-  background-color: #F7C94B;
-  border: 0;
-  color: black;
-  border-radius: 4px;
-  display: block;
-  width: 85%;
-  margin-bottom: 5px;
-  text-align: center;
-  padding: 5px;
-  cursor: pointer;
-  border: white 2px solid;
-  margin: 0 auto;
-  transition-duration: 0.4s;
-  font-size: 16px;
-  font-size: 1.6rem; }
-  .btnOperation:hover {
-    border: #0047AB 2px solid; }
-  .btnOperation:active {
-    background-color: #0047AB; }
-
-.btnMenu span {
-  display: block;
-  position: absolute;
-  height: 5px;
-  width: 40px;
-  background: white;
-  border-radius: 5px;
-  right: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out; }
-
-.btnMenu span:nth-child(2), .btnMenu span:nth-child(3) {
-  top: 12px; }
-
-.btnMenu span:nth-child(1) {
-  top: 0px; }
-
-.btnMenu span:nth-child(4) {
-  top: 24px; }
-
-.btnMenu.open span:nth-child(1) {
-  top: 12px;
-  right: 20px;
-  width: 0%; }
-
-.btnMenu.open span:nth-child(2) {
-  transform: rotate(45deg); }
-
-.btnMenu.open span:nth-child(3) {
-  transform: rotate(-45deg); }
-
-.btnMenu.open span:nth-child(4) {
-  top: 12px;
-  right: 20px;
-  width: 0%; }
-
 /****** Base ******/
 /**
  * @author Gabriel Chouinard Létourneau
@@ -266,7 +168,8 @@ Creation date: 27/11/2018 20:48
   font-smoothing: antialiased; }
 
 .flaticon-user:before {
-  content: "\f100"; }
+  content: "\f100";
+  transform: scale(1.5); }
 
 .flaticon-calendar:before {
   content: "\f101"; }
@@ -366,14 +269,19 @@ body {
     .contenuTable {
       display: none; } }
   .contenuTable__profil {
-    width: 31.0344827586%;
+    width: 48.275862069%;
     height: 50%;
     font-family: "WorkSans--Bold", sans-serif;
-    font-size: 18px;
-    font-size: 1.8rem;
-    padding-top: 50px; }
-    .contenuTable__profil span:hover {
-      border-bottom: 5px #F7C94B solid; }
+    font-size: 2.4rem;
+    margin-right: 4.1666666667%;
+    padding-top: 50px;
+    padding-left: 2%; }
+    .contenuTable__profil span {
+      margin-left: 5%; }
+      .contenuTable__profil span:hover {
+        border-bottom: 5px #F7C94B solid;
+        transition: .2s all ease-in-out;
+        cursor: pointer; }
   .contenuTable__recherche {
     padding-top: 50px;
     width: 48.275862069%;
@@ -414,61 +322,33 @@ body {
     @media (min-width: 600px) {
       .header__logo {
         width: 40.6779661017%; } }
-    .header__logo img {
-      margin-left: 25%; }
-      @media (min-width: 600px) {
-        .header__logo img {
-          width: 100%; } }
-  .header__liste {
-    width: 100%;
-    height: 100%;
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 0;
-    background-color: #0047AB;
-    transition-duration: 0.4s;
-    z-index: 1;
-    position: fixed;
-    top: 45px;
-    left: 0;
-    height: 100%; }
-    .header__listeContainer {
-      background-color: #575757;
-      width: 85%;
-      margin: 0 auto;
-      position: relative;
-      opacity: 1;
-      transition-duration: 0.4s;
-      height: 100%; }
-      .header__listeContainer--ferme {
-        opacity: 0;
-        height: 0%; }
-    .header__liste--ferme {
-      height: 0%; }
     @media (min-width: 600px) {
-      .header__liste {
-        display: none; } }
-    .header__listeItem {
-      margin: 0 auto;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      font-size: 18px;
-      font-size: 1.8rem; }
-      .header__listeItem--active {
-        border-left: 6px #F7C94B solid;
-        padding-left: 4px; }
-      .header__listeItem:nth-child(1) a, .header__listeItem:nth-child(2) a, .header__listeItem:nth-child(3) a {
-        font-family: "WorkSans--Bold", sans-serif; }
-        .header__listeItem:nth-child(1) a:before, .header__listeItem:nth-child(2) a:before, .header__listeItem:nth-child(3) a:before {
-          padding-right: 8px; }
-      .header__listeItem:nth-child(1) {
-        margin-top: 5px; }
-      .header__listeItem:nth-child(3) {
-        padding-bottom: 10px;
-        border-bottom: 1px solid white; }
-      .header__listeItem:last-child {
-        height: 10em; }
+      .header__logo img {
+        width: 100%; } }
+  @media (min-width: 600px) {
+    .header__liste {
+      display: none; } }
+  .header__listeItem {
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-size: 1.8rem; }
+    .header__listeItem--active {
+      border-left: 6px #F7C94B solid;
+      padding-left: 4px; }
+    .header__listeItem:nth-child(1) a, .header__listeItem:nth-child(2) a, .header__listeItem:nth-child(3) a {
+      font-family: "WorkSans--Bold", sans-serif; }
+      .header__listeItem:nth-child(1) a:before, .header__listeItem:nth-child(2) a:before, .header__listeItem:nth-child(3) a:before {
+        padding-right: 8px; }
+    .header__listeItem:nth-child(1) {
+      margin-top: 5px; }
+    .header__listeItem:nth-child(3) {
+      padding-bottom: 10px;
+      border-bottom: 1px solid white; }
+    .header__listeItem:last-child {
+      height: 10em; }
 
 @-webkit-keyframes animation-cacherMenu {
   from {
@@ -554,6 +434,104 @@ body {
           .sidenav__listeSecondaire__item__lien:hover {
             max-width: 300px;
             border-bottom: 5px #F7C94B solid; }
+
+/****** Modules ******/
+/**
+ * @author Gabriel Chouinard Létourneau / Samuel Loranger
+ * @todo Compléter selon l'énoncé
+*/
+.cacherDateEcheance {
+  width: 62px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 25px;
+  position: relative; }
+  .cacherDateEcheance__btn {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+    background-color: grey;
+    width: 30px;
+    height: 30px;
+    border: none;
+    transition-duration: .4s; }
+    .cacherDateEcheance__btn:focus {
+      outline: none;
+      border: yellow; }
+    .cacherDateEcheance__btn--active {
+      background-color: blue;
+      transform: translateX(30px); }
+
+.btnMenu {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  top: 8px; }
+  @media (min-width: 601px) {
+    .btnMenu {
+      display: none; } }
+
+.btnOperation {
+  background-color: #F7C94B;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  display: block;
+  width: 85%;
+  margin-bottom: 5px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border: white 2px solid;
+  margin: 0 auto;
+  transition-duration: 0.4s;
+  font-size: 16px;
+  font-size: 1.6rem; }
+  .btnOperation:hover {
+    border: #0047AB 2px solid; }
+  .btnOperation:active {
+    background-color: #0047AB; }
+
+.btnMenu span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 40px;
+  background: white;
+  border-radius: 5px;
+  right: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out; }
+
+.btnMenu span:nth-child(2), .btnMenu span:nth-child(3) {
+  top: 12px; }
+
+.btnMenu span:nth-child(1) {
+  top: 0px; }
+
+.btnMenu span:nth-child(4) {
+  top: 24px; }
+
+.btnMenu.open span:nth-child(1) {
+  top: 12px;
+  right: 20px;
+  width: 0%; }
+
+.btnMenu.open span:nth-child(2) {
+  transform: rotate(45deg); }
+
+.btnMenu.open span:nth-child(3) {
+  transform: rotate(-45deg); }
+
+.btnMenu.open span:nth-child(4) {
+  top: 12px;
+  right: 20px;
+  width: 0%; }
 
 /**
  * @author Samuel Loranger
@@ -726,8 +704,9 @@ body {
         .consulterListe__titreBtn h1 {
           text-align: unset; } }
     .consulterListe__titreBtn a {
-      margin: 0 0;
-      width: 55%; }
+      margin: 0;
+      width: 55%;
+      padding-top: 1.5%; }
       @media (min-width: 600px) {
         .consulterListe__titreBtn a {
           width: 28%; } }

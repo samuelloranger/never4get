@@ -11,7 +11,7 @@ var menu = {
 
         //Insère un bouton menu hamburger dans le html
         $(".header__liste").before(
-            '<div class="btnMenu" tabindex="0">' +
+            '<div class="btnMenu">' +
                 '<span class="ligne"></span>' +
                 '<span class="ligne"></span>' +
                 '<span class="ligne"></span>' +

@@ -36,7 +36,7 @@
         font-smoothing: antialiased;
     }
 
-    .flaticon-user:before { content: "\f100"; }
+    .flaticon-user:before { content: "\f100"; transform: scale(1.5); }
     .flaticon-calendar:before { content: "\f101"; }
     .flaticon-error:before { content: "\f102"; }
     .flaticon-success:before { content: "\f103"; }

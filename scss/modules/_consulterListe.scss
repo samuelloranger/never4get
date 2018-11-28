@@ -13,8 +13,8 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 0;
+
   @media(min-width: $bureau){
-    //margin-left: 5%;
     margin-right: 0%;
     width: span(8 of 12);
     margin-left: span(1 of 12);
@@ -30,14 +30,16 @@
       text-align: center;
       margin-bottom: 0;
       margin-top: 0;
+
       @media(min-width: $bureau){
         text-align: unset;
       }
     }
 
     a{
-      margin: 0 0;
+      margin: 0;
       width: 55%;
+      padding-top: 1.5%;
 
       @media(min-width: $bureau){
         width: 28%;

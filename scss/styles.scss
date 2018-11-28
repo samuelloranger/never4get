@@ -24,10 +24,6 @@
 @import "utilitaires/variables";
 @import "utilitaires/mixins";
 
-/****** Modules ******/
-@import "modules/boutons";
-@import "modules/modal";
-
 /****** Base ******/
 @import "base/general";
 @import "base/typo";
@@ -38,5 +34,9 @@
 @import "grille/entete";
 @import "grille/pied";
 @import "grille/sidenav";
-@import "grille/editerItem";
-@import "grille/consulterListe";
+
+/****** Modules ******/
+@import "modules/boutons";
+@import "modules/modal";
+@import "modules/editerItem";
+@import "modules/consulterListe";

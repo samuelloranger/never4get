@@ -40,7 +40,7 @@ $pdosResultatListes -> closeCursor();
                 <li class="header__listeItem"><a class="fi flaticon-add"  href="ajouter-liste.php">Ajouter une liste</a></li>
                 <li class="header__listeItem"><a  class="fi flaticon-user" href="">Compte</a></li>
                 <?php for($intCtr = 0; $intCtr < count($arrListes); $intCtr++){?>
-                    <li class="header__listeItem <?php if(isset($_GET["id_item"]) == true){ if($arrListes[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) {echo "header__listeItem--active";} }?>">
+                    <li class="header__listeItem  <?php if(isset($_GET["id_item"]) == true){  if($arrListes[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) { echo "header__listeItem--active"; } } else{ if($arrListes[$intCtr]["id_liste"] == $arrInfosListe["id_liste"]) { echo "header__listeItem--active"; } }?>">
                         <a href= consulter-liste.php?id_liste=<?php echo  $arrListes[$intCtr]["id_liste"] ?>"><?php echo $arrListes[$intCtr]["nom_liste"]; ?></a>
                     </li>
                 <?php } ?>
