@@ -57,6 +57,7 @@
   padding: 5px;
   cursor: pointer;
   border: white 2px solid;
+  margin: 0 auto;
   transition-duration: 0.4s;
   //à retirer
   @include fontSize(16px);

@@ -1,17 +1,17 @@
 /**
  * @author Samuel Loranger
- * @todo Compléter selon l'énoncé
 */
 
 .contenuTable{
-  @media(max-width: $bureau){
-    display: none;
-  }
   width: span(6 of 12);
   height: 135px;
   margin-left: span(1 of 12);
   display: flex;
   justify-content: flex-end;
+
+  @media(max-width: $bureau){
+    display: none;
+  }
 
   &__profil{
     width: span(2 of 6);
@@ -19,6 +19,11 @@
     font-family: $fontBold;
     @include fontSize(18px);
     padding-top: 50px;
+
+    span:hover{
+      border-bottom: 5px $jauneAccent solid;
+    }
+
   }
 
   &__recherche{
@@ -47,10 +52,9 @@
 .header{
   background-color: $bleu;
   color: white;
-  position: relative;
   height: 45px;
   padding-top: 3px;
-
+@include clearfix();
   @media (min-width: $bureau) {
     height: 150px;
     .conteneur{
@@ -78,27 +82,44 @@
 
   &__liste{
     width: 100%;
+    height: 100%;
     list-style-type: none;
     padding-left: 0;
     margin-top: 0;
-    position: absolute;
-    top: 45px;
-    right: 0px;
     background-color: $bleu;
     transition-duration: 0.4s;
     z-index: 1;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    height: 100%;
+    //animation: animation-afficherMenu 0.4s;
+
+    &Container{
+      background-color: $gris;
+      width: 85%;
+      margin: 0 auto;
+      position: relative;
+      opacity: 1;
+      transition-duration: 0.4s;
+      height: 100%;
+
+      &--ferme{
+        opacity: 0;
+        height: 0%;
+      }
+    }
+
+    &--ferme{
+      //animation: animation-cacherMenu 0.4s;
+      height: 0%;
+    }
 
     @media(min-width: $bureau){
       display:none;
     }
 
-    &--ferme{
-      right: -100%;
-    }
-
     &Item {
-      background-color: $gris;
-      width: 85%;
       margin: 0 auto;
       padding-left: 10px;
       padding-top: 5px;
@@ -126,6 +147,34 @@
         padding-bottom: 10px;
         border-bottom: 1px solid white;
       }
+
+      &:last-child{
+        height: 10em;
+      }
     }
   }
+}
+
+
+//************ Animations menu ************
+
+//********** Animations **********
+@-webkit-keyframes animation-cacherMenu {
+  from{ transform: scaleY(1); }
+  to{  transform: scaleY(0); }
+}
+
+@keyframes animation-cacherMenu {
+  from{ width: 0}
+  to{ width: 100%;}
+}
+
+@-webkit-keyframes animation-afficherMenu {
+  from{ width: 0}
+  to{ width: 100%;}
+}
+
+@keyframes animation-afficherMenu {
+  from{ width: 0}
+  to{ width: 100%;}
 }

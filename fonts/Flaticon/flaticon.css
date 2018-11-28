@@ -1,15 +1,15 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 13/11/2018 20:15
+  	Creation date: 27/11/2018 20:48
   	*/
 
 @font-face {
   font-family: "Flaticon";
-  src: url("Flaticon.eot");
-  src: url("Flaticon.eot?#iefix") format("embedded-opentype"),
-       url("Flaticon.woff") format("woff"),
-       url("Flaticon.ttf") format("truetype"),
-       url("Flaticon.svglaticon") format("svg");
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("Flaticon.svglaticon") format("svg");
+    src: url("./Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -47,3 +47,5 @@ margin-left: 20px;
 .flaticon-more:before { content: "\f10f"; }
 .flaticon-minus:before { content: "\f110"; }
 .flaticon-menu:before { content: "\f111"; }
+.flaticon-magnifying-glass:before { content: "\f112"; }
+.flaticon-edit:before { content: "\f113"; }

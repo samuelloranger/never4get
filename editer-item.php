@@ -223,6 +223,8 @@
     <script src="js/validationsMandatB.js"></script>
     <script src="js/menu.js"></script>
     <script>
+        var niveau = <?php echo $strNiveau; ?>;
+
         $('body').addClass('js');
         /**
          * Initialiser les modules JavaScript ici: menu, accordéon...

@@ -24,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5%;
+    margin-top: 5%;
 
     h1{
       text-align: center;
@@ -35,7 +36,12 @@
     }
 
     a{
-      width: 28%;
+      margin: 0 0;
+      width: 55%;
+
+      @media(min-width: $bureau){
+        width: 28%;
+      }
     }
   }
 }
@@ -80,12 +86,14 @@
     margin-bottom: 5%;
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 5%;
 
     @media(min-width: $bureau) {
       width: span(4 of 12);
       border: 2px solid black;
       margin-bottom: 2%;
       margin-right: gutter(1 of 12);
+      padding-bottom: 2%;
 
       &:nth-child(3n){
         margin-right: 0;

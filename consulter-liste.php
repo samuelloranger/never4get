@@ -195,6 +195,8 @@
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
     <script src="js/menu.js"></script>
     <script>
+        var niveau = <?php echo $strNiveau; ?>;
+
         $('body').addClass('js');
         /**
          * Initialiser les modules JavaScript ici: menu, accordéon...

@@ -17,10 +17,10 @@ $pdosResultatListes -> closeCursor();
 <header class="header bleed">
     <div class="conteneur">
         <div class="header__logo">
-            <a href="index.php" >
-                <picture>
+            <a href="index.php" tabindex="-1">
+                <picture tabindex="-1">
                     <source srcset="images/logo/icon_never4get_x1200.png" media="(min-width: 601px)">
-                    <img src="images/logo/icon_never4get_x40.png">
+                    <img tabindex="0" src="images/logo/icon_never4get_x40.png">
                 </picture>
             </a>
         </div>
@@ -35,14 +35,16 @@ $pdosResultatListes -> closeCursor();
         </div>
 
         <ul class="header__liste header__liste--ferme">
-            <li class="header__listeItem"><a class="fi flaticon-home" href="index.php">Accueil</a></li>
-            <li class="header__listeItem"><a class="fi flaticon-add"  href="ajouter-liste.php">Ajouter une liste</a></li>
-            <li class="header__listeItem"><a  class="fi flaticon-user" href="">Compte</a></li>
-            <?php for($intCtr = 0; $intCtr < count($arrListes); $intCtr++){?>
-                <li class="header__listeItem <?php if(isset($_GET["id_item"]) == true){ if($arrListes[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) {echo "header__listeItem--active";} }?>">
-                    <a href="consulter-liste.php?id_liste=<?php echo  $arrListes[$intCtr]["id_liste"] ?>"><?php echo $arrListes[$intCtr]["nom_liste"]; ?></a>
-                </li>
-            <?php } ?>
+            <div class="header__listeContainer header__listeContainer--ferme">
+                <li class="header__listeItem"><a class="fi flaticon-home" href="index.php">Accueil</a></li>
+                <li class="header__listeItem"><a class="fi flaticon-add"  href="ajouter-liste.php">Ajouter une liste</a></li>
+                <li class="header__listeItem"><a  class="fi flaticon-user" href="">Compte</a></li>
+                <?php for($intCtr = 0; $intCtr < count($arrListes); $intCtr++){?>
+                    <li class="header__listeItem <?php if(isset($_GET["id_item"]) == true){ if($arrListes[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) {echo "header__listeItem--active";} }?>">
+                        <a href= consulter-liste.php?id_liste=<?php echo  $arrListes[$intCtr]["id_liste"] ?>"><?php echo $arrListes[$intCtr]["nom_liste"]; ?></a>
+                    </li>
+                <?php } ?>
+            </div>
         </ul>
     </div>
 </header>

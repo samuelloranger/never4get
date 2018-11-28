@@ -4,25 +4,8 @@
  */
 
 var validationsMandatB = {
-    objJSONMessages : {
-        "nomItem": {
-            "erreurs": {
-                "vide": "Veuillez entrer une tâche.",
-                "motif": "Minuscules, majuscules, caractères accentués, espaces, guillemets simples, traits d'union et #. Maximum 55 caractères."
-            }
-        },
-        "echeance": {
-            "erreurs": {
-                "vide": "Veuillez enter une date d'échéance complète.",
-                "motif": "Entrez une date d'échéance valide!"
-            }
-        },
-        "cours": {
-            "erreurs": {
-                "vide": "Veuillez associer un cours à cette tâche!"
-            }
-        }
-    },
+
+    objJSONMessages : null,
 
     /******************************************************************************************
      * Constructeur
@@ -34,7 +17,16 @@ var validationsMandatB = {
      */
 
     initialiser : function(evenement){
-        //console.log('dans initialiser');
+        // On charge le fichier JSON via une requête AJAX
+        $.ajax({
+            context: this,
+            url: niveau + "js/objJSONMessages.json",
+            type: 'GET',
+            dataType: "json"
+        }).done(function(data){
+            this.objJSONMessages = data;
+            this.configurerValidations();
+        });
 
         // pour les champs de saisie, on peut se servir du id #
         $('#nom_item').on('blur', this.validerTache.bind(this));
