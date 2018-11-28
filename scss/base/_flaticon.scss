@@ -1,16 +1,15 @@
     /*
-    @author Samuel Loranger <samuelloranger@gmail.com>
     Flaticon icon font: Flaticon
-    Creation date: 13/11/2018 20:15
+    Creation date: 27/11/2018 20:48
     */
 
     @font-face {
   font-family: "Flaticon";
   src: url("../fonts/Flaticon/Flaticon.eot");
   src: url("../fonts/Flaticon/Flaticon.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Flaticon/Flaticon.woff") format("woff"),
-        url("../fonts/Flaticon/Flaticon.ttf") format("truetype"),
-        url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
+       url("../fonts/Flaticon/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -18,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("../fonts/Flaticon/Flaticon.svg#Flaticon") format("svg");
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -55,22 +54,26 @@
     .flaticon-more:before { content: "\f10f"; }
     .flaticon-minus:before { content: "\f110"; }
     .flaticon-menu:before { content: "\f111"; }
+    .flaticon-magnifying-glass:before { content: "\f112"; }
+    .flaticon-edit:before { content: "\f113"; }
     
-    $font-Flaticon-user: "\f100";
-    $font-Flaticon-calendar: "\f101";
-    $font-Flaticon-error: "\f102";
-    $font-Flaticon-success: "\f103";
-    $font-Flaticon-users: "\f104";
-    $font-Flaticon-add: "\f105";
-    $font-Flaticon-home: "\f106";
-    $font-Flaticon-share: "\f107";
-    $font-Flaticon-placeholder: "\f108";
-    $font-Flaticon-cross: "\f109";
-    $font-Flaticon-login: "\f10a";
-    $font-Flaticon-list: "\f10b";
-    $font-Flaticon-gear: "\f10c";
-    $font-Flaticon-folder: "\f10d";
-    $font-Flaticon-trash: "\f10e";
-    $font-Flaticon-more: "\f10f";
-    $font-Flaticon-minus: "\f110";
-    $font-Flaticon-menu: "\f111";
+      $font-Flaticon-user: "\f100";
+      $font-Flaticon-calendar: "\f101";
+      $font-Flaticon-error: "\f102";
+      $font-Flaticon-success: "\f103";
+      $font-Flaticon-users: "\f104";
+      $font-Flaticon-add: "\f105";
+      $font-Flaticon-home: "\f106";
+      $font-Flaticon-share: "\f107";
+      $font-Flaticon-placeholder: "\f108";
+      $font-Flaticon-cross: "\f109";
+      $font-Flaticon-login: "\f10a";
+      $font-Flaticon-list: "\f10b";
+      $font-Flaticon-gear: "\f10c";
+      $font-Flaticon-folder: "\f10d";
+      $font-Flaticon-trash: "\f10e";
+      $font-Flaticon-more: "\f10f";
+      $font-Flaticon-minus: "\f110";
+      $font-Flaticon-menu: "\f111";
+      $font-Flaticon-magnifying-glass: "\f112";
+      $font-Flaticon-edit: "\f113";

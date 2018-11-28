@@ -147,8 +147,10 @@
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
         <div class="consulterListe contenu">
-            <h1 class="consulterListe__titre"><?php echo $arrInfosListe["nom_liste"];?></h1>
-
+            <div class="consulterListe__titreBtn">
+                <h1><?php echo $arrInfosListe["nom_liste"];?></h1>
+                <a class="btnOperation fi flaticon-add" href="ajouter-item.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>"> Ajouter un item</a>
+            </div>
 
             <?php if($strCodeOperation == "updateItem"){ ?>
                 <p>Mise à jour réussie avec succès!</p>
@@ -173,9 +175,9 @@
                         <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
                         <input type="hidden" name="id_item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
                         <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
-                        <button name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
-                        <button name="btnOperation" value="supprimer">Supprimer</button>
-                        <a href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
+                        <button class="btnOperation fi flaticon-success" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
+                        <button class="btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
+                        <a  class="btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
                     </form>
                 </div>
                 <?php } ?>

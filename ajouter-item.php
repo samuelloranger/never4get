@@ -188,7 +188,7 @@ else{
         </fieldset>
         <div class="conteneurBoutons">
             <button class="btnModifier" name="ajouterEcheance" value="ajouterEcheance">Ajouter l'item</button>
-            <a class="btnAnnuler" name="ajouterEcheance" >Annuler</a>
+            <a class="btnAnnuler" href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" name="ajouterEcheance" >Annuler</a>
         </div>
     </form>
     </div>

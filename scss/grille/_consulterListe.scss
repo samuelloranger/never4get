@@ -12,6 +12,7 @@
 .consulterListe{
   margin-left: 5%;
   margin-right: 5%;
+  margin-bottom: 0;
   @media(min-width: $bureau){
     //margin-left: 5%;
     margin-right: 0%;
@@ -19,10 +20,22 @@
     margin-left: span(1 of 12);
   }
 
-  &__titre{
-    text-align: center;
-    @media(min-width: $bureau){
-      text-align: unset;
+  &__titreBtn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+
+    h1{
+      text-align: center;
+      margin-bottom: 0;
+      margin-top: 0;
+      @media(min-width: $bureau){
+        text-align: unset;
+      }
+    }
+
+    a{
+      width: 28%;
     }
   }
 }
@@ -44,13 +57,23 @@
       padding-left: 0;
       list-style-type: none;
     }
+    &__item{
+      form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-    &Titre{
-      color: $jauneAccent;
+      &Titre{
+        max-height: 62px;
+      }
+
+      &DateEcheance{
+        height: 50px;
+      }
     }
   }
-
-
 
   &__item{
     border: 1px solid black;

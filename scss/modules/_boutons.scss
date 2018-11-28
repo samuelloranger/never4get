@@ -45,6 +45,30 @@
     }
 }
 
+.btnOperation{
+  background-color: $jauneAccent;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  display: block;
+  width: 85%;
+  margin-bottom: 5px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border: white 2px solid;
+  transition-duration: 0.4s;
+  //à retirer
+  @include fontSize(16px);
+
+  &:hover{
+    border: $bleu 2px solid;
+  }
+
+  &:active{
+    background-color: $bleu;
+  }
+}
 
 //Définit les règles des span qui font les trois lignes du menu hamburger
 .btnMenu span{

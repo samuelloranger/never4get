@@ -127,15 +127,13 @@ $pdosResultatEcheances->closeCursor();
                 </ul>
                 <form action="index.php">
                     <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                    <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
+                    <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Consulter</a>
                     <button>Supprimer</button>
                 </form>
-                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
             <?php } ?>
         </div>
     </main>
-
-
-
 
     <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -144,6 +142,8 @@ $pdosResultatEcheances->closeCursor();
 
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
 
+    <script src="js/menu.js"></script>
+
     <script>
     $('body').addClass('js');
     $(document).ready(function()
@@ -151,8 +151,6 @@ $pdosResultatEcheances->closeCursor();
         /**
          *Initialiser les modules JavaScript ici: menu, accordéon...
          */
-        $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
-
         $(document).ready(menu.initialiser.bind(menu));
     });
     </script>

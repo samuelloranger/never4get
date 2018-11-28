@@ -1,9 +1,10 @@
 /**
  * @file Objet de validations avec jQuery
- * @author Samuel Loranger <samuelloranger@gmail.com>
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
  */
 
-var validationsMandatB = {
+var validationsMandatA = {
+
     objJSONMessages : {
         "nomItem": {
             "erreurs": {
@@ -37,52 +38,17 @@ var validationsMandatB = {
         //console.log('dans initialiser');
 
         // pour les champs de saisie, on peut se servir du id #
-        $('#nom_item').on('blur', this.validerTache.bind(this));
+        $('#nomListe').on('blur', this.validerTache.bind(this));
 
-        // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
-        $('#minute').on('blur', this.validerAnnee.bind(this));
+        // sur les boutons radio on se sert du name qui est commun
+        $('#couleur').on('blur', this.validerCours.bind(this));
 
-        //Masque le fieldset à l'ouverture du fichier
-
-        if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == 0 && $("#minute").val() == -1) {
-            $(".formulaire__dateEcheanceTitre").append('' +
-                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label class="cacherDateEcheance__btn"></label> ' +
-                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
-                '</div>');
-            $(".formulaire__conteneurDate").toggleClass("formulaire__conteneurDate--cacher");
-            $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");
-        }
-        else{
-            $(".formulaire__dateEcheanceTitre").append('' +
-                '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
-                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
-                '</div>');
-            this.cacherAfficherDateEcheance();
-        }
-
-        //teste le bouton pour cacher la date d'échéance
-        $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
     },
 
     /******************************************************************************************
      * Méthodes spécifiques
      * On ajoute une méthode validerQuelqueChose pour chaque élément de formulaire à valider
      */
-
-    cacherAfficherDateEcheance : function(){
-        $("#jour").val(0);
-        $("#mois").val(0);
-        $("#annee").val(0);
-        $("#heure").val(0);
-        $("#minute").val(-1);
-
-        $(".formulaire__conteneurDate").toggleClass("formulaire__conteneurDate--cacher");
-        $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");
-        $(".cacherDateEcheance").toggleClass("cacherDateEcheance--active");
-        $(".cacherDateEcheance__btn").toggleClass("cacherDateEcheance__btn--active");
-    },
 
     /**
      * Exemple de méthode pour valider les input dont le type supporte l'attribut pattern
@@ -103,6 +69,23 @@ var validationsMandatB = {
             else {
                 this.afficherErreur($objCible, this.objJSONMessages.nomItem.erreurs.motif);
             }
+        }
+
+    },
+
+    /**
+     * Exemple de méthode pour valider des boutons radio
+     * @param evenement {Objet Event 'blur'}
+     */
+    validerCours : function(evenement){
+        var $objCible = $(evenement.currentTarget);
+        this.effacerRetro($objCible);
+
+        if ($objCible.prop('checked') == false){
+            this.afficherErreur($objCible, this.objJSONMessages.cours.erreurs.vide);
+        }
+        else{
+            this.ajouterEncouragement($objCible);
         }
 
     },
@@ -170,8 +153,8 @@ var validationsMandatB = {
     afficherErreur : function($objJQueryDOM, message){
 
         // On remonte au conteneur parent puis et on cherche à l'intérieur le conteneur pour l'erreur
-        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('⚠ ' + message);
-        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
+        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('⚠ ' + message);
+        $parent = $objJQueryDOM.closest('.conteneurChamp');
         $legende = $parent.find('legend');
 
         if ($legende.length) {
@@ -192,7 +175,7 @@ var validationsMandatB = {
      */
     ajouterEncouragement : function ($objJQueryDOM){
 
-        $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('label');
+        $legende = $objJQueryDOM.closest('.conteneurChamp').find('legend');
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
@@ -200,7 +183,7 @@ var validationsMandatB = {
         }
         else {
             // Sinon on travaille directement sur l'élément de formulaire
-            $objJQueryDOM.append('<span class="ok"> ✓ </span>');
+            $objJQueryDOM.after('<span class="ok"> ✓ </span>');
         }
 
     },
@@ -210,7 +193,7 @@ var validationsMandatB = {
      * @param $objJQueryDOM
      */
     effacerRetro : function ($objJQueryDOM){
-        $parent = $objJQueryDOM.closest('.formulaire__conteneurChamp');
+        $parent = $objJQueryDOM.closest('.conteneurChamp');
         $legende = $parent.find('legend');
 
         if($legende.length){
@@ -219,8 +202,8 @@ var validationsMandatB = {
             $objJQueryDOM.removeClass('erreurElement');
         }
 
-        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.erreur').text('');
-        $objJQueryDOM.closest('.formulaire__conteneurChamp').find('.ok').remove();
+        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('');
+        $objJQueryDOM.closest('.conteneurChamp').find('.ok').remove();
     },
 
 };
