@@ -43,3 +43,7 @@ h3, .h3 {
     @include fontSize(20px);     
   }
 }
+
+button{
+  @include fontSize(16px);
+}

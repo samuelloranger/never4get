@@ -5,25 +5,7 @@
 
 var validationsMandatA = {
 
-    objJSONMessages : {
-        "nomItem": {
-            "erreurs": {
-                "vide": "Veuillez entrer une tâche.",
-                "motif": "Minuscules, majuscules, caractères accentués, espaces, guillemets simples, traits d'union et #. Maximum 55 caractères."
-            }
-        },
-        "echeance": {
-            "erreurs": {
-                "vide": "Veuillez enter une date d'échéance complète.",
-                "motif": "Entrez une date d'échéance valide!"
-            }
-        },
-        "cours": {
-            "erreurs": {
-                "vide": "Veuillez associer un cours à cette tâche!"
-            }
-        }
-    },
+    objJSONMessages : null,
 
     /******************************************************************************************
      * Constructeur
@@ -35,14 +17,24 @@ var validationsMandatA = {
      */
 
     initialiser : function(evenement){
-        //console.log('dans initialiser');
+        // On charge le fichier JSON via une requête AJAX
+        $.ajax({
+            context: this,
+            url: niveau + "js/objJSONMessages.json",
+            type: 'GET',
+            dataType: "json"
+        }).done(function(data){
+            this.objJSONMessages = data;
+            this.configurerValidations();
+        });
+    },
 
+    configurerValidations : function(){
         // pour les champs de saisie, on peut se servir du id #
         $('#nomListe').on('blur', this.validerTache.bind(this));
 
         // sur les boutons radio on se sert du name qui est commun
         $('#couleur').on('blur', this.validerCours.bind(this));
-
     },
 
     /******************************************************************************************
@@ -67,7 +59,7 @@ var validationsMandatA = {
                 this.ajouterEncouragement($objCible);
             }
             else {
-                this.afficherErreur($objCible, this.objJSONMessages.nomItem.erreurs.motif);
+                this.afficherErreur($objCible, this.objJSONMessages.nom_item.erreurs.motif);
             }
         }
 
@@ -86,31 +78,6 @@ var validationsMandatA = {
         }
         else{
             this.ajouterEncouragement($objCible);
-        }
-
-    },
-
-    /**
-     * Exemple de méthode pour valider une date à partir de trois select:
-     * #jour - #mois - #annee
-     * @param evenement {Objet Event 'blur'}
-     */
-    validerAnnee : function(evenement){
-        var $objCible = $(evenement.currentTarget);
-        this.effacerRetro($objCible);
-
-        // L'échéance est facultative mais si l'utilisateur entre une date incomplète, il faut afficher une erreur. Donc on vérifie si l'un des select n'est pas null.
-        if ($objCible.val() !== 'null' || $('#mois').val() !== 'null' || $('#jour').val() !== 'null'){
-
-            // si oui on vérifie que TOUS les select de date sont complétés
-            if ($objCible.val() !== 'null' && $('#mois').val() !== 'null' && $('#jour').val() !== 'null'){
-                // Ici, on pourrait ajouter d'autres validations comme de vérifier s'il s'agit d'une date valide : pas un 30 février par exemple!
-                this.ajouterEncouragement($objCible);
-            }
-            else{
-                this.afficherErreur($objCible, this.objJSONMessages.echeance.erreurs.vide);
-            }
-
         }
 
     },

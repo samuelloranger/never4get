@@ -14,6 +14,9 @@
     $strCodeOperation="";
     //Initialisation de la variable contenant le code d'erreur
     $strCodeErreur=0000;
+    //Initialisation de la variable contenant le code d'erreur
+    $strMessage="";
+
 
     //Vérifications de la présence de l'id dans la querystring
     if(isset($_GET['id_liste'])){
@@ -94,22 +97,16 @@
 
         //Requête SQL utilisée pour les modifications de la BD
         $strRequeteUpdate=
-        'UPDATE t_participant SET '.
+        'UPDATE t_liste SET '.
         "nom_liste='".$arrListe['nom_liste']."',".
-        "nom_couleur_fr='".$arrListe['id']."',".
-        "sexe_participant='".$arrParticipant['sexe_participant']."',".
-        "telephone_participant='".$arrParticipant['telephone_participant']."',".
-        "codepostal_participant='".$arrParticipant['codepostal_participant']."',".
-        "naissance_participant='".$arrParticipant['naissance_participant']."',".
-        "id_categorie=".$arrParticipant['id_categorie'].",".
-        "id_sport=".$arrParticipant['id_sport'].
-        " WHERE id_participant=?";
+        "id_couleur='".$arrListe['id_couleur']."'".
+        " WHERE id_liste=?";
 
         //Préparation de la requête
         $pdosResultatUpdate=$pdoConnexion->prepare($strRequeteUpdate);
 
         //Liaison de la valeur de l'id
-        $pdosResultatUpdate->bindValue(1, $strIdParticipant); 
+        $pdosResultatUpdate->bindValue(1, $strIdListe); 
         
         //Éxécution de la requête
         $pdosResultatUpdate->execute();
@@ -118,8 +115,8 @@
         $strCodeErreur=$pdosResultatUpdate->errorCode();
         // var_dump($pdosResultatUpdate->errorInfo());
 
-        //Message pour confirmer les modifications 
-        $strMessage=$jsonMessagesErreurs->{"modifier"};
+        //Redirection vers l'index
+        header("Location:".$strNiveau."index.php?strCodeOperation=".$strCodeOperation);
 
     }
     //****************************************************************
@@ -138,11 +135,6 @@
         //     $arrMessagesErreur[$champ]=$jsonMessagesErreurs->{$champ};
         // }
     }
-    else{
-        if($strCodeOperation=="modifier"){
-            header("Location:".$strNiveau."index.php?strCodeOperation=".$strCodeOperation);
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -152,6 +144,7 @@
     <title>Projet TOFU</title>
     <!--URL de base pour la navigation -->
     <link rel="stylesheet" href="css/styles.css">
+    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
     <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
@@ -170,11 +163,13 @@
         <form action="editer-liste.php" method="GET">
             <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
-            <label for="nomListe">Nom de la liste</label>
-            <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" name="nomListe">
-            <p class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></p>
+            <div class="conteneurChamp">
+                <label for="nomListe">Nom de la liste</label>
+                <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}"name="nomListe">
+                <p class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></p>
+            </div>
 
-            <fieldset>
+            <fieldset class="conteneurChamp">
                 <legend>Changement de couleurs <span class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></span></legend>
                 <ul>
                     <?php
@@ -207,6 +202,8 @@
     <script src="js/menu.js"></script>
 
     <script>
+    var niveau = "<?php echo $strNiveau; ?>"    
+
     $('body').addClass('js');
     $(document).ready(function()
     {

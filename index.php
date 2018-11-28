@@ -89,17 +89,19 @@ $pdosResultatEcheances->closeCursor();
     <!--URL de base pour la navigation -->
     <base href="<?php echo $strNiveau ?>">
     <link rel="stylesheet" href="css/styles.css">
+    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
     <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
-    <a href="#contenu">Allez au contenu</a>
-
     <main>
+        <a href="#contenu" class="visuallyHidden">Allez au contenu</a>
         <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
-        <div class="urgentBandeau conteneur">
+        <div class="echeancesBandeau conteneur">
+            <div class="echeancesBandeau__notif">
+                <p>Je désire rec</p>
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
                     <p>
@@ -145,6 +147,7 @@ $pdosResultatEcheances->closeCursor();
     <script src="js/menu.js"></script>
 
     <script>
+    var niveau = "<?php echo $strNiveau; ?>"    
     $('body').addClass('js');
     $(document).ready(function()
     {
