@@ -205,7 +205,7 @@ else{
 <script src="js/validationsMandatB.js"></script>
 <script src="js/menu.js"></script>
 <script>
-    var niveau = <?php echo $strNiveau; ?>;
+    var niveau = "<?php echo $strNiveau; ?>";
 
     $('body').addClass('js');
     /**

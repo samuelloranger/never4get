@@ -24,7 +24,7 @@
     "label": "Échéance",
     "erreurs": {
       "vide": "Veuillez entrer une date d'échéance complète",
-      "motif": "Cette date d'échéance n'est pas possible! Autant dire la semaine des 4 jeudis ou quand les poules auront des dents?!"
+      "motif": "Cette date d'échéance n'est pas possible!"
     }
   },
   "couleurs": {

@@ -3,33 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="fe0caaf9-e3c1-4a4c-9bc0-bcf7e7535e13" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.sass-cache/257180ab5e546a636f72bd1c7a3102a52c1c81a2/_boutons.scssc" afterPath="$PROJECT_DIR$/.sass-cache/257180ab5e546a636f72bd1c7a3102a52c1c81a2/_boutons.scssc" />
       <change beforePath="$PROJECT_DIR$/.sass-cache/9dbfbdbd8dbf688c58d1fdaa9e0a9821a9c98518/_flaticon.scssc" afterPath="$PROJECT_DIR$/.sass-cache/9dbfbdbd8dbf688c58d1fdaa9e0a9821a9c98518/_flaticon.scssc" />
-      <change beforePath="$PROJECT_DIR$/.sass-cache/9dbfbdbd8dbf688c58d1fdaa9e0a9821a9c98518/_general.scssc" afterPath="$PROJECT_DIR$/.sass-cache/9dbfbdbd8dbf688c58d1fdaa9e0a9821a9c98518/_general.scssc" />
       <change beforePath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_consulterListe.scssc" afterPath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_consulterListe.scssc" />
-      <change beforePath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_editerItem.scssc" afterPath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_editerItem.scssc" />
       <change beforePath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_entete.scssc" afterPath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_entete.scssc" />
-      <change beforePath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_pied.scssc" afterPath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_pied.scssc" />
-      <change beforePath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_sidenav.scssc" afterPath="$PROJECT_DIR$/.sass-cache/af2d014042200f57fa1f170d0224939231113670/_sidenav.scssc" />
       <change beforePath="$PROJECT_DIR$/.sass-cache/c7afc408f20a1e23766f230594191a7478c66d98/styles.scssc" afterPath="$PROJECT_DIR$/.sass-cache/c7afc408f20a1e23766f230594191a7478c66d98/styles.scssc" />
       <change beforePath="$PROJECT_DIR$/ajouter-item.php" afterPath="$PROJECT_DIR$/ajouter-item.php" />
       <change beforePath="$PROJECT_DIR$/consulter-liste.php" afterPath="$PROJECT_DIR$/consulter-liste.php" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" afterPath="$PROJECT_DIR$/css/styles.css" />
       <change beforePath="$PROJECT_DIR$/css/styles.css.map" afterPath="$PROJECT_DIR$/css/styles.css.map" />
       <change beforePath="$PROJECT_DIR$/editer-item.php" afterPath="$PROJECT_DIR$/editer-item.php" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.eot" afterPath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.eot" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.svg" afterPath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.svg" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.ttf" afterPath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.ttf" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.woff" afterPath="$PROJECT_DIR$/fonts/Flaticon/Flaticon.woff" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/flaticon.css" afterPath="$PROJECT_DIR$/fonts/Flaticon/flaticon.css" />
-      <change beforePath="$PROJECT_DIR$/fonts/Flaticon/flaticon.html" afterPath="$PROJECT_DIR$/fonts/Flaticon/flaticon.html" />
       <change beforePath="$PROJECT_DIR$/inc/fragments/header.inc.php" afterPath="$PROJECT_DIR$/inc/fragments/header.inc.php" />
-      <change beforePath="$PROJECT_DIR$/js/menu.js" afterPath="$PROJECT_DIR$/js/menu.js" />
+      <change beforePath="$PROJECT_DIR$/inc/fragments/sideNav.inc.php" afterPath="$PROJECT_DIR$/inc/fragments/sideNav.inc.php" />
+      <change beforePath="$PROJECT_DIR$/js/objJSONMessages.json" afterPath="$PROJECT_DIR$/js/objJSONMessages.json" />
       <change beforePath="$PROJECT_DIR$/js/validationsMandatB.js" afterPath="$PROJECT_DIR$/js/validationsMandatB.js" />
-      <change beforePath="$PROJECT_DIR$/scss/grille/_consulterListe.scss" afterPath="$PROJECT_DIR$/scss/grille/_consulterListe.scss" />
-      <change beforePath="$PROJECT_DIR$/scss/grille/_entete.scss" afterPath="$PROJECT_DIR$/scss/grille/_entete.scss" />
-      <change beforePath="$PROJECT_DIR$/scss/grille/_general.scss" afterPath="$PROJECT_DIR$/scss/grille/_general.scss" />
-      <change beforePath="$PROJECT_DIR$/scss/modules/_boutons.scss" afterPath="$PROJECT_DIR$/scss/modules/_boutons.scss" />
+      <change beforePath="$PROJECT_DIR$/scss/modules/_editerItem.scss" afterPath="$PROJECT_DIR$/scss/modules/_editerItem.scss" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,14 +25,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="18_pni_tofu@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/menu.js">
+      <file leaf-file-name="consulter-liste.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consulter-liste.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="297">
+              <caret line="174" column="32" lean-forward="true" selection-start-line="174" selection-start-column="32" selection-end-line="174" selection-end-column="32" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1543444811973" expanded="true" signature="1413:1464" ph="DELETE FROM t_item... " />
+                <marker date="1543444811973" expanded="true" signature="2190:2261" ph="UPDATE t_item... " />
+                <marker date="1543444811973" expanded="true" signature="2327:2398" ph="UPDATE t_item... " />
+                <marker date="1543444811973" expanded="true" signature="2920:3156" ph="SELECT id_li... t_liste" />
+                <marker date="1543444811973" expanded="true" signature="3687:4082" ph="SELECT id_it... " />
+                <marker date="1543444811973" expanded="true" signature="8011:8866" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editer-item.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/editer-item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="280" column="14" lean-forward="true" selection-start-line="280" selection-start-column="14" selection-end-line="280" selection-end-column="14" />
+              <folding>
+                <marker date="1543444969949" expanded="true" signature="1994:2399" ph="SELECT id_it... " />
+                <marker date="1543444969949" expanded="true" signature="6842:6927" ph="UPDATE t_item... " />
+                <marker date="1543444969949" expanded="true" signature="8452:8471" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,21 +79,36 @@
       <file leaf-file-name="header.inc.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/fragments/header.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="42" column="78" lean-forward="false" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
+            <state relative-caret-position="189">
+              <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding>
-                <marker date="1543426705869" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
+                <marker date="1543443655110" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_entete.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scss/grille/_entete.scss">
+      <file leaf-file-name="sideNav.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/fragments/sideNav.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="163" column="26" lean-forward="false" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="335">
+              <caret line="29" column="103" lean-forward="false" selection-start-line="29" selection-start-column="103" selection-end-line="29" selection-end-column="103" />
+              <folding>
+                <marker date="1543443753786" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajouter-item.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajouter-item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4183">
+              <caret line="199" column="42" lean-forward="false" selection-start-line="199" selection-start-column="42" selection-end-line="199" selection-end-column="42" />
+              <folding>
+                <marker date="1543429140593" expanded="true" signature="1189:1335" ph="SELECT id_li... t_liste" />
+                <marker date="1543429140593" expanded="true" signature="3220:3382" ph="INSERT INTO t_item... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,10 +125,25 @@
       <find>Veuillez Entrer</find>
       <find>#</find>
       <find>opacity</find>
+      <find>Operation</find>
+      <find>id_</find>
+      <find>$strCodeErreur</find>
+      <find>jsonMessageErreur</find>
+      <find>$strCodeOperation</find>
+      <find>$arrMessageErreurss</find>
+      <find>$arrChampErreurs</find>
+      <find>produit</find>
+      <find>$arrMessageErreurs</find>
+      <find>erreur</find>
+      <find>var_dump</find>
+      <find>Pas de</find>
     </findStrings>
     <replaceStrings>
-      <replace />
       <replace>$bureau</replace>
+      <replace />
+      <replace>$arrMessageErreurs</replace>
+      <replace>$arrChampsErreurs</replace>
+      <replace>$arrMessagesErreurs</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -99,27 +155,28 @@
         <option value="$PROJECT_DIR$/inc/scripts/headlinks.php" />
         <option value="$PROJECT_DIR$/js/validationsMandatX.js" />
         <option value="$PROJECT_DIR$/demo-validation.php" />
-        <option value="$PROJECT_DIR$/js/objJSONMessages.json" />
         <option value="$PROJECT_DIR$/inc/scripts/config.inc.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/scss/grille/_sidenav.scss" />
-        <option value="$PROJECT_DIR$/inc/fragments/sideNav.inc.php" />
         <option value="$PROJECT_DIR$/inc/fragments/footer.inc.php" />
         <option value="$PROJECT_DIR$/scss/grille/_pied.scss" />
         <option value="$PROJECT_DIR$/scss/grille/_editerItem.scss" />
-        <option value="$PROJECT_DIR$/scss/base/_flaticon.scss" />
-        <option value="$PROJECT_DIR$/scss/styles.scss" />
         <option value="$PROJECT_DIR$/ajouter-liste.php" />
         <option value="$PROJECT_DIR$/scss/modules/_boutons.scss" />
         <option value="$PROJECT_DIR$/scss/grille/_general.scss" />
-        <option value="$PROJECT_DIR$/js/validationsMandatB.js" />
-        <option value="$PROJECT_DIR$/scss/grille/_consulterListe.scss" />
         <option value="$PROJECT_DIR$/js/menu.js" />
-        <option value="$PROJECT_DIR$/inc/fragments/header.inc.php" />
-        <option value="$PROJECT_DIR$/scss/grille/_entete.scss" />
-        <option value="$PROJECT_DIR$/consulter-liste.php" />
         <option value="$PROJECT_DIR$/ajouter-item.php" />
+        <option value="$PROJECT_DIR$/scss/base/_flaticon.scss" />
+        <option value="$PROJECT_DIR$/scss/grille/_consulterListe.scss" />
+        <option value="$PROJECT_DIR$/scss/grille/_entete.scss" />
+        <option value="$PROJECT_DIR$/scss/styles.scss" />
+        <option value="$PROJECT_DIR$/scss/modules/_editerItem.scss" />
+        <option value="$PROJECT_DIR$/js/objJSONMessages.json" />
+        <option value="$PROJECT_DIR$/js/validationsMandatB.js" />
+        <option value="$PROJECT_DIR$/inc/fragments/header.inc.php" />
+        <option value="$PROJECT_DIR$/inc/fragments/sideNav.inc.php" />
+        <option value="$PROJECT_DIR$/consulter-liste.php" />
         <option value="$PROJECT_DIR$/editer-item.php" />
       </list>
     </option>
@@ -176,6 +233,11 @@
             <path>
               <item name="03_site" type="b2602c69:ProjectViewProjectNode" />
               <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="03_site" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -195,23 +257,6 @@
               <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="03_site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="scss" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="03_site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="scss" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="base" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="03_site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="03_site" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="scss" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="grille" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -223,9 +268,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scss/modules" />
       <recent name="$PROJECT_DIR$/fonts/Flaticon" />
       <recent name="$PROJECT_DIR$/scss/base" />
       <recent name="$PROJECT_DIR$/scss/grille" />
@@ -260,12 +307,12 @@
       <workItem from="1542246505852" duration="451000" />
       <workItem from="1542287566002" duration="138000" />
       <workItem from="1543354269484" duration="2789000" />
-      <workItem from="1543418413099" duration="6384000" />
+      <workItem from="1543418413099" duration="18367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25561000" />
+    <option name="totallyTimeSpent" value="37544000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,10 +332,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45647058" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28778717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19347037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20958512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -308,17 +355,18 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/consulter-liste.php</url>
+          <line>165</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scss/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -474,20 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/objJSONMessages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/scripts/config.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -513,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editer-liste.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1136">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1989">
@@ -536,13 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/fragments/footer.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scss/grille/_pied.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -550,41 +570,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/fragments/sideNav.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scss/grille/_sidenav.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/base/_flaticon.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajouter-liste.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -620,91 +609,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scss/grille/_editerItem.scss">
+    <entry file="file://$PROJECT_DIR$/ajouter-liste.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="67" column="43" lean-forward="true" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scss/grille/_consulterListe.scss">
+    <entry file="file://$PROJECT_DIR$/inc/fragments/footer.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajouter-item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="207" column="43" lean-forward="false" selection-start-line="207" selection-start-column="43" selection-end-line="207" selection-end-column="43" />
-          <folding>
-            <marker date="1543427272631" expanded="true" signature="1189:1335" ph="SELECT id_li... t_liste" />
-            <marker date="1543427272631" expanded="true" signature="3220:3382" ph="INSERT INTO t_item... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/editer-item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="224" column="12" lean-forward="true" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="12" />
-          <folding>
-            <marker date="1543427279107" expanded="true" signature="1749:2144" ph="SELECT id_it... " />
-            <marker date="1543427279107" expanded="true" signature="4262:4347" ph="UPDATE t_item... " />
-            <marker date="1543427279107" expanded="true" signature="4882:4921" ph="SELECT id_li... t_liste" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consulter-liste.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="196" column="12" lean-forward="true" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
-          <folding>
-            <marker date="1543427247780" expanded="true" signature="1413:1464" ph="DELETE FROM t_item... " />
-            <marker date="1543427247780" expanded="true" signature="2190:2261" ph="UPDATE t_item... " />
-            <marker date="1543427247780" expanded="true" signature="2327:2398" ph="UPDATE t_item... " />
-            <marker date="1543427247780" expanded="true" signature="2920:3156" ph="SELECT id_li... t_liste" />
-            <marker date="1543427247780" expanded="true" signature="3687:4082" ph="SELECT id_it... " />
-            <marker date="1543427247780" expanded="true" signature="6450:6485" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/fragments/header.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="42" column="78" lean-forward="false" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
-          <folding>
-            <marker date="1543426705869" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/grille/_entete.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="163" column="26" lean-forward="false" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/validationsMandatB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/grille/_entete.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/modules/_consulterListe.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/base/_flaticon.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="39" column="48" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editer-liste.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="144" column="5" lean-forward="true" selection-start-line="129" selection-start-column="3" selection-end-line="144" selection-end-column="5" />
+          <folding>
+            <marker date="1543418849747" expanded="true" signature="1578:1766" ph="SELECT id_li... t_liste" />
+            <marker date="1543418849747" expanded="true" signature="2465:2531" ph="SELECT id_co... t_couleur" />
+            <marker date="1543418849747" expanded="true" signature="3402:3988" ph="UPDATE t_participant... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/styles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="37" column="23" lean-forward="true" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/modules/_editerItem.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="156" column="1" lean-forward="true" selection-start-line="156" selection-start-column="1" selection-end-line="156" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/objJSONMessages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/14d352d8-80bb-4fd1-b48a-d1bfeabe94b8/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/scripts/config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/validationsMandatB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="56" column="69" lean-forward="true" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/fragments/header.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding>
+            <marker date="1543443655110" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/fragments/sideNav.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="29" column="103" lean-forward="false" selection-start-line="29" selection-start-column="103" selection-end-line="29" selection-end-column="103" />
+          <folding>
+            <marker date="1543443753786" expanded="true" signature="99:138" ph="SELECT id_li... t_liste" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajouter-item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4183">
+          <caret line="199" column="42" lean-forward="false" selection-start-line="199" selection-start-column="42" selection-end-line="199" selection-end-column="42" />
+          <folding>
+            <marker date="1543429140593" expanded="true" signature="1189:1335" ph="SELECT id_li... t_liste" />
+            <marker date="1543429140593" expanded="true" signature="3220:3382" ph="INSERT INTO t_item... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consulter-liste.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="174" column="32" lean-forward="true" selection-start-line="174" selection-start-column="32" selection-end-line="174" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1543444811973" expanded="true" signature="1413:1464" ph="DELETE FROM t_item... " />
+            <marker date="1543444811973" expanded="true" signature="2190:2261" ph="UPDATE t_item... " />
+            <marker date="1543444811973" expanded="true" signature="2327:2398" ph="UPDATE t_item... " />
+            <marker date="1543444811973" expanded="true" signature="2920:3156" ph="SELECT id_li... t_liste" />
+            <marker date="1543444811973" expanded="true" signature="3687:4082" ph="SELECT id_it... " />
+            <marker date="1543444811973" expanded="true" signature="8011:8866" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editer-item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="280" column="14" lean-forward="true" selection-start-line="280" selection-start-column="14" selection-end-line="280" selection-end-column="14" />
+          <folding>
+            <marker date="1543444969949" expanded="true" signature="1994:2399" ph="SELECT id_it... " />
+            <marker date="1543444969949" expanded="true" signature="6842:6927" ph="UPDATE t_item... " />
+            <marker date="1543444969949" expanded="true" signature="8452:8471" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

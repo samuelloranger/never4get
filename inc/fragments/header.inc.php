@@ -18,9 +18,9 @@ $pdosResultatListes -> closeCursor();
     <div class="conteneur">
         <div class="header__logo">
             <a href="index.php" tabindex="-1">
-                <picture tabindex="-1">
+                <picture>
                     <source srcset="images/logo/icon_never4get_x1200.png" media="(min-width: 601px)">
-                    <img tabindex="0" src="images/logo/icon_never4get_x40.png">
+                    <img  src="images/logo/icon_never4get_x40.png" alt="logo">
                 </picture>
             </a>
         </div>

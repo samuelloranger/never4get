@@ -28,6 +28,15 @@ var validationsMandatB = {
             this.configurerValidations();
         });
 
+    },
+
+    /******************************************************************************************
+     * Méthodes spécifiques
+     * On ajoute une méthode validerQuelqueChose pour chaque élément de formulaire à valider
+     */
+
+    configurerValidations : function(){
+
         // pour les champs de saisie, on peut se servir du id #
         $('#nom_item').on('blur', this.validerTache.bind(this));
 
@@ -37,31 +46,28 @@ var validationsMandatB = {
         //Masque le fieldset à l'ouverture du fichier
 
         if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == 0 && $("#minute").val() == -1) {
+            console.log("pas de date entrée");
             $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label class="cacherDateEcheance__btn"></label> ' +
-                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
+                '<label class="cacherDateEcheance__btn"></label> ' +
+                '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
+
             $(".formulaire__conteneurDate").toggleClass("formulaire__conteneurDate--cacher");
             $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");
         }
         else{
+            console.log("date entrée");
             $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
-                    '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
-                    '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
+                '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
+                '<input type="checkbox" class="visuallyhidden" id="curseurCacherDateEchance"> ' +
                 '</div>');
-            this.cacherAfficherDateEcheance();
         }
 
         //teste le bouton pour cacher la date d'échéance
         $('#btnCacherDateEchance').on('click', this.cacherAfficherDateEcheance.bind(this));
     },
-
-    /******************************************************************************************
-     * Méthodes spécifiques
-     * On ajoute une méthode validerQuelqueChose pour chaque élément de formulaire à valider
-     */
 
     cacherAfficherDateEcheance : function(){
         $("#jour").val(0);

@@ -113,6 +113,7 @@
 
     //Définition de la requête
     $arrItemsListe = array();
+
     //Boucle qui insère les données de la BD
     for($intCtr = 0; $ligne = $pdosResultatItems -> fetch(); $intCtr++){
         $arrItemsListe[$intCtr]["id_item"] = $ligne["id_item"];
@@ -163,18 +164,26 @@
                     <ul>
                         <li class="conteneurListes__itemTitre"><h3><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></h3></li>
                         <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
-                            <li class="conteneurListes__itemDateEcheance"><?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
-                                    <?php if($arrItemsListe[$intCtr]["heure"] != "0"){ ?>
+                            <li class="conteneurListes__itemDateEcheance">
+                                    <?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
+                                    <?php if($arrItemsListe[$intCtr]["heure"] != "0" OR $arrItemsListe[$intCtr]["minute"] != "0"){ ?>
                                         à <?php if($arrItemsListe[$intCtr]["heure"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["heure"]; } else { echo $arrItemsListe[$intCtr]["heure"]; } ?>:<?php if($arrItemsListe[$intCtr]["minute"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["minute"]; } else{ echo $arrItemsListe[$intCtr]["minute"]; }  ?>
                                     <?php } ?>
                             </li>
+                        <?php }
+                        else{ ?>
+                            <li>
+                                <span>Pas de date d'échéance pour cette tâche</span>
+                            </li>
                         <?php } ?>
+
                         <li class="conteneurListes__itemEtat"><?php if($arrItemsListe[$intCtr]["est_complete"] == "1"){ echo "Est complété"; } else { echo "À compléter"; }?></li>
                     </ul>
                     <form action="consulter-liste.php" method="GET">
                         <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
                         <input type="hidden" name="id_item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
                         <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
+
                         <button class="btnOperation fi flaticon-success" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
                         <button class="btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
                         <a  class="btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
@@ -182,6 +191,7 @@
                 </div>
                 <?php } ?>
             </div>
+        </div>
     </main>
 
     <!--  FOOTER  -->
@@ -195,7 +205,7 @@
     <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
     <script src="js/menu.js"></script>
     <script>
-        var niveau = <?php echo $strNiveau; ?>;
+        var niveau = "<?php echo $strNiveau; ?>";
 
         $('body').addClass('js');
         /**

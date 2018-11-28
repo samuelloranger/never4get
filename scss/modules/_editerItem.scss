@@ -70,6 +70,7 @@
     &--cacher{
       animation: animation-cacherDate 0.4s;
       opacity: 0;
+      display: none;
     }
   }
 
@@ -158,12 +159,12 @@
 //********** Animations **********
 @-webkit-keyframes animation-cacherDate {
   from{ opacity: 1;  height: 60px}
-  to{ opacity: 0; height: 0px;}
+  to{ opacity: 0; height: 0px; display: none;}
 }
 
 @keyframes animation-cacherDate {
   from{ opacity: 1;  height: 60px}
-  to{ opacity: 0; height: 0px;}
+  to{ opacity: 0; height: 0px; }
 }
 
 @-webkit-keyframes animation-afficherDate {
