@@ -26,7 +26,6 @@ var menu = {
 
         //Affiche ou cache la liste
         $(".header__liste").toggleClass("header__liste--ferme");
-        $(".header__listeContainer").toggleClass("header__listeContainer--ferme");
 
         //Change l'état du menu hamburger
         $(".btnMenu").toggleClass('open');

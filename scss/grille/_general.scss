@@ -13,7 +13,7 @@
           'container-spread': 'narrow',
   );
   .conteneur {
-    background: susy-svg-grid($susy) no-repeat scroll;
+    //background: susy-svg-grid($susy) no-repeat scroll;
   }
 }
 @media(min-width:$bureau){
@@ -24,7 +24,7 @@
           'container-spread': 'narrow'
   );
   .conteneur {
-    background: susy-svg-grid($susy) no-repeat scroll;
+    //background: susy-svg-grid($susy) no-repeat scroll;
   }
 }
 

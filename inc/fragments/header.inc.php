@@ -35,7 +35,7 @@ $pdosResultatListes -> closeCursor();
         </div>
 
         <ul class="header__liste header__liste--ferme">
-            <div class="header__listeContainer header__listeContainer--ferme">
+            <div class="header__listeContainer">
                 <li class="header__listeItem"><a class="fi flaticon-home" href="index.php">Accueil</a></li>
                 <li class="header__listeItem"><a class="fi flaticon-add"  href="ajouter-liste.php">Ajouter une liste</a></li>
                 <li class="header__listeItem"><a  class="fi flaticon-user" href="">Compte</a></li>

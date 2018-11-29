@@ -14,7 +14,8 @@
     //Définit l'année de départ
     $dateAjd = new DateTime();
     $anneeAjd = $dateAjd -> format('Y');
-    $dateAjd = date("Y-m-d H:i:s");
+    $dateAjd = new DateTime();
+    $dateAjd -> format("Y-m-d H:i:s");
 
     //Tableau des mois pour affichage
     $arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
@@ -105,7 +106,7 @@
                     $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
 
                     //Si la date est correcte, on vérifie si la date est antérieure
-                    if($dateSaisie > $dateAjd){
+                    if($dateSaisie < $dateAjd){
                         //Si l'heure ET les minutes sont définies
                         if($arrInfosItem["heure"] != 0 AND $arrInfosItem["minute"] != -1){
                             $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];

@@ -88,18 +88,33 @@
   }
 
   &__liste{
-
+    list-style-type: none;
+    background-color: $bleu;
+    display: block;
+    width: 100%;
+    top: 28px;
+    position: absolute;
+    left: 0;
+    transition-duration: 0.4s;
+    padding-left: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
 
     &Container{
+      background-color: $gris;
+      position: relative;
+      width: 85%;
+      margin: 0 auto;
 
-
-      &--ferme{
-
+      li{
+        display: block;
       }
     }
 
     &--ferme{
-
+      //left: 100%;
+      height: 0;
     }
 
     @media(min-width: $bureau){
@@ -140,25 +155,4 @@
       }
     }
   }
-}
-
-//********** Animations **********
-@-webkit-keyframes animation-cacherMenu {
-  from{ transform: scaleY(1); }
-  to{  transform: scaleY(0); }
-}
-
-@keyframes animation-cacherMenu {
-  from{ width: 0}
-  to{ width: 100%;}
-}
-
-@-webkit-keyframes animation-afficherMenu {
-  from{ width: 0}
-  to{ width: 100%;}
-}
-
-@keyframes animation-afficherMenu {
-  from{ width: 0}
-  to{ width: 100%;}
 }

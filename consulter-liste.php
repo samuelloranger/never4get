@@ -36,7 +36,7 @@
     //Si le code d'opération est supprimer
     if($strCodeOperation == "supprimer"){
         //On va chercher le code de l'item dans la query string
-        $idItemSupprimer = $_GET["id_item"];
+        $idItemSupprimer = $_GET["id__item"];
 
         //Définition de la requête SQL
         $strRequeteSupprimer = "DELETE FROM t_item WHERE id_item = :idItemSupprimer";
@@ -55,7 +55,7 @@
     //******************** Modification de "est_complete" dans la BD  ********************
     if($strCodeOperation == "modifierComplete"){
         //On va chercher le code de l'item dans la query string
-        $idItemModifierEtat = $_GET["id_item"];
+        $idItemModifierEtat = $_GET["id__item"];
         $etatComplete = $_GET["est_complete"];
 
         if($etatComplete == 0){
@@ -144,7 +144,7 @@
     <!--  HEADER  -->
     <?php include("inc/fragments/header.inc.php"); ?>
     <div class="couleurListe" style="background-color: #<?php echo $arrInfosListe["hexadecimale"]; ?>"></div>
-    <main class="flexConsulterListe conteneur">
+    <main class="flexConsulterListe conteneur" id="main">
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
         <div class="consulterListe contenu">
@@ -164,27 +164,28 @@
                     <ul>
                         <li class="conteneurListes__itemTitre"><h3><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></h3></li>
                         <?php if($arrItemsListe[$intCtr]["echeance"] != ""){ ?>
-                            <li class="conteneurListes__itemDateEcheance">
+                            <li class="conteneurListes__itemDateEcheance fi flaticon-calendar">
                                     <?php echo $arrItemsListe[$intCtr]["jour"]; ?> <?php echo $arrMois[$arrItemsListe[$intCtr]["mois"]-1]; ?> <?php echo $arrItemsListe[$intCtr]["annee"]; ?>
                                     <?php if($arrItemsListe[$intCtr]["heure"] != "0" OR $arrItemsListe[$intCtr]["minute"] != "0"){ ?>
                                         à <?php if($arrItemsListe[$intCtr]["heure"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["heure"]; } else { echo $arrItemsListe[$intCtr]["heure"]; } ?>:<?php if($arrItemsListe[$intCtr]["minute"] <= "9") { echo "0" . $arrItemsListe[$intCtr]["minute"]; } else{ echo $arrItemsListe[$intCtr]["minute"]; }  ?>
                                     <?php } ?>
+                                    </span>
                             </li>
                         <?php }
                         else{ ?>
-                            <li>
+                            <li class="fi flaticon-calendar">
                                 <span>Pas de date d'échéance pour cette tâche</span>
                             </li>
                         <?php } ?>
 
-                        <li class="conteneurListes__itemEtat"><?php if($arrItemsListe[$intCtr]["est_complete"] == "1"){ echo "Est complété"; } else { echo "À compléter"; }?></li>
+<!--                        <li class="conteneurListes__itemEtat">--><?php //if($arrItemsListe[$intCtr]["est_complete"] == "1"){ ?><!--<span class="fi flaticon-success">Est complété</span>--><?php //; } else { ?><!-- <span class="fi flaticon-cross">À compléter</span> --><?php //}?><!--</li>-->
                     </ul>
-                    <form action="consulter-liste.php" method="GET">
+                    <form action="consulter-liste.php#main" method="GET">
                         <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
-                        <input type="hidden" name="id_item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
+                        <input type="hidden" name="id__item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
                         <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
 
-                        <button class="btnOperation fi flaticon-success" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
+                        <button class="btnOperation <?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "fi flaticon-success" :  "fi flaticon-cross"; ?>" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
                         <button class="btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
                         <a  class="btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
                     </form>
