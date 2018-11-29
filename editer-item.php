@@ -15,7 +15,9 @@
     $dateAjd = new DateTime();
     $anneeAjd = $dateAjd -> format('Y');
     $dateAjd = new DateTime();
-    $dateAjd -> format("Y-m-d H:i:s");
+//    $dateAjd -> format("Y-m-d H:i:s");
+
+//    var_dump("test" . $dateAjd );
 
     //Tableau des mois pour affichage
     $arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
@@ -106,14 +108,14 @@
                     $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
 
                     //Si la date est correcte, on vérifie si la date est antérieure
-                    if($dateSaisie < $dateAjd){
+                    if($dateSaisie > $dateAjd -> format("Y-m-d") ){
                         //Si l'heure ET les minutes sont définies
-                        if($arrInfosItem["heure"] != 0 AND $arrInfosItem["minute"] != -1){
+                        if($arrInfosItem["heure"] != -1 AND $arrInfosItem["minute"] != -1){
                             $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
                         }
                         else {
                             //Si l'heure est définie et que les minutes ne le sont pas
-                            if ($arrInfosItem["heure"] != 0 AND $arrInfosItem["minute"] == -1) {
+                            if ($arrInfosItem["heure"] != -1 AND $arrInfosItem["minute"] == -1) {
                                 $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":0";
                             }
                             //Si l'heure n'est pas définie et que les minutes le sont
@@ -127,6 +129,7 @@
                     else{
                         $strCodeErreur = "-1";
                         array_push($arrChampsErreurs, "echeance");
+                        var_dump("date trop petite");
                     }
                 }
                 //Si la date est entrée n'est pas valide
@@ -258,8 +261,8 @@
 
                         <label class="date__heure--label">à</label>
                         <select name="heure" id="heure" class="date__heure">
-                            <option value="0">Heure</option>
-                            <?php for($intCtr = 1; $intCtr <= 24; $intCtr++){?>
+                            <option value="-1">Heure</option>
+                            <?php for($intCtr = 0; $intCtr <= 24; $intCtr++){?>
                                 <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["heure"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
                             <?php } ?>
                         </select>
@@ -276,7 +279,7 @@
 
                 <div class="conteneurBoutons">
                     <button class="btnModifier" name="btnModifier" value="modifier">Modifier l'item</button>
-                    <a class="btnAnnuler" id="btnAnnuler">Annuler</a>
+                    <a href="consulter-liste.php?id_liste=<?php echo $arrInfosItem["id_liste"]?>" class="btnAnnuler" id="btnAnnuler">Annuler</a>
                 </div>
             </form>
         </div>
