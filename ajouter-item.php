@@ -182,7 +182,7 @@ if($strCodeErreur != "00000"){
 }
 else{
     if($strCodeOperation == "ajouter"){
-        header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=modifier");
+        header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=ajouter");
 //            var_dump("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=modifier");
     }
 }
@@ -193,7 +193,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
-    <title>Démonstration - Validations avec jQuery</title>
+    <title>Ajouter Item - Never4Get</title>
     <link rel="stylesheet" href="css/styles.css">
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>

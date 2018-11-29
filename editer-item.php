@@ -15,7 +15,6 @@
     $dateAjd = new DateTime();
     $anneeAjd = $dateAjd -> format('Y');
     $dateAjd = new DateTime();
-//    $dateAjd -> format("Y-m-d H:i:s");
 
 //    var_dump("test" . $dateAjd );
 
@@ -81,6 +80,7 @@
     $arrInfosItem = $pdosResultatInfosItem -> fetch();
 
     if($arrInfosItem["echeance"] == null){
+        $arrInfosItem["heure"] = -1;
         $arrInfosItem["minute"] = -1;
     }
 
@@ -101,29 +101,38 @@
         $arrInfosItem["heure"] =  $_GET["heure"];
         $arrInfosItem["minute"] =  $_GET["minute"];
 
-        //Si la date est pas rentrée correctement
+        //Si la date est entrée correctement
         if($arrInfosItem["annee"] != 0 AND $arrInfosItem["mois"] != 0 AND $arrInfosItem["jour"] != 0){
                 //Vérifie si la date est correcte
                 if(checkdate($arrInfosItem["mois"], $arrInfosItem["jour"], $arrInfosItem["annee"]) == true){
+                    //On entre la date saisie dans un format (Y-m-d H:m)
                     $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
 
+                    //On créer un objet date avec la date saisie
+                    $newDateEcheance = new DateTime($dateSaisie);
+
                     //Si la date est correcte, on vérifie si la date est antérieure
-                    if($dateSaisie > $dateAjd -> format("Y-m-d") ){
-                        //Si l'heure ET les minutes sont définies
+                    if($newDateEcheance > $dateAjd){
+                        //Si l'heure et les minutes sont définies
                         if($arrInfosItem["heure"] != -1 AND $arrInfosItem["minute"] != -1){
                             $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
                         }
                         else {
-                            //Si l'heure est définie et que les minutes ne le sont pas
-                            if ($arrInfosItem["heure"] != -1 AND $arrInfosItem["minute"] == -1) {
-                                $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":0";
+                            //Si l'heure et les minutes ne sont pas settés
+                            if($arrInfosItem["heure"] == -1 AND $arrInfosItem["minute"] == -1){
+                                $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " 0:0";
                             }
-                            //Si l'heure n'est pas définie et que les minutes le sont
-                            else {
-                                $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " 0:" . $arrInfosItem["minute"];
+                            else{
+                                //Si l'heure est définie et que les minutes ne le sont pas
+                                if ($arrInfosItem["heure"] != -1 AND $arrInfosItem["minute"] == -1) {
+                                    $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":0";
+                                }
+                                //Si l'heure n'est pas définie et que les minutes le sont
+                                else {
+                                    $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " 0:" . $arrInfosItem["minute"];
+                                }
                             }
                         }
-
                         $arrInfosItem["echeance"] = $dateSaisie;
                     }
                     else{
@@ -164,7 +173,7 @@
         if($strCodeErreur == "00000"){
             $strRequeteUpdateInfosItem = "UPDATE t_item SET nom_item = :nom_item, echeance = :echeance WHERE id_item = :id_item";
 
-            $pdosResultatModifierItem =$pdoConnexion -> prepare($strRequeteUpdateInfosItem);
+            $pdosResultatModifierItem = $pdoConnexion -> prepare($strRequeteUpdateInfosItem);
 
             $pdosResultatModifierItem -> bindValue("id_item", $arrInfosItem["id_item"]);
             $pdosResultatModifierItem -> bindValue("nom_item", $arrInfosItem["nom_item"]);
@@ -190,7 +199,7 @@
     }
     else{
         if($strCodeOperation == "modifier"){
-            header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=modifier");
+            header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&btnOperation=modifier");
 //            var_dump("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=modifier");
         }
     }
@@ -201,7 +210,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
-    <title>Démonstration - Validations avec jQuery</title>
+    <title>Editer <?php echo $arrInfosItem["nom_item"]; ?>  - Never4Get</title>
     <link rel="stylesheet" href="css/styles.css">
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
@@ -217,8 +226,6 @@
 
         <div class="editerItem contenu">
             <h1 class="editerItem__titre">Éditer un item</h1>
-
-<!--            <p class="erreur">--><?php //echo $strMessage;?><!--</p>-->
 
             <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
 

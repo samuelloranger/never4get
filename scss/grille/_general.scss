@@ -31,6 +31,11 @@
 body{
   overflow-x: hidden;
   margin: 0;
+  position: relative;
+
+  @media(max-width: $bureau){
+    min-height: 667px;
+  }
 }
 
 .conteneur {

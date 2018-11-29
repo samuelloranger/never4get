@@ -11,6 +11,13 @@
     // Code d'opération à écécuter sur la base de donnée
     $strCodeOperation = "";
 
+    //On définit la variable strMessage pour l'affichage
+    $strMessage = "";
+
+    //******************** Gestion des messages d'erreur ********************
+    $strFichierJson = file_get_contents($strNiveau. "js/objJSONMessages.json");
+    $jsonMessagesErreurs = json_decode($strFichierJson);
+
     //Récupération de query string
     if(isset($_GET["id_liste"])){
         $id_liste = $_GET["id_liste"];
@@ -23,12 +30,28 @@
             case "supprimer":
                 $strCodeOperation = "supprimer";
                 break;
+            case "modifier":
+                $strCodeOperation = "modifier";
+            break;
+            case "ajouter":
+                $strCodeOperation = "ajouter";
+                break;
             case "complete":
                 $strCodeOperation = "modifierComplete";
                 break;
             case "updateItem":
                 $strCodeOperation = "updateItem";
                 break;
+        }
+    }
+
+    if($strCodeOperation == "modifier" OR $strCodeOperation == "ajouter"){
+        if($strCodeOperation == "modifier"){
+            $strMessage = $jsonMessagesErreurs -> {"retroactions"} -> {"item"} -> {"modifier"};
+        }
+
+        if($strCodeOperation == "ajouter"){
+            $strMessage = $jsonMessagesErreurs -> {"retroactions"} -> {"item"} -> {"ajouter"};
         }
     }
 
@@ -136,7 +159,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
-    <title>Never4Get</title>
+    <title><?php echo $arrInfosListe["nom_liste"]; ?> - Never4Get</title>
     <link rel="stylesheet" href="css/styles.css">
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
@@ -157,9 +180,9 @@
                 <p>Mise à jour réussie avec succès!</p>
             <?php } ?>
 
+            <p class="conteneurListes__retroactions ok"><?php echo $strMessage; ?></p>
             <div class="conteneurListes">
-            <?php
-            for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
+            <?php for($intCtr = 0; $intCtr < count($arrItemsListe); $intCtr++){ ?>
                 <div class="conteneurListes__item">
                     <ul>
                         <li class="conteneurListes__itemTitre"><h3><?php echo $arrItemsListe[$intCtr]["nom_item"]; ?></h3></li>
