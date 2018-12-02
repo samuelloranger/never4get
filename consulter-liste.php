@@ -27,15 +27,19 @@
     if(isset($_GET["btnOperation"])){
         //Définie le code de l'opération
         switch($_GET["btnOperation"]){
+            //Lorsque le bouton supprimer est appuyé
             case "supprimer":
                 $strCodeOperation = "supprimer";
                 break;
+            //Si on arrive de la page editer-item sans erreurs
             case "modifier":
                 $strCodeOperation = "modifier";
-            break;
+                break;
+            //Si on arrive de la page ajouter-item sans erreurs
             case "ajouter":
                 $strCodeOperation = "ajouter";
                 break;
+            //Si on a appuyé sur le bouton Complete/À completer
             case "complete":
                 $strCodeOperation = "modifierComplete";
                 break;
@@ -45,6 +49,7 @@
         }
     }
 
+    //Si le code d'opération est modifié (Donc qu'on arrive de la page editer-item ou ajouter-item
     if($strCodeOperation == "modifier" OR $strCodeOperation == "ajouter"){
         if($strCodeOperation == "modifier"){
             $strMessage = $jsonMessagesErreurs -> {"retroactions"} -> {"item"} -> {"modifier"};
@@ -54,6 +59,7 @@
             $strMessage = $jsonMessagesErreurs -> {"retroactions"} -> {"item"} -> {"ajouter"};
         }
     }
+
 
     //******************** Suspression d'un item d'une liste ********************
     //Si le code d'opération est supprimer
@@ -81,18 +87,24 @@
         $idItemModifierEtat = $_GET["id__item"];
         $etatComplete = $_GET["est_complete"];
 
+        //Si l'état completé est 0
         if($etatComplete == 0){
-            $strRequeteModifierEtat = "UPDATE t_item SET  est_complete = 1 WHERE id_item = :idItemModifierEtat";
+            //Requete avec le 1
+            $etatCompleteChangement = 1;
         }
         else{
-            $strRequeteModifierEtat = "UPDATE t_item SET  est_complete = 0 WHERE id_item = :idItemModifierEtat";
+            //Requete avec le 0;
+            $etatCompleteChangement = 0;
         }
+
+        $strRequeteModifierEtat = "UPDATE t_item SET  est_complete = :etatComplete WHERE id_item = :idItemModifierEtat";
 
         //Préparation de la requête
         $pdosResultatModifierEtat = $pdoConnexion -> prepare($strRequeteModifierEtat);
 
         //Insertion des valeurs de querystring dans la requête
         $pdosResultatModifierEtat -> bindValue("idItemModifierEtat", $idItemModifierEtat);
+        $pdosResultatModifierEtat -> bindValue("etatComplete", $etatCompleteChangement);
 
         //Éxécution de la requête
         $pdosResultatModifierEtat -> execute();
