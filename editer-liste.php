@@ -101,7 +101,7 @@
         //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
         //****************************************************************
         //Vérifications du contenu du contenu du nom de la liste
-        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste']==0)){
+        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste']===0)){
             //Si nom du participant est invalide
             $strCodeErreur="-1";
         }
