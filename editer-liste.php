@@ -13,9 +13,11 @@
     //Initialisation de la variable contenant le code d'opération
     $strCodeOperation="";
     //Initialisation de la variable contenant le code d'erreur
-    $strCodeErreur=0000;
-    //Initialisation de la variable contenant le code d'erreur
-    $strMessage="";
+    $strCodeErreur=00000;
+    //Initialisation de la variable du champ
+    $strChamp="";
+    //Initialisation de la variable du message d'erreur
+    $strMessageErreur="";
 
 
     //Vérifications de la présence de l'id dans la querystring
@@ -24,9 +26,10 @@
     }
 
     //Vérifications de la présence du code d'opération Modifier
-    if(isset($_GET['btn_modifier'])){
-        $strCodeOperation="modifier";
+    if(isset($_GET['codeOperation'])){
+        $strCodeOperation=$_GET['codeOperation'];
     }
+    var_dump($strCodeOperation);
 
     //Inclusion de la config liant aux BD
     include ($strNiveau.'inc/scripts/config.inc.php');
@@ -89,59 +92,64 @@
     $pdosResultatCouleurs->closeCursor();
 
     //**************MODIFICATION DE LA LISTE**************/
-    if($strCodeOperation=='modifier'){
+    if($strCodeOperation=='Edit'){
         //Récupération des données dans la querystring
         $arrListe['nom_liste']=$_GET['nomListe'];
         $arrListe['id_couleur']=$_GET['couleur'];
 
+        //****************************************************************
+        //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
+        //****************************************************************
+        //Vérifications du contenu du contenu du nom de la liste
+        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste']==0)){
+            //Si nom du participant est invalide
+            $strCodeErreur="-1";
+        }
+        var_dump($strCodeOperation);
 
-        //Requête SQL utilisée pour les modifications de la BD
-        $strRequeteUpdate=
-        'UPDATE t_liste SET '.
-        "nom_liste='".$arrListe['nom_liste']."',".
-        "id_couleur='".$arrListe['id_couleur']."'".
-        " WHERE id_liste=?";
 
-        //Préparation de la requête
-        $pdosResultatUpdate=$pdoConnexion->prepare($strRequeteUpdate);
+        if($strCodeOperation=="Edit" && $strCodeErreur==00000){
+            //Requête SQL utilisée pour les modifications de la BD
+            $strRequeteUpdate=
+            'UPDATE t_liste SET '.
+            "nom_liste='".$arrListe['nom_liste']."',".
+            "id_couleur='".$arrListe['id_couleur']."'".
+            " WHERE id_liste=?";
 
-        //Liaison de la valeur de l'id
-        $pdosResultatUpdate->bindValue(1, $strIdListe); 
-        
-        //Éxécution de la requête
-        $pdosResultatUpdate->execute();
+            //Préparation de la requête
+            $pdosResultatUpdate=$pdoConnexion->prepare($strRequeteUpdate);
 
-        //Récupération de l'erreur, s'il y a lieu
-        $strCodeErreur=$pdosResultatUpdate->errorCode();
-        // var_dump($pdosResultatUpdate->errorInfo());
+            //Liaison de la valeur de l'id
+            $pdosResultatUpdate->bindValue(1, $strIdListe); 
+            
+            //Éxécution de la requête
+            $pdosResultatUpdate->execute();
 
-        //Redirection vers l'index
-        header("Location:".$strNiveau."index.php?strCodeOperation=".$strCodeOperation);
+            //Récupération de l'erreur, s'il y a lieu
+            $strCodeErreur=$pdosResultatUpdate->errorCode();
+            // var_dump($pdosResultatUpdate->errorInfo());
 
+            //Redirection vers l'index
+            header("Location:".$strNiveau."index.php?codeOperation=".$strCodeOperation);
+        }
+        else{
+            var_dump($strCodeErreur);
+            if($arrListe['nom_liste']==""){
+                $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'vide'};
+            }
+            else{
+                $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'motif'};
+            }
+        }
     }
-    //****************************************************************
-    //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
-    //****************************************************************
 
-
-    // S'il y a une erreur
-    if($strCodeErreur!='0000'){
-        // Remplacer le message par un message d'erreur
-        $strMessage=$jsonMessagesErreurs->{$champ}->{'erreurs'}->{$motif};
-
-        array_push($arrChampsErreur, ['nom_liste', 'motif']);
-        // for($intCpt=0;$intCpt<count($arrChampsErreur);$intCpt++){
-        //     $champ=$arrChampsErreur[$intCpt];
-        //     $arrMessagesErreur[$champ]=$jsonMessagesErreurs->{$champ};
-        // }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
-    <title>Projet TOFU</title>
+    <title>Never4get - Éditer <?php echo $arrListe['nom_liste']; ?></title>
     <!--URL de base pour la navigation -->
     <link rel="stylesheet" href="css/styles.css">
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
@@ -156,7 +164,11 @@
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
 
-        <h1>Éditer une liste</h1>
+        <h1>Éditer <?php echo $arrListe['nom_liste']; ?></h1>
+        <?php 
+            if($strMessageErreur!=""){ ?>
+                <p class="erreur"><?php echo $strMessageErreur; ?></p>
+        <?php } ?>
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
 
@@ -165,17 +177,17 @@
 
             <div class="conteneurChamp">
                 <label for="nomListe">Nom de la liste</label>
-                <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}"name="nomListe">
-                <p class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></p>
+                <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
+                <span class="contenantRetro"></span>
             </div>
 
             <fieldset class="conteneurChamp">
-                <legend>Changement de couleurs <span class="erreur"><?php echo $arrMessagesErreur['nom_liste']; ?></span></legend>
+                <legend>Changement de couleurs <span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
                 <ul>
                     <?php
                         for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
                             <li>
-                                <input type="radio" id="couleur" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?> name="couleur">
+                                <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?> name="couleur">
                                 <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
                                 <span style="display: inline-block;width:20px; height: 10px; background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>;"></span>
                             </li>
@@ -183,13 +195,10 @@
                 </ul>
             </fieldset>
 
-            <button type="submit" value="Modifier" name="btn_modifier">Modifier</button>
+            <button type="submit" value="Edit" name="codeOperation">Modifier</button>
             <a href="index.php">Annuler</a>
         </form>
     </main>
-
-
-
 
     <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"

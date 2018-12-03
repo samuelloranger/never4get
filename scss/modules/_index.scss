@@ -2,4 +2,46 @@
  * @author Gabriel Chouinard Létourneau
  * @todo Compléter selon l'énoncé
 */
-.urgentBandeau
+.echeancesBandeau{ 
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: $gris; 
+    color: #fff;  
+    padding: 15px span(1 of 12) - gutter(12);
+    &__notifs{
+        width: span(3 of 10);
+        margin: auto 0;
+        &Icon{
+            font-size: 28px; 
+            margin: auto 5px;
+        } 
+        &Texte{ 
+            display: flex;
+        }
+    }
+    &__dates{ 
+        width: span(9 of 12);
+    } 
+}
+.allLists{  
+    &__intro{
+        display: flex;
+        justify-content: space-between;
+        width: span(9 of 12);
+        margin-left: span(2 of 12)+gutter(12);
+        &Titre{ 
+        width: span(2 of 9);
+        margin-right: span(4 of 9)+gutter(9);
+        }
+        .btnOperation{
+            width: span(3 of 9); 
+            margin: auto 0;
+            margin-left: gutter(9);  
+            float: right;   
+        }
+    }
+    &__containerFlex{
+        width: span(8 of 12);
+        margin: 2% span(2 of 12)+gutter(12); 
+    }  
+}     

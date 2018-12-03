@@ -8,9 +8,52 @@ $arrListes=array();
 $arrEcheances=array();
 //Initialisation de la variable de l'utilisateur (HARD CODER POUR PROTOTYPE)
 $strUtilisateur=1;
+//Initilisation de la variable contenant la rétroaction de l'accueil
+$strMessageRetro="";
+
+//Récupération du fichier JSON contenant les messages de rétroactions
+$strFichierErreurs=file_get_contents($strNiveau.'js/objJSONMessages.json');
+$jsonMessagesErreurs=json_decode($strFichierErreurs);
+
+//**************GESTION DES MESSAGES DE RÉTROACTIONS**************/
+if(isset($_GET['codeOperation'])){
+    if($_GET['codeOperation']=="Add"){
+        $strMessageRetro=$jsonMessagesErreurs->{"retroactions"}->{"liste"}->{"ajouter"};
+    }    
+    else{
+        $strMessageRetro=$jsonMessagesErreurs->{"retroactions"}->{"liste"}->{"modifier"};
+    }
+}
 
 //Inclusion de la config liant aux BD
 include ($strNiveau.'inc/scripts/config.inc.php');
+
+//**************SUPPRESSION DE LISTE**************/
+if(isset($_GET['supprimerListe'])){
+    //Initialisation de la valeur de la liste à supprimer
+    $strIdListeDelete=$_GET['supprimerListe'];
+
+    //Requête SQL
+    $strRequeteDelete=
+    'DELETE from t_liste
+    WHERE id_liste=?';
+
+    //Éxécution de la requête
+    $pdosResultatDelete=$pdoConnexion->prepare($strRequeteDelete);
+
+    //Récupération de l'erreur, s'il y a lieu
+    $strCodeErreur=$pdosResultatDelete->errorCode();
+    // var_dump($pdosResultatSupp->errorInfo());
+
+    //Liaison de la valeur de l'id
+    $pdosResultatDelete->bindValue(1, $strIdListeDelete);
+
+    //Éxécution de la requête
+    $pdosResultatDelete->execute();
+
+    //Message de rétroaction
+    $strMessageRetro=$jsonMessagesErreurs->{"retroactions"}->{"liste"}->{"supprimer"};
+}
 
 //**************CLASSEMENT DES LISTES**************/
 //Requête SQL
@@ -78,8 +121,8 @@ for($intCpt=0;$ligne=$pdosResultatEcheances->fetch();$intCpt++){
 }
 
 $pdosResultatEcheances->closeCursor();
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -100,8 +143,7 @@ $pdosResultatEcheances->closeCursor();
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
         <div class="echeancesBandeau conteneur">
-            <div class="echeancesBandeau__notif">
-                <p>Je désire rec</p>
+            <div class="echeancesBandeau__dates">
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
                     <p>
@@ -109,31 +151,77 @@ $pdosResultatEcheances->closeCursor();
                         <?php echo $arrEcheances[$intCpt]['nom_item']; ?> / <?php echo $arrEcheances[$intCpt]['echeance']; ?>
                     </p>
             <?php } ?> 
+            </div>
+            <div class="echeancesBandeau__notifs">
+                <label class="echeancesBandeau__notifsTexte">
+                    <span class="echeancesBandeau__notifsIcon fi flaticon-calendar">
+                        <input type="checkbox" class="visuallyHidden">
+                    </span>
+                        Je désire recevoir notifications des échéances
+                </label>
+            </div> 
         </div>
         <div class="allLists conteneur">
-            <?php 
-                for($intCpt=0;$intCpt<count($arrListes);$intCpt++){ ?>
-                <ul>
-                    <li><?php echo $arrListes[$intCpt]['id_liste']; ?></li>
-                    <li>
-                        <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
-                            <?php echo $arrListes[$intCpt]['nom_liste']; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <?php echo $arrListes[$intCpt]['hexadecimale']; ?>
-                    </li>
-                    <li>
-                        <?php echo $arrListes[$intCpt]['nbItems']; ?>
-                    </li>
-                </ul>
-                <form action="index.php">
-                    <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
-                    <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
-                    <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Consulter</a>
-                    <button>Supprimer</button>
-                </form>
-            <?php } ?>
+            <div class="allLists__intro">
+                <h1 class="allLists__introTitre">Listes</h1>
+                <a href="ajouter-liste.php" class="btnOperation fi flaticon-add">Ajouter une liste</a>
+            </div>
+            <div class="allLists__containerFlex">
+                <!--Intégration du message de rétroaction-->
+                <?php
+                    //Si le message a été changé
+                    if($strMessageRetro!=""){ ?>
+                        <p class="allLists__retroactions">
+                            <?php echo $strMessageRetro; ?>
+                        </p>
+                <?php } ?>
+
+                <!--Intégration des listes présentes dans l'array créé plus tôt-->
+                <?php 
+                    for($intCpt=0;$intCpt<count($arrListes);$intCpt++){ ?>
+                    <div class="allLists__itemList">
+                        <ul>
+                            <li><?php echo $arrListes[$intCpt]['id_liste']; ?></li>
+                            <li>
+                                <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                                    <?php echo $arrListes[$intCpt]['nom_liste']; ?>
+                                </a>
+                            </li>
+                            <li>
+                                <?php echo $arrListes[$intCpt]['hexadecimale']; ?>
+                            </li>
+                            <li>
+                                <?php echo $arrListes[$intCpt]['nbItems']; ?>
+                            </li>
+                        </ul>
+                        <form action="index.php">
+                            <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                            <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
+                            <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Consulter</a>
+                            <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer</a>
+
+                            <!--Modal Box utilisé pour la suppression des liste-->
+                            <div id="modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="modalBox">
+                                <div class="modalBox__dialogue">
+                                    <div class="modalBox__fenetre">
+                                        <header class="modalBox__entete" style="background-color: #<?php echo $arrListes[$intCpt]['hexadecimale']; ?>">
+                                        </header>
+                                        <a href="index.php#" class="btn btn--fermer">Fermer</a>
+                                        <div class="modalBox__contenu">
+                                            <p><strong>Voulez-vous vraiment supprimer la liste <?php echo $arrListes[$intCpt]['nom_liste']; ?> et tout ce qu'elle contient?</strong></p>
+
+                                        </div>
+                                        <footer class="modalBox__actions">
+                                            <a href="index.php#" class="btn">Annuler</a>&nbsp;&nbsp;&nbsp;
+                                            <button type="submit" name="supprimerListe" class="btn btn--danger" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer la liste </button>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </main>
 
