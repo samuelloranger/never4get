@@ -155,10 +155,10 @@
     <title>Never4get - Ajouter une liste</title>
     <!--URL de base pour la navigation -->
     <link rel="stylesheet" href="css/styles.css">
-    <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
+    <?php include("inc/scripts/headlinks.php"); ?>
 </head>
 <body>
-    <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
+    <?php include('inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <a class="visuallyHidden" href="#contenu">Allez au contenu</a>
 
@@ -173,7 +173,7 @@
                 <p class="erreur"><?php echo $strMessageErreur; ?></p>
         <?php } ?>
 
-        <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
+        <?php include("inc/fragments/sideNav.inc.php"); ?>
 
         <form action="ajouter-liste.php" method="GET">
             <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
@@ -189,9 +189,11 @@
                     <?php
                         for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
                             <li>
-                                <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur">
-                                <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
-                                <span style="display: inline-block;width:20px; height: 10px; background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>;"></span>
+                                <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>">
+                                    <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur">
+                                    <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
+                                    <span style="display: inline-block;width:20px; height: 10px; background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>;"></span>
+                                </label>
                             </li>
                     <?php } ?>    
                 </ul>
@@ -205,7 +207,7 @@
 
 
 
-    <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
+    <?php include('inc/fragments/footer.inc.php'); ?>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
