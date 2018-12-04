@@ -91,7 +91,6 @@
     $pdosResultatCouleurs->closeCursor();
 
     //**************MODIFICATION DE LA LISTE**************/
-    var_dump($strCodeOperation);
     if($strCodeOperation=='Add'){
         //Récupération des données dans la querystring
         $arrListe['nom_liste']=$_GET['nomListe'];
@@ -123,7 +122,6 @@
             $pdosResultatAdd=$pdoConnexion->prepare($strRequeteAdd);
 
             //Liaison des valeurs
-            var_dump($pdosResultatAdd);
             $pdosResultatAdd->bindValue('nom_liste', $arrListe['nom_liste']);
             $pdosResultatAdd->bindValue('id_couleur', $arrListe['id_couleur']);
             $pdosResultatAdd->bindValue('id_utilisateur', $strUtilisateur);

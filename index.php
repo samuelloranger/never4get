@@ -54,6 +54,29 @@ if(isset($_GET['supprimerListe'])){
     //Message de rétroaction
     $strMessageRetro=$jsonMessagesErreurs->{"retroactions"}->{"liste"}->{"supprimer"};
 }
+//**************ÉCHÉANCES À VENIR**************/
+//Requête SQL
+$strRequeteEcheances=
+'SELECT nom_item, echeance, hexadecimale
+FROM t_item
+INNER JOIN t_liste ON t_item.id_liste=t_liste.id_liste
+INNER JOIN t_couleur ON t_liste.id_couleur=t_couleur.id_couleur
+WHERE echeance IS NOT NULL 
+ORDER BY nom_item, echeance ASC
+LIMIT 3';
+
+//Éxécution de la requête
+$pdosResultatEcheances=$pdoConnexion->query($strRequeteEcheances);
+
+//Formation du array contenant les données des échéances
+for($intCpt=0;$ligne=$pdosResultatEcheances->fetch();$intCpt++){
+    $arrEcheances[$intCpt]['nom_item']=$ligne['nom_item'];
+    $arrEcheances[$intCpt]['echeance']=$ligne['echeance'];
+    $arrEcheances[$intCpt]['hexadecimale']=$ligne['hexadecimale'];
+}
+
+$pdosResultatEcheances->closeCursor();
+
 
 //**************CLASSEMENT DES LISTES**************/
 //Requête SQL
@@ -61,7 +84,7 @@ $strRequeteListes=
 'SELECT id_liste, nom_liste, hexadecimale
 FROM t_liste
 INNER JOIN t_couleur ON t_liste.id_couleur=t_couleur.id_couleur
-WHERE id_utilisateur=?
+WHERE id_utilisateur=? 
 ORDER BY nom_liste';
 
 //Préparation la requête
@@ -85,42 +108,19 @@ for($intCpt=0;$ligne=$pdosResultatListes->fetch();$intCpt++){
     $strRequeteNbItems=
     'SELECT id_item
     FROM t_item
-    WHERE id_liste='.$arrListes[$intCpt]['id_liste'];
+    WHERE id_liste=?';
 
     //Éxécution de la requête
-    $pdosResultatNbItems=$pdoConnexion->query($strRequeteNbItems);
-
+    $pdosResultatNbItems=$pdoConnexion->prepare($strRequeteNbItems);
+    $pdosResultatNbItems->bindValue(1,$arrListes[$intCpt]['id_liste']);
+    $pdosResultatNbItems->execute();
     //Count des résultats 
     $arrListes[$intCpt]['nbItems']=$pdosResultatNbItems->rowCount();
 
-    // var_dump($nbItems);
     $pdosResultatNbItems->closeCursor();
     
 }
 $pdosResultatListes->closeCursor();
-
-//**************ÉCHÉANCES À VENIR**************/
-//Requête SQL
-$strRequeteEcheances=
-'SELECT DISTINCT nom_item, echeance, hexadecimale
-FROM t_item
-INNER JOIN t_liste ON t_item.id_liste=t_liste.id_liste
-INNER JOIN t_couleur ON t_liste.id_couleur=t_couleur.id_couleur
-WHERE echeance IS NOT NULL 
-ORDER BY nom_item, echeance ASC
-LIMIT 3';
-
-//Éxécution de la requête
-$pdosResultatEcheances=$pdoConnexion->query($strRequeteEcheances);
-
-//Formation du array contenant les données des échéances
-for($intCpt=0;$ligne=$pdosResultatEcheances->fetch();$intCpt++){
-    $arrEcheances[$intCpt]['nom_item']=$ligne['nom_item'];
-    $arrEcheances[$intCpt]['echeance']=$ligne['echeance'];
-    $arrEcheances[$intCpt]['hexadecimale']=$ligne['hexadecimale'];
-}
-
-$pdosResultatEcheances->closeCursor();
 ?>
 
 <!DOCTYPE html>

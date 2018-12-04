@@ -105,22 +105,21 @@
             //Si nom du participant est invalide
             $strCodeErreur="-1";
         }
-        var_dump($strCodeOperation);
 
 
         if($strCodeOperation=="Edit" && $strCodeErreur==00000){
             //Requête SQL utilisée pour les modifications de la BD
             $strRequeteUpdate=
-            'UPDATE t_liste SET '.
-            "nom_liste='".$arrListe['nom_liste']."',".
-            "id_couleur='".$arrListe['id_couleur']."'".
-            " WHERE id_liste=?";
+            'UPDATE t_liste SET nom_liste=:nom_liste, id_couleur=:id_couleur 
+            WHERE id_liste=:id_liste';
 
             //Préparation de la requête
             $pdosResultatUpdate=$pdoConnexion->prepare($strRequeteUpdate);
 
-            //Liaison de la valeur de l'id
-            $pdosResultatUpdate->bindValue(1, $strIdListe); 
+            //Liaison des valeurs
+            $pdosResultatUpdate->bindValue("id_liste", $strIdListe);
+             $pdosResultatUpdate->bindValue("nom_liste", $arrListe['nom_liste']);
+             $pdosResultatUpdate->bindValue("id_couleur", $arrListe['id_couleur']);
             
             //Éxécution de la requête
             $pdosResultatUpdate->execute();
@@ -129,11 +128,11 @@
             $strCodeErreur=$pdosResultatUpdate->errorCode();
             // var_dump($pdosResultatUpdate->errorInfo());
 
-            //Redirection vers l'index
+            // //Redirection vers l'index
             header("Location:".$strNiveau."index.php?codeOperation=".$strCodeOperation);
+
         }
         else{
-            var_dump($strCodeErreur);
             if($arrListe['nom_liste']==""){
                 $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'vide'};
             }
