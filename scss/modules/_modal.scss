@@ -1,0 +1,46 @@
+.modalBox {
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Boite de la fenêtre modale */
+    &__dialogue {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    /* Contenu de la fenêtre modale */
+    &__fenetre {
+      margin: auto;
+      background-color: white;
+      position: relative;
+      padding: 0;
+      outline: 0;
+      border: 5px gray solid;
+      width: 100%;
+      max-width: 500px;
+      /* Ajout d'une animation pour faire apparaître la fenêtre */
+      animation-name: zoomIn;
+      animation-duration: 0.5s;
+    }
+    &__entete {
+      text-align: right;
+      padding: 0.5em;
+    }
+    &__contenu {
+      padding: 0.5em;
+    } 
+    &__actions {
+      padding: 0.5em;
+      text-align: right;
+    }
+    /* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
+    &:target { 
+      display: table;
+      position: fixed;
+    }
+  }
+  

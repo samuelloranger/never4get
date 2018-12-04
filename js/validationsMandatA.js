@@ -1,5 +1,5 @@
 /**
- * @file Objet de validations avec jQuery
+ * @file Validations du mandat A
  * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
  */
 
@@ -34,7 +34,7 @@ var validationsMandatA = {
         $('#nomListe').on('blur', this.validerTache.bind(this));
 
         // sur les boutons radio on se sert du name qui est commun
-        $('#couleur').on('blur', this.validerCours.bind(this));
+        $('[name=couleur]').on('blur', this.validerCours.bind(this));
     },
 
     /******************************************************************************************
@@ -52,14 +52,14 @@ var validationsMandatA = {
         this.effacerRetro($objCible);
 
         if (this.verifierSiRempli($objCible) == false){
-            this.afficherErreur($objCible, this.objJSONMessages.nomItem.erreurs.vide);
+            this.afficherErreur($objCible, this.objJSONMessages.nom_liste.erreurs.vide);
         }
         else {
             if (this.verifierPattern($objCible) == true){
                 this.ajouterEncouragement($objCible);
             }
             else {
-                this.afficherErreur($objCible, this.objJSONMessages.nom_item.erreurs.motif);
+                this.afficherErreur($objCible, this.objJSONMessages.nom_liste.erreurs.motif);
             }
         }
 
@@ -120,8 +120,9 @@ var validationsMandatA = {
     afficherErreur : function($objJQueryDOM, message){
 
         // On remonte au conteneur parent puis et on cherche à l'intérieur le conteneur pour l'erreur
-        $objJQueryDOM.closest('.conteneurChamp').find('.erreur').text('⚠ ' + message);
         $parent = $objJQueryDOM.closest('.conteneurChamp');
+
+        $parent.find('.contenantRetro').html('<span class="fi flaticon-error erreur">'+message+'</span>');
         $legende = $parent.find('legend');
 
         if ($legende.length) {
@@ -146,11 +147,11 @@ var validationsMandatA = {
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
-            $legende.append('<span class="ok"> ✓ </span>');
+            $legende.append('<span class="fi flaticon-success"> </span>');
         }
         else {
             // Sinon on travaille directement sur l'élément de formulaire
-            $objJQueryDOM.after('<span class="ok"> ✓ </span>');
+            $objJQueryDOM.after('<span class="fi flaticon-success"></span>');
         }
 
     },

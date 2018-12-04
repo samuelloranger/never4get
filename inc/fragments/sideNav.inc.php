@@ -1,17 +1,17 @@
 <?php
 
 // *************************** Liste des listes **********************
-$strRequeteListes = "SELECT id_liste, nom_liste FROM t_liste";
+$strRequeteListesSideNav = "SELECT id_liste, nom_liste FROM t_liste";
 
-$pdosResultatListes = $pdoConnexion -> query($strRequeteListes);
+$pdosResultatListesSideNav = $pdoConnexion -> query($strRequeteListesSideNav);
 
-$arrListesHeader = array();
-for($intCtr = 0; $ligne = $pdosResultatListes -> fetch(); $intCtr++){
-    $arrListes[$intCtr]["id_liste"] = $ligne["id_liste"];
-    $arrListes[$intCtr]["nom_liste"] = $ligne["nom_liste"];
+$arrListesSideNav = array();
+for($intCtr = 0; $ligne = $pdosResultatListesSideNav -> fetch(); $intCtr++){
+    $arrListesSideNav[$intCtr]["id_liste"] = $ligne["id_liste"];
+    $arrListesSideNav[$intCtr]["nom_liste"] = $ligne["nom_liste"];
 }
 
-$pdosResultatListes -> closeCursor();
+$pdosResultatListesSideNav -> closeCursor();
 ?>
 
 <aside class="sidenav">
@@ -25,9 +25,9 @@ $pdosResultatListes -> closeCursor();
             </li>
         </div>
         <div class="sidenav__listeSecondaire">
-            <?php for($intCtr = 0; $intCtr < count($arrListes); $intCtr++){?>
-                <li class="sidenav__listeSecondaire__item <?php if(isset($_GET["id_item"]) == true){  if($arrListes[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) { echo "sidenav__listeSecondaire__item--active"; } } else{ if($arrListes[$intCtr]["id_liste"] == $_GET["id_liste"]) { echo "sidenav__listeSecondaire__item--active"; } }?>">
-                    <a class="sidenav__listeSecondaire__item__lien" href="consulter-liste.php?id_liste=<?php echo  $arrListes[$intCtr]["id_liste"];?>"><?php echo $arrListes[$intCtr]["nom_liste"]; ?></a>
+            <?php for($intCtr = 0; $intCtr < count($arrListesSideNav); $intCtr++){?>
+                <li class="sidenav__listeSecondaire__item <?php if(isset($_GET["id_item"]) == true){  if($arrListesSideNav[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) { echo "sidenav__listeSecondaire__item--active"; } } else{ if($arrListesSideNav[$intCtr]["id_liste"] == $_GET["id_liste"]) { echo "sidenav__listeSecondaire__item--active"; } }?>">
+                    <a class="sidenav__listeSecondaire__item__lien" href="consulter-liste.php?id_liste=<?php echo  $arrListesSideNav[$intCtr]["id_liste"];?>"><?php echo $arrListesSideNav[$intCtr]["nom_liste"]; ?></a>
                 </li>
             <?php } ?>
         </div>
