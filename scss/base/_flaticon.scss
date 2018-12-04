@@ -56,6 +56,8 @@
     .flaticon-menu:before { content: "\f111"; }
     .flaticon-magnifying-glass:before { content: "\f112"; }
     .flaticon-edit:before { content: "\f113"; }
+    .flaticon-alarm:before { content: "\f114"; }
+    .flaticon-alarm-1:before { content: "\f115"; color: $jauneAccent;}
     
       $font-Flaticon-user: "\f100";
       $font-Flaticon-calendar: "\f101";
@@ -77,3 +79,5 @@
       $font-Flaticon-menu: "\f111";
       $font-Flaticon-magnifying-glass: "\f112";
       $font-Flaticon-edit: "\f113";
+    $font-Flaticon-alarm: "\f114";
+    $font-Flaticon-alarm-1: "\f115";

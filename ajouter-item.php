@@ -165,8 +165,7 @@
 
         //Si le code d'erreur n'a pas été changé on passe dans la requête
         if($strCodeErreur == "00000"){
-            $strRequeteUpdateInfosItem = "INSERT INTO t_item (nom_item, echeance, est_complete, id_liste)
-                                                         VALUES (:nom_item, :echeance, '0', :id_liste)";
+            $strRequeteUpdateInfosItem = "INSERT INTO t_item (nom_item, echeance, est_complete, id_liste) VALUES (:nom_item, :echeance, '0', :id_liste)";
 
             $pdosResultatAjouterItem =$pdoConnexion -> prepare($strRequeteUpdateInfosItem);
 

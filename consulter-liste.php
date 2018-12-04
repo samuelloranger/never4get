@@ -208,12 +208,10 @@
                             </li>
                         <?php }
                         else{ ?>
-                            <li class="fi flaticon-calendar">
+                            <li class="conteneurListes__itemDateEcheance fi flaticon-calendar">
                                 <span>Pas de date d'échéance pour cette tâche</span>
                             </li>
                         <?php } ?>
-
-<!--                        <li class="conteneurListes__itemEtat">--><?php //if($arrItemsListe[$intCtr]["est_complete"] == "1"){ ?><!--<span class="fi flaticon-success">Est complété</span>--><?php //; } else { ?><!-- <span class="fi flaticon-cross">À compléter</span> --><?php //}?><!--</li>-->
                     </ul>
                     <form action="consulter-liste.php#main" method="GET">
                         <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"];?>"/>
