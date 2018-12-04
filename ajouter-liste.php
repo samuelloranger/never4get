@@ -109,7 +109,8 @@
             $strCodeErreur="-1";
         }
         if($arrListe['id_couleur']==0){
-            
+            //Si aucune couleur n'a été choisie
+            $strCodeErreur="-1";
         }
 
         if($strCodeOperation=="Add" && $strCodeErreur==00000){
@@ -122,9 +123,9 @@
             $pdosResultatAdd=$pdoConnexion->prepare($strRequeteAdd);
 
             //Liaison des valeurs
-            $pdosResultatAdd->bindValue('nom_liste', $arrListe['nom_liste']);
-            $pdosResultatAdd->bindValue('id_couleur', $arrListe['id_couleur']);
-            $pdosResultatAdd->bindValue('id_utilisateur', $strUtilisateur);
+            $pdosResultatAdd->bindValue(':nom_liste', $arrListe['nom_liste']);
+            $pdosResultatAdd->bindValue(':id_couleur', $arrListe['id_couleur']);
+            $pdosResultatAdd->bindValue(':id_utilisateur', $strUtilisateur);
             
             //Éxécution de la requête
             $pdosResultatAdd->execute();
@@ -141,7 +142,12 @@
                 $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'vide'};
             }
             else{
-                $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'motif'};
+                if($arrListe['id_couleur']==0){
+                    $strMessageErreur=$jsonMessagesErreurs->{'couleurs'}->{'erreurs'}->{'vide'};
+                }
+                else{
+                    $strMessageErreur=$jsonMessagesErreurs->{'nom_liste'}->{'erreurs'}->{'motif'};
+                }
             }
         }
     }
@@ -181,6 +187,7 @@
             <div class="conteneurChamp">
                 <label for="nomListe">Nom de la liste</label>
                 <input type="text" id="nomListe" value="" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
+                <span class="contenantRetro"></span>
             </div>
 
             <fieldset class="conteneurChamp">

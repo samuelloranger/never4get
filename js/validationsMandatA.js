@@ -74,7 +74,7 @@ var validationsMandatA = {
         this.effacerRetro($objCible);
 
         if ($objCible.prop('checked') == false){
-            this.afficherErreur($objCible, this.objJSONMessages.cours.erreurs.vide);
+            this.afficherErreur($objCible, this.objJSONMessages.couleurs.erreurs.vide);
         }
         else{
             this.ajouterEncouragement($objCible);
@@ -127,7 +127,7 @@ var validationsMandatA = {
 
         if ($legende.length) {
             // On vérifie si le parent a une balise legend
-            $parent.addClass('erreurElement');
+            $parent.addClass('erreur erreurElement');
         }
         else {
             // Sinon on travaille directement sur l'élément de formulaire
@@ -147,11 +147,11 @@ var validationsMandatA = {
 
         if($legende.length){
             // On vérifie si le parent a une balise legend
-            $legende.append('<span class="fi flaticon-success"> </span>');
+            $legende.append('<span class="fi flaticon-success ok"> </span>');
         }
         else {
             // Sinon on travaille directement sur l'élément de formulaire
-            $objJQueryDOM.after('<span class="fi flaticon-success"></span>');
+            $objJQueryDOM.after('<span class="fi flaticon-success ok"></span>');
         }
 
     },

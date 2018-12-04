@@ -154,7 +154,7 @@ $pdosResultatListes->closeCursor();
             </div>
             <div class="echeancesBandeau__notifs">
                 <label class="echeancesBandeau__notifsTexte">
-                    <span class="echeancesBandeau__notifsIcon fi flaticon-calendar">
+                    <span class="echeancesBandeau__notifsIcon fi flaticon-alarm">
                         <input type="checkbox" class="visuallyHidden">
                     </span>
                         Je désire recevoir notifications des échéances

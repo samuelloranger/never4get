@@ -41,6 +41,7 @@
         }
     }
     &__containerFlex{
+        display: flex;
         width: span(8 of 12);
         margin: 2% span(2 of 12)+gutter(12); 
     }  
