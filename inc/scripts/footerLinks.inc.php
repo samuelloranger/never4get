@@ -6,8 +6,6 @@ crossorigin="anonymous"></script>
 
 <script src="js/menu.js"></script>
 
-<script src="js/onglets.js"></script>
-
 <script>
 var niveau = "<?php echo $strNiveau; ?>"    
 $('body').addClass('js');
@@ -17,6 +15,5 @@ $(document).ready(function()
      *Initialiser les modules JavaScript ici: menu, accordéon...
         */
     menu.initialiser();
-    profil.initialiser();
 });
 </script>
