@@ -26,15 +26,26 @@
     #profilContenu {
       display: block;
       position: relative;
+      height: 90px;
+      transition: 0.15s all ease-in-out;
       padding: 10px 5px;
       background-color: $gris; 
       outline: solid 2px $bleu;
-    }    
+      a{
+        opacity: 1;
+      } 
+    }     
     &--hidden {
       #profilContenu {
-        display: none;
-      } 
-    }   
+        color: none;
+        height: 0;
+        padding: 0;
+        outline: 0;
+        a{ 
+          opacity: 0;
+        }
+      }  
+    }    
   }
     &Link{
       margin-left: 5%;
