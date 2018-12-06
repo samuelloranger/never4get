@@ -138,7 +138,7 @@ $pdosResultatListes->closeCursor();
     <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <main>
-        <a href="#contenu" class="visuallyHidden">Allez au contenu</a>
+        <a href="#contenu" class="visuallyHidden focusable">Allez au contenu</a>
         <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
@@ -179,27 +179,27 @@ $pdosResultatListes->closeCursor();
                 <!--Intégration des listes présentes dans l'array créé plus tôt-->
                 <?php 
                     for($intCpt=0;$intCpt<count($arrListes);$intCpt++){ ?>
-                    <div class="allLists__itemList">
-                        <ul>
-                            <li><?php echo $arrListes[$intCpt]['id_liste']; ?></li>
-                            <li>
-                                <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
-                                    <?php echo $arrListes[$intCpt]['nom_liste']; ?>
-                                </a>
-                            </li>
-                            <li>
-                                <?php echo $arrListes[$intCpt]['hexadecimale']; ?>
-                            </li>
-                            <li>
-                                <?php echo $arrListes[$intCpt]['nbItems']; ?>
-                            </li>
-                        </ul>
+                    <article class="allLists__itemList">
                         <form action="index.php">
                             <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
-                            <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Éditer la liste</a>
-                            <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">Consulter</a>
-                            <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer</a>
+                            <header style="background-color: #<?php echo $arrListes[$intCpt]['hexadecimale']; ?>">
+                                <p class="allLists__itemListNb">
+                                    <?php echo $arrListes[$intCpt]['nbItems']; ?>
+                                </p>
+                            </header> 
+                            <div class="allLists__itemListContent">
+                                <h2 class="allLists__itemListNom">
+                                    <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                                        <?php echo $arrListes[$intCpt]['nom_liste']; ?>
+                                    </a>
+                                </h2>
 
+                                <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-more">Consulter</a>
+                                
+                                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-edit">Éditer la liste</a>
+
+                                <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-trash allLists__itemListContent--ecard">Supprimer</a>
+                            </div>
                             <!--Modal Box utilisé pour la suppression des liste-->
                             <div id="modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="modalBox">
                                 <div class="modalBox__dialogue">
@@ -219,31 +219,14 @@ $pdosResultatListes->closeCursor();
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </article>
                 <?php } ?>
             </div>
         </div>
     </main>
 
     <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
 
-    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
-
-    <script src="js/menu.js"></script>
-
-    <script>
-    var niveau = "<?php echo $strNiveau; ?>"    
-    $('body').addClass('js');
-    $(document).ready(function()
-    {
-        /**
-         *Initialiser les modules JavaScript ici: menu, accordéon...
-         */
-        $(document).ready(menu.initialiser.bind(menu));
-    });
-    </script>
+    <?php include($strNiveau.'inc/scripts/footerLinks.inc.php'); ?>
 </body>
 </html>

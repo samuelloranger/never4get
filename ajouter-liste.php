@@ -166,7 +166,7 @@
 <body>
     <?php include('inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
-    <a class="visuallyHidden" href="#contenu">Allez au contenu</a>
+    <a class="visuallyHidden focusable" href="#contenu">Allez au contenu</a>
 
     <main class="conteneur">
         <noscript>

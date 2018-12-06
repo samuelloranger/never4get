@@ -21,10 +21,22 @@
     margin-right: gutter(5);
     padding-top: 50px;
     padding-left: 2%;
-
-    span{
+  // Ces styles s'appliquent seulement si JS est activé
+  .js & {
+    #profilContenu {
+      display: unset;
+      padding: 10px 5px;
+      background-color: $gris; 
+      outline: solid 2px $bleu;
+    }   
+    &--hidden {
+      #profilContenu {
+        display: none;
+      } 
+    }   
+  }
+    &Link{
       margin-left: 5%;
-
       &:hover{
         border-bottom: 5px $jauneAccent solid;
         transition: .2s all ease-in-out;

@@ -38,10 +38,43 @@
             margin: auto 0;
             margin-left: gutter(9);  
             float: right;   
-        }
+        } 
     }
-    &__containerFlex{
-        display: flex;
+    &__itemList{ 
+        position: relative;
+        width: 275px;
+        border: 2px solid $gris;
+        margin-bottom: 5%;
+        a{
+            display: block; 
+        } 
+        header{
+            height: 30px;
+            p{ 
+                margin: 0;
+            }
+        } 
+        &Nom{
+            margin: 0;
+            margin: 5px 0 20px;
+        }
+        &Content{
+            min-height: 175px;
+            margin-left: 15px;
+            a{ 
+                margin: 25px 0;
+            }
+            &--ecard{
+                position: absolute;
+                right: 20px; 
+                bottom: -25px;
+            }
+        }  
+    }
+    &__containerFlex{ 
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: space-around;
         width: span(8 of 12);
         margin: 2% span(2 of 12)+gutter(12); 
     }  

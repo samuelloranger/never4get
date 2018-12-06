@@ -27,7 +27,11 @@ $pdosResultatListesHeader -> closeCursor();
 
         <div class="contenuTable">
             <div class="contenuTable__profil fi flaticon-user">
-                <span>Mon profil</span>
+                <a href="#profilContenu" class="contenuTable__profilLink">Mon profil</a>
+                <div id="profilContenu">
+                    <a href="#">Paramètres</a>
+                    <a href="#">Déconnexion</a>
+                </div>
             </div>
             <div class="contenuTable__recherche">
                 <input type="text" placeholder="Recherche">
