@@ -24,11 +24,12 @@
   // Ces styles s'appliquent seulement si JS est activé
   .js & {
     #profilContenu {
-      display: unset;
+      display: block;
+      position: relative;
       padding: 10px 5px;
       background-color: $gris; 
       outline: solid 2px $bleu;
-    }   
+    }    
     &--hidden {
       #profilContenu {
         display: none;
