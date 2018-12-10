@@ -228,13 +228,6 @@ $pdosResultatListes->closeCursor();
     <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
 
     <?php include($strNiveau.'inc/scripts/footerLinks.inc.php'); ?>
-    <script src="js/onglets.js">
-    $(document).ready(function(){
-            /**
-             *Initialiser les modules JavaScript ici: menu, accordéon...
-                */
-            profil.initialiser();
-    });
     </script>
 </body>
 </html>
