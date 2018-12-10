@@ -220,9 +220,9 @@
         /**
          *Initialiser les modules JavaScript ici: menu, accordéon...
          */
-        $(document).ready(validationsMandatA.initialiser.bind(validationsMandatA));
+        validationsMandatA.initialiser();
 
-        $(document).ready(menu.initialiser.bind(menu));
+        menu.initialiser();
     });
     </script>
 </body>
