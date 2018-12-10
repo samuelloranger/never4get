@@ -231,20 +231,10 @@
     <!--  FOOTER  -->
     <?php include("inc/fragments/footer.inc.php"); ?>
 
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-
-    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
+    <?php include($strNiveau . "inc/scripts/footerLinks.inc.php"); ?>
     <script src="js/menu.js"></script>
-    <script>
-        var niveau = "<?php echo $strNiveau; ?>";
 
-        $('body').addClass('js');
-        /**
-         * Initialiser les modules JavaScript ici: menu, accordéon...
-         */
+    <script>
         $(document).ready(menu.initialiser.bind(menu));
     </script>
 </body>

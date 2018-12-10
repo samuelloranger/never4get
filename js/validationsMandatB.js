@@ -57,7 +57,6 @@ var validationsMandatB = {
             $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");
         }
         else{
-            console.log("date entrée");
             $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
                 '<label  class="cacherDateEcheance__btn cacherDateEcheance__btn--active"></label> ' +
