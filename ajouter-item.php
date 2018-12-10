@@ -221,98 +221,90 @@
 </noscript>
 <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
 
-<main class="flexEditerItem conteneur">
+    <main class="flexEditerItem conteneur">
 
-    <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
+        <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
 
-    <div class="editerItem contenu">
-        <h1 class="editerItem__titre">Ajouter un item</h1>
+        <div class="editerItem contenu">
+            <h1 class="editerItem__titre">Ajouter un item</h1>
 
-        <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
+            <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
 
-        <form class="formulaire" id="formDemoValidation" action="ajouter-item.php">
-            <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"]; ?>">
+            <form class="formulaire" id="formDemoValidation" action="ajouter-item.php">
+                <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"]; ?>">
 
-            <div class="formulaire__conteneurChamp">
-                <label class="label" for="nom_item">Nom de l'item: </label>
-                <input class="input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" value="" required>
-                <p class="erreur"><?php echo $arrMessagesErreurs["nom_item"]?></p>
-            </div>
-
-            <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
-            <p class="erreur"><?php echo $arrMessagesErreurs["echeance"]?></p>
-            <fieldset class="formulaire__conteneurDate">
-
-                <div class="date__conteneurSelectDate">
-                    <label for="jour" class="screen-reader-only">Jour</label>
-                    <select name="jour" id="jour" class="date__jour">
-                        <option value="0">Jour</option>
-                        <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
-                            <option value="<?php echo $intCtr; ?>"><?php echo $intCtr; ?></option>
-                        <?php } ?>
-                    </select>
-                    <label for="mois" class="screen-reader-only">Mois</label>
-                    <select name="mois" id="mois" class="date__mois">
-                        <option value="0">Mois</option>
-                        <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
-                            <option value="<?php echo $intCtr;?>"><?php echo $arrMois[$intCtr-1];?></option>
-                        <?php }?>
-                    </select>
-                    <label for="annee" class="screen-reader-only">Année</label>
-                    <select name="annee" id="annee" class="date__annee">
-                        <option value="0">Année</option>
-                        <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
-                            <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
-                        <?php } ?>
-                    </select>
-
-                    <label class="date__heure--label">à</label>
-                    <select name="heure" id="heure" class="date__heure">
-                        <option value="-1">Heure</option>
-                        <?php for($intCtr = 0; $intCtr <= 24; $intCtr++){?>
-                            <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                        <?php } ?>
-                    </select>
-
-                    <label class="date__minute--label">:</label>
-                    <select name="minute" id="minute" class="date__minute">
-                        <option value="-1">Minute</option>
-                        <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
-                            <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                        <?php } ?>
-                    </select>
+                <div class="formulaire__conteneurChamp">
+                    <label class="label" for="nom_item">Nom de l'item: </label>
+                    <input class="input" type="text" name="nom_item" id="nom_item" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" value="" required>
+                    <p class="erreur"><?php echo $arrMessagesErreurs["nom_item"]?></p>
                 </div>
-            </fieldset>
 
-            <div class="conteneurBoutons">
-                <button class="btnModifier" name="btnAjouter" value="ajouter">Ajouter l'item</button>
-                <a href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" class="btnAnnuler" id="btnAnnuler">Annuler</a>
-            </div>
-        </form>
-    </div>
-</main>
+                <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
+                <p class="erreur"><?php echo $arrMessagesErreurs["echeance"]?></p>
+                <fieldset class="formulaire__conteneurDate">
 
-<?php include($strNiveau . "inc/fragments/footer.inc.php"); ?>
+                    <div class="date__conteneurSelectDate">
+                        <label for="jour" class="screen-reader-only">Jour</label>
+                        <select name="jour" id="jour" class="date__jour">
+                            <option value="0">Jour</option>
+                            <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
+                                <option value="<?php echo $intCtr; ?>"><?php echo $intCtr; ?></option>
+                            <?php } ?>
+                        </select>
+                        <label for="mois" class="screen-reader-only">Mois</label>
+                        <select name="mois" id="mois" class="date__mois">
+                            <option value="0">Mois</option>
+                            <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
+                                <option value="<?php echo $intCtr;?>"><?php echo $arrMois[$intCtr-1];?></option>
+                            <?php }?>
+                        </select>
+                        <label for="annee" class="screen-reader-only">Année</label>
+                        <select name="annee" id="annee" class="date__annee">
+                            <option value="0">Année</option>
+                            <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
+                                <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
+                            <?php } ?>
+                        </select>
 
-<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+                        <label class="date__heure--label">à</label>
+                        <select name="heure" id="heure" class="date__heure">
+                            <option value="-1">Heure</option>
+                            <?php for($intCtr = 0; $intCtr <= 24; $intCtr++){?>
+                                <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
+                            <?php } ?>
+                        </select>
 
-<script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
-<script src="js/validationsMandatB.js"></script>
-<script src="js/menu.js"></script>
-<script>
-    var niveau = "<?php echo $strNiveau; ?>";
+                        <label class="date__minute--label">:</label>
+                        <select name="minute" id="minute" class="date__minute">
+                            <option value="-1">Minute</option>
+                            <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
+                                <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </fieldset>
 
-    $('body').addClass('js');
-    /**
-     * Initialiser les modules JavaScript ici: menu, accordéon...
-     */
-    $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+                <div class="conteneurBoutons">
+                    <button class="btnModifier" name="btnAjouter" value="ajouter">Ajouter l'item</button>
+                    <a href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" class="btnAnnuler" id="btnAnnuler">Annuler</a>
+                </div>
+            </form>
+        </div>
+    </main>
 
-    $(document).ready(menu.initialiser.bind(menu));
-</script>
+    <?php include($strNiveau . "inc/fragments/footer.inc.php"); ?>
 
+    <?php include($strNiveau . "inc/scripts/footerLinks.inc.php"); ?>
+
+    <script src="js/menu.js"></script>
+    <script src="js/validationsMandatB.js"></script>
+    <script>
+        var niveau = "<?php echo $strNiveau; ?>";
+
+        $('body').addClass('js');
+        $(document).ready(validationsMandatB.initialiser.bind(validationsMandatB));
+        $(document).ready(menu.initialiser.bind(menu));
+
+    </script>
 </body>
 </html>
