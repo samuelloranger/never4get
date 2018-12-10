@@ -23,6 +23,7 @@
 
     .fi:before{
         display: inline-block;
+        font-size: 25px;
         font-family: "Flaticon";
         font-style: normal;
         font-weight: normal;
@@ -36,7 +37,7 @@
         font-smoothing: antialiased;
     }
 
-    .flaticon-user:before { content: "\f100"; }
+    .flaticon-user:before { content: "\f100"; font-size: 40px; }
     .flaticon-calendar:before { content: "\f101"; }
     .flaticon-error:before { content: "\f102"; color: red; }
     .flaticon-success:before { content: "\f103"; color: green; } 
@@ -58,9 +59,9 @@
     .flaticon-edit:before { content: "\f113"; }
     .flaticon-alarm:before { content: "\f114"; }
     .flaticon-alarm-1:before { content: "\f115"; color: $jauneAccent;}
-    .flaticon-eye:before { content: "\f116"; }
-    
-      $font-Flaticon-user: "\f100";
+    .flaticon-eye:before { content: "\f116";}
+
+    $font-Flaticon-user: "\f100";
       $font-Flaticon-calendar: "\f101";
       $font-Flaticon-error: "\f102";
       $font-Flaticon-success: "\f103";
