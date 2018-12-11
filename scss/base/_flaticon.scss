@@ -44,10 +44,11 @@
     .flaticon-success:before { content: "\f103"; color: green; } 
     .flaticon-users:before { content: "\f104";}
     .flaticon-add:before { content: "\f105"; }
+    .flaticon-addAfter:after { content: "\f105"; }
     .flaticon-home:before { content: "\f106"; }
     .flaticon-share:before { content: "\f107"; }
     .flaticon-placeholder:before { content: "\f108"; }
-    .flaticon-cross:before { content: "\f109"; }
+    .flaticon-cross:before { content: "\f109"; color: red}
     .flaticon-login:before { content: "\f10a"; }
     .flaticon-list:before { content: "\f10b"; }
     .flaticon-gear:before { content: "\f10c"; }
