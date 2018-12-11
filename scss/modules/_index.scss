@@ -1,74 +1,143 @@
 /**
  * @author Gabriel Chouinard Létourneau
- * @todo Compléter selon l'énoncé
 */
-.echeancesBandeau{ 
-    display: flex;
-    flex-direction: row-reverse;
+.index{
+    .header{ 
+        // height: auto;
+        &__logo{
+        }
+    }
+    .contenuTable{
+        display: flex; 
+        margin: 0;  
+        width: span(2 of 4);
+
+
+        &__profilLibelle{
+            display: none;
+            @media (min-width: $bureau) {
+                display: inline-block;
+            }
+        }
+        &__recherche{
+            input{
+                width: 40px;
+                height: 40px;
+                @media (min-width: $bureau) {
+                    width: 100%;  
+                    height: 32px;
+                }
+            }
+        }
+    } 
+}
+.echeancesBandeau{
+    display: flex; 
+    flex-flow: row-reverse wrap;
+    font-family: $fontSemiBold; 
     background-color: $gris; 
-    color: #fff;  
+    color: #fff;   
     padding: 15px span(1 of 12) - gutter(12);
+    @media (min-width: $bureau) {
+        flex-wrap: nowrap;          
+    }
     &__notifs{
-        width: span(3 of 10);
         margin: auto 0;
+        @media (min-width: $bureau) {
+            width: span(3 of 10);            
+        }
         &Icon{
             font-size: 28px; 
             margin: auto 5px;
         } 
         &Texte{ 
             display: flex;
-        }
+        } 
     }
     &__dates{ 
-        width: span(9 of 12);
+        margin: auto;
+        @media (min-width: $bureau) {
+            width: span(9 of 12);            
+        }
+        &Couleurs{
+            display: inline-block;
+            width: 20px; 
+            height: 20px; 
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+        &Temps{ 
+            font-family: $fontRegular;
+            display: block; 
+        }
     } 
 }
 .allLists{  
     &__intro{
         display: flex;
+        flex-flow: column-reverse wrap;
         justify-content: space-between;
         width: span(9 of 12);
         margin-left: span(2 of 12)+gutter(12);
-        &Titre{ 
-        width: span(2 of 9);
-        margin-right: span(4 of 9)+gutter(9);
+        @media (min-width: $bureau) {
+            flex-flow: row nowrap;
         }
-        .btnOperation{
-            width: span(3 of 9); 
-            margin: auto 0;
-            margin-left: gutter(9);  
-            float: right;   
+        &Titre{
+            text-align: center;
+            width: auto;
+            margin: 20px auto;
+            @media (min-width: $bureau) {
+                width: span(2 of 9); 
+                margin-right: span(4 of 9)+gutter(9);
+            }
+        }
+        .btnOperation{ 
+            font-family: $fontBold;
+            width: auto;
+            padding: 20px 15px;
+            margin: 40px 0 0;
+            @media (min-width: $bureau) {
+                width: span(3 of 9);                 
+                margin-left: gutter(9);   
+                float: right;   
+            }
         } 
-    }
+    } 
     &__itemList{ 
         position: relative;
         width: 275px;
         border: 2px solid $gris;
         margin-bottom: 5%;
-        a{
-            display: block; 
-        } 
         header{
-            height: 30px;
-            p{ 
-                margin: 0;
-            }
-        } 
-        &Nom{
+            height: 30px; 
+        }  
+        &Nb{
+            position: absolute;
+            right: 0;
+            width: 95px;
+            text-align: center;
+            background-color: $gris;
+            color: #fff; 
             margin: 0;
+        }
+        &Nom{
             margin: 5px 0 20px;
+
         }
         &Content{
             min-height: 175px;
             margin-left: 15px;
             a{ 
-                margin: 25px 0;
+                display: block; 
             }
-            &--ecard{
+        }
+        &Link{ 
+            margin: 15px 0;
+            &--ecard{ 
                 position: absolute;
                 right: 20px; 
-                bottom: -25px;
-            }
+                bottom: 0;
+            } 
         }  
     }
     &__containerFlex{ 
