@@ -221,14 +221,14 @@
 </noscript>
 <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
 
-    <main class="flexEditerItem conteneur">
+    <main class="flexgererItem conteneur">
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
 
-        <div class="editerItem contenu">
-            <h1 class="editerItem__titre">Ajouter un item</h1>
+        <div class="gererItem contenu">
+            <h1 class="gererItem__titre">Ajouter un item</h1>
 
-            <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
+            <h2 class="gererItem__liste">Liste: <span><?php echo $arrInfosListe["nom_liste"]?></span></h2>
 
             <form class="formulaire" id="formDemoValidation" action="ajouter-item.php">
                 <input type="hidden" name="id_liste" value="<?php echo $arrInfosListe["id_liste"]; ?>">

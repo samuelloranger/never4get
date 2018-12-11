@@ -24,6 +24,7 @@
     .fi:before{
         display: inline-block;
         font-size: 25px;
+        padding-right: 5px;
         font-family: "Flaticon";
         font-style: normal;
         font-weight: normal;
@@ -37,11 +38,11 @@
         font-smoothing: antialiased;
     }
 
-    .flaticon-user:before { content: "\f100"; font-size: 40px; }
+    .flaticon-user:before { content: "\f100"; font-size: 40px;  vertical-align: bottom; }
     .flaticon-calendar:before { content: "\f101"; }
     .flaticon-error:before { content: "\f102"; color: red; }
     .flaticon-success:before { content: "\f103"; color: green; } 
-    .flaticon-users:before { content: "\f104"; }
+    .flaticon-users:before { content: "\f104";}
     .flaticon-add:before { content: "\f105"; }
     .flaticon-home:before { content: "\f106"; }
     .flaticon-share:before { content: "\f107"; }
@@ -59,28 +60,28 @@
     .flaticon-edit:before { content: "\f113"; }
     .flaticon-alarm:before { content: "\f114"; }
     .flaticon-alarm-1:before { content: "\f115"; color: $jauneAccent;}
-    .flaticon-eye:before { content: "\f116";}
+    .flaticon-eye:before { content: "\f116"; vertical-align: bottom; }
 
     $font-Flaticon-user: "\f100";
-      $font-Flaticon-calendar: "\f101";
-      $font-Flaticon-error: "\f102";
-      $font-Flaticon-success: "\f103";
-      $font-Flaticon-users: "\f104";
-      $font-Flaticon-add: "\f105";
-      $font-Flaticon-home: "\f106";
-      $font-Flaticon-share: "\f107";
-      $font-Flaticon-placeholder: "\f108";
-      $font-Flaticon-cross: "\f109";
-      $font-Flaticon-login: "\f10a";
-      $font-Flaticon-list: "\f10b";
-      $font-Flaticon-gear: "\f10c";
-      $font-Flaticon-folder: "\f10d";
-      $font-Flaticon-trash: "\f10e";
-      $font-Flaticon-more: "\f10f";
-      $font-Flaticon-minus: "\f110";
-      $font-Flaticon-menu: "\f111";
-      $font-Flaticon-magnifying-glass: "\f112";
-      $font-Flaticon-edit: "\f113";
-      $font-Flaticon-alarm: "\f114";
-      $font-Flaticon-alarm-1: "\f115";
-      $font-Flaticon-eye: "\f116";
+    $font-Flaticon-calendar: "\f101";
+    $font-Flaticon-error: "\f102";
+    $font-Flaticon-success: "\f103";
+    $font-Flaticon-users: "\f104";
+    $font-Flaticon-add: "\f105";
+    $font-Flaticon-home: "\f106";
+    $font-Flaticon-share: "\f107";
+    $font-Flaticon-placeholder: "\f108";
+    $font-Flaticon-cross: "\f109";
+    $font-Flaticon-login: "\f10a";
+    $font-Flaticon-list: "\f10b";
+    $font-Flaticon-gear: "\f10c";
+    $font-Flaticon-folder: "\f10d";
+    $font-Flaticon-trash: "\f10e";
+    $font-Flaticon-more: "\f10f";
+    $font-Flaticon-minus: "\f110";
+    $font-Flaticon-menu: "\f111";
+    $font-Flaticon-magnifying-glass: "\f112";
+    $font-Flaticon-edit: "\f113";
+    $font-Flaticon-alarm: "\f114";
+    $font-Flaticon-alarm-1: "\f115";
+    $font-Flaticon-eye: "\f116";
