@@ -1,0 +1,19 @@
+/**
+ * @author Gabriel Chouinard Létourneau
+*/
+.formListe{
+
+
+    &__couleurs{
+        border: none;
+        padding: 0;
+        &Liste{ 
+            list-style: none; 
+            padding: 0; 
+            &Item{
+                height: 150px; 
+                 margin: 20px span(1 of 4)/2;
+            }
+        } 
+    } 
+}

@@ -4,8 +4,10 @@
 $strNiveau = "./";
 //Initialisation de la variable du tableau de listes
 $arrListes=array();
-//Initialisation de la variable du tableay des échéances à venir
+//Initialisation de la variable du tableau des échéances à venir
 $arrEcheances=array();
+//Initialisation de la variable du tableau des mois en français
+$arrMois = array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
 //Initialisation de la variable de l'utilisateur (HARD CODER POUR PROTOTYPE)
 $strUtilisateur=1;
 //Initilisation de la variable contenant la rétroaction de l'accueil
@@ -57,12 +59,12 @@ if(isset($_GET['supprimerListe'])){
 //**************ÉCHÉANCES À VENIR**************/
 //Requête SQL
 $strRequeteEcheances=
-'SELECT nom_item, echeance, hexadecimale
+'SELECT nom_item, echeance, hexadecimale, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, HOUR(echeance) AS heure, MINUTE(echeance) AS minute
 FROM t_item
 INNER JOIN t_liste ON t_item.id_liste=t_liste.id_liste
 INNER JOIN t_couleur ON t_liste.id_couleur=t_couleur.id_couleur
 WHERE echeance IS NOT NULL 
-ORDER BY nom_item, echeance ASC
+ORDER BY echeance ASC
 LIMIT 3';
 
 //Éxécution de la requête
@@ -73,6 +75,11 @@ for($intCpt=0;$ligne=$pdosResultatEcheances->fetch();$intCpt++){
     $arrEcheances[$intCpt]['nom_item']=$ligne['nom_item'];
     $arrEcheances[$intCpt]['echeance']=$ligne['echeance'];
     $arrEcheances[$intCpt]['hexadecimale']=$ligne['hexadecimale'];
+    $arrEcheances[$intCpt]["jour"] = $ligne["jour"];
+    $arrEcheances[$intCpt]["mois"] = $ligne["mois"];
+    $arrEcheances[$intCpt]["annee"] = $ligne["annee"];
+    $arrEcheances[$intCpt]["heure"] = $ligne["heure"];
+    $arrEcheances[$intCpt]["minute"] = $ligne["minute"];
 }
 
 $pdosResultatEcheances->closeCursor();
@@ -134,7 +141,7 @@ $pdosResultatListes->closeCursor();
     <link rel="stylesheet" href="css/styles.css">
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
-<body>
+<body class="index">
     <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <main>
@@ -146,9 +153,23 @@ $pdosResultatListes->closeCursor();
             <div class="echeancesBandeau__dates">
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
-                    <p>
-                        <span style="display: inline-block;width:20px; height: 20px; background-color: #<?php echo $arrEcheances[$intCpt]['hexadecimale']; ?>;"></span>
-                        <?php echo $arrEcheances[$intCpt]['nom_item']; ?> / <?php echo $arrEcheances[$intCpt]['echeance']; ?>
+                    <p><span class="echeancesBandeau__datesCouleurs" style="background-color: #<?php echo $arrEcheances[$intCpt]['hexadecimale']; ?>"></span>
+                        <?php echo $arrEcheances[$intCpt]['nom_item']; ?> <span class="echeancesBandeau__datesTemps"><?php echo $arrEcheances[$intCpt]['jour']; ?> <?php echo $arrMois[$arrEcheances[$intCpt]['mois']-1]; ?> <?php echo $arrEcheances[$intCpt]['annee']; ?> à 
+                        
+                        <?php if($arrEcheances[$intCpt]['heure']<='9'){
+                            echo '0'.$arrEcheances[$intCpt]['heure']; ?>
+                        <?php }
+                        else{ 
+                            echo $arrEcheances[$intCpt]['heure'];
+                        } ?>
+                        :
+                        <?php if($arrEcheances[$intCpt]['minute']<='9'){
+                            echo '0'.$arrEcheances[$intCpt]['minute']; ?>
+                        <?php }
+                        else{
+                            $arrEcheances[$intCpt]['minute'];
+                        } ?>
+                        </span>
                     </p>
             <?php } ?> 
             </div>
@@ -184,7 +205,7 @@ $pdosResultatListes->closeCursor();
                             <input type="hidden" name="id_liste" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
                             <header style="background-color: #<?php echo $arrListes[$intCpt]['hexadecimale']; ?>">
                                 <p class="allLists__itemListNb">
-                                    <?php echo $arrListes[$intCpt]['nbItems']; ?>
+                                    <?php echo $arrListes[$intCpt]['nbItems']; ?> items
                                 </p>
                             </header> 
                             <div class="allLists__itemListContent">
@@ -194,11 +215,11 @@ $pdosResultatListes->closeCursor();
                                     </a>
                                 </h2>
 
-                                <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-more">Consulter</a>
+                                <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="allLists__itemListLink fi flaticon-eye">Consulter</a>
                                 
-                                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-edit">Éditer la liste</a>
+                                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-edit">Éditer</a>
 
-                                <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-trash allLists__itemListContent--ecard">Supprimer</a>
+                                <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-trash allLists__itemListLink--ecard">Supprimer</a>
                             </div>
                             <!--Modal Box utilisé pour la suppression des liste-->
                             <div id="modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="modalBox">

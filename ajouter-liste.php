@@ -168,12 +168,12 @@
     <!--http://webaim.org/techniques/skipnav/-->
     <a class="visuallyHidden focusable" href="#contenu">Allez au contenu</a>
 
-    <main class="conteneur">
+    <main class="formListe conteneur">
         <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
 
-        <h1>Ajouter une liste</h1>
+        <h1 clas="formListe__titre">Ajouter une liste</h1>
         <?php 
             if($strMessageErreur!=""){ ?>
                 <p class="erreur"><?php echo $strMessageErreur; ?></p>
@@ -184,18 +184,18 @@
         <form action="ajouter-liste.php" method="GET">
             <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
-            <div class="conteneurChamp">
+            <div class="formListe__nom conteneurChamp">
                 <label for="nomListe">Nom de la liste</label>
                 <input type="text" id="nomListe" value="" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
                 <span class="contenantRetro"></span>
             </div>
 
-            <fieldset class="conteneurChamp">
+            <fieldset class="formListe__couleurs conteneurChamp">
                 <legend>Changement de couleurs <span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
-                <ul>
+                <ul class="formListe__couleursListe">
                     <?php
                         for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
-                            <li>
+                            <li class="formListe__couleursListeItem" style="background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>">
                                 <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>">
                                     <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur">
                                     <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
@@ -215,11 +215,7 @@
 
 
     <?php include('inc/fragments/footer.inc.php'); ?>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-
-    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
+    <?php include('inc/scripts/footerLinks.inc.php'); ?>
 
     <script src="js/validationsMandatA.js"></script>
     <script src="js/menu.js"></script>
