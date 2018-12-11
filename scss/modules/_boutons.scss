@@ -71,6 +71,20 @@
   }
 }
 
+.btnAnnuler{
+  display: flex;
+  position: relative;
+  color: white;
+  font-size: 16px;
+  width: 166px;
+  height: 38px;
+  background-color: $gris;
+  border-radius: 5px;
+  border: 0px;
+  justify-content: center;
+  padding-top: 8px;
+}
+
 //Définit les règles des span qui font les trois lignes du menu hamburger
 .btnMenu span{
   display: block;
