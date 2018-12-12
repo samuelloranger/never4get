@@ -82,3 +82,9 @@
     font-size: calculateRem($size);
 }
 //Pour utiliser la fonction : @include fontSize(15px);
+
+
+//Ombre portée
+@mixin ombrePortee{
+    box-shadow: 0px 0px 1rem black;
+}

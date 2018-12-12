@@ -40,13 +40,13 @@
     }
 
     a{
-      margin: 0 auto;
-      width: 55%;
       height: 100%;
+      padding: 3%;
 
       @media(min-width: $bureau){
-        width: 28%;
+        width: 32%;
         margin: 0;
+        padding: 1.5%;
       }
     }
   }

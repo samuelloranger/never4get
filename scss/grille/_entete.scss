@@ -85,7 +85,8 @@
   color: white;
   height: 45px;
   padding-top: 3px;
-@include clearfix();
+  @include clearfix();
+  @include ombrePortee();
   @media (min-width: $bureau) {
     height: 150px;
     .conteneur{

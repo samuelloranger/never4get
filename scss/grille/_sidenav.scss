@@ -5,6 +5,7 @@
 .sidenav{
   background-color: #575757;
   width: span(3 of 12);
+  @include ombrePortee();
   @include clearfix;
 
   @media(max-width: $bureau){
