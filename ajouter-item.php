@@ -94,11 +94,13 @@
          */
         $arrInfosItem["id_liste"] = $_GET["id_liste"];
         $arrInfosItem["nom_item"] = $_GET["nom_item"];
-        $arrInfosItem["jour"] =  $_GET["jour"];
-        $arrInfosItem["mois"] =  $_GET["mois"];
-        $arrInfosItem["annee"] =  $_GET["annee"];
-        $arrInfosItem["heure"] =  $_GET["heure"];
-        $arrInfosItem["minute"] =  $_GET["minute"];
+        $arrInfosItem["date"] =  $_GET["date"];
+        $arrInfosItem["time"] =  $_GET["time"];
+        $arrInfosItem["annee"] = substr($arrInfosItem["date"], 0, 4);
+        $arrInfosItem["mois"] = substr($arrInfosItem["date"], 5, 2);
+        $arrInfosItem["jour"] = substr($arrInfosItem["date"], 8, 2);
+        $arrInfosItem["heure"] = substr($arrInfosItem["time"], 0, 2);
+        $arrInfosItem["minute"] = substr($arrInfosItem["time"], 3, 2);
 
         //Si la date est pas rentrée correctement
         if($arrInfosItem["annee"] != 0 AND $arrInfosItem["mois"] != 0 AND $arrInfosItem["jour"] != 0){
@@ -241,52 +243,20 @@
 
                 <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
                 <p class="erreur"><?php echo $arrMessagesErreurs["echeance"]?></p>
+
                 <fieldset class="formulaire__conteneurDate">
-
                     <div class="date__conteneurSelectDate">
-                        <label for="jour" class="screen-reader-only">Jour</label>
-                        <select name="jour" id="jour" class="date__jour">
-                            <option value="0">Jour</option>
-                            <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
-                                <option value="<?php echo $intCtr; ?>"><?php echo $intCtr; ?></option>
-                            <?php } ?>
-                        </select>
-                        <label for="mois" class="screen-reader-only">Mois</label>
-                        <select name="mois" id="mois" class="date__mois">
-                            <option value="0">Mois</option>
-                            <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
-                                <option value="<?php echo $intCtr;?>"><?php echo $arrMois[$intCtr-1];?></option>
-                            <?php }?>
-                        </select>
-                        <label for="annee" class="screen-reader-only">Année</label>
-                        <select name="annee" id="annee" class="date__annee">
-                            <option value="0">Année</option>
-                            <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
-                                <option value="<?php echo $intCtr?>"><?php echo $intCtr?></option>
-                            <?php } ?>
-                        </select>
+                        <label class="visuallyHidden">Date:</label>
+                        <input type="date" name="date" id="date" class="date__date" value="<?php echo $arrInfosItem["date"];?>">
 
-                        <label class="date__heure--label">à</label>
-                        <select name="heure" id="heure" class="date__heure">
-                            <option value="-1">Heure</option>
-                            <?php for($intCtr = 0; $intCtr <= 24; $intCtr++){?>
-                                <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                            <?php } ?>
-                        </select>
-
-                        <label class="date__minute--label">:</label>
-                        <select name="minute" id="minute" class="date__minute">
-                            <option value="-1">Minute</option>
-                            <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
-                                <option value="<?php echo $intCtr?>"><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                            <?php } ?>
-                        </select>
+                        <label class="visuallyHidden">Heure:</label>
+                        <input type="time" name="time" id="heure" class="date__heure" value="<?php echo $arrInfosItem["heure"];?>">
                     </div>
                 </fieldset>
 
                 <div class="conteneurBoutons">
-                    <button class="btnModifier" name="btnAjouter" value="ajouter">Ajouter l'item</button>
-                    <a href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" class="btnAnnuler" id="btnAnnuler">Annuler</a>
+                    <button class="btnModifier" name="btn btnOperation" value="ajouter">Ajouter l'item</button>
+                    <a href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" class="btn btnAnnuler" id="btnAnnuler">Annuler</a>
                 </div>
             </form>
         </div>

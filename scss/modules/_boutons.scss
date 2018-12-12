@@ -46,19 +46,16 @@
 }
 
 .btn{
-  border: 0;
   color: black;
   border-radius: 4px;
   display: block;
   width: 85%;
-  margin-bottom: 5px;
   text-align: center;
   padding: 5px;
   cursor: pointer;
   border: white 2px solid;
-  margin: 0 auto;
-  transition-duration: 0.4s;
-  //à retirer
+  margin: 5px auto;
+  transition-duration: 0.25s;
   @include fontSize(16px);
 
   &:hover{
@@ -74,19 +71,15 @@
 }
 
 .btnAnnuler{
-  display: flex;
-  position: relative;
   color: white;
-  width: 166px;
-  height: 38px;
+  border-radius: 4px;
   background-color: $gris;
-  justify-content: center;
-  padding-top: 8px;
+  border: white 2px solid;
+  margin: 5px auto;
 }
 
 //Définit les règles des span qui font les trois lignes du menu hamburger
 .btnMenu span{
-  display: block;
   position: absolute;
   height: 5px;
   width: 40px;
