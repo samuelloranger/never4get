@@ -5,6 +5,7 @@
 .sidenav{
   background-color: #575757;
   width: span(3 of 12);
+  margin-top: 25px;
   @include ombrePortee();
   @include clearfix;
 
