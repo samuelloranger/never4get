@@ -104,7 +104,7 @@
         //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
         //****************************************************************
         //Vérifications du contenu du contenu du nom de la liste
-        if(!preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste'])){
+        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste'])){
             //Si nom du participant est invalide
             $strCodeErreur="-1";
         }
@@ -167,50 +167,48 @@
     <?php include('inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <a class="visuallyHidden focusable" href="#contenu">Allez au contenu</a>
-
+    <noscript>
+        <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+    </noscript>
     <main class="formListe conteneur">
-            <noscript>
-                <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
-            </noscript>
+        <?php include("inc/fragments/sideNav.inc.php"); ?>
+        <div class="formListe__content">
+            <h1 clas="formListe__titre">Ajouter une liste</h1>
+            <?php 
+                if($strMessageErreur!=""){ ?>
+                    <p class="erreur"><?php echo $strMessageErreur; ?></p>
+            <?php } ?>
+            <form action="ajouter-liste.php" method="GET">
+                <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
-            <?php include("inc/fragments/sideNav.inc.php"); ?>
-            <div class="formListe__content">
-                <h1 clas="formListe__titre">Ajouter une liste</h1>
-                <?php 
-                    if($strMessageErreur!=""){ ?>
-                        <p class="erreur"><?php echo $strMessageErreur; ?></p>
-                <?php } ?>
-                <form action="ajouter-liste.php" method="GET">
-                    <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
+                <div class="formListe__nom conteneurChamp">
+                    <label for="nomListe"><h2>Nom de la liste</h2></label>
+                    <input type="text" id="nomListe" value="" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
+                    <span class="contenantRetro"></span>
+                </div>
 
-                    <div class="formListe__nom conteneurChamp">
-                        <label for="nomListe"><h2>Nom de la liste</h2></label>
-                        <input type="text" id="nomListe" value="" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
-                        <span class="contenantRetro"></span>
-                    </div>
+                <fieldset class="formListe__couleurs conteneurChamp">
+                    <legend><h2>Choix de couleurs</h2><span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
+                    <ul class="formListe__couleursListe">
+                        <?php
+                            for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
+                                <li class="formListe__couleursListeItem">
+                                    <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" style="background-image: url(images/couleurs/<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>.png)">
+                                        <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur" class="formListe__couleursListeItemInput">
+                                        <span class="formListe__couleursListeItemInputCheck"></span>
+                                        <span class="formListe__couleursListeItemLibelle">
+                                            <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
+                                        </span>
+                                    </label>
+                                </li>
+                        <?php } ?>    
+                    </ul>
+                </fieldset>
 
-                    <fieldset class="formListe__couleurs conteneurChamp">
-                        <legend><h2>Choix de couleurs</h2><span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
-                        <ul class="formListe__couleursListe">
-                            <?php
-                                for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
-                                    <li class="formListe__couleursListeItem">
-                                        <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" style="background-image: url(images/couleurs/<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>.png)">
-                                            <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur" class="formListe__couleursListeItemInput">
-                                            <span class="formListe__couleursListeItemInputCheck"></span>
-                                            <span class="formListe__couleursListeItemLibelle">
-                                                <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
-                                            </span>
-                                        </label>
-                                    </li>
-                            <?php } ?>    
-                        </ul>
-                    </fieldset>
-
-                    <button type="submit" value="Add" name="codeOperation" class="btn btnOperation">Ajouter</button>    
-                    <a href="index.php" class="btn btnAnnuler">Annuler</a>
-                </form>
-            </div>
+                <button type="submit" value="Add" name="codeOperation" class="btn btnOperation">Ajouter</button>    
+                <a href="index.php" class="btn btnAnnuler">Annuler</a>
+            </form>
+        </div>
     </main>
 
     <?php include('inc/fragments/footer.inc.php'); ?>

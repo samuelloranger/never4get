@@ -13,14 +13,26 @@
     }
     &__notifs{
         margin: auto 0;
-        input:checked+span{
-            &:before{
-                content: "\f115"; 
-                color: $jauneAccent;
-            } 
-        }
         @media (min-width: $bureau) {
             width: span(3 of 10);
+        }
+        &Texte{
+            position: relative;
+            cursor: pointer; 
+            transition: .2s all ease-in-out;
+            input:checked+span{
+                &:before{
+                    content: "\f115"; 
+                    color: $jauneAccent;
+                } 
+            } 
+            &:hover{
+                color: $jauneAccent; 
+                &:after{
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
         }
         &Icon{
             @include fontSize(28px);

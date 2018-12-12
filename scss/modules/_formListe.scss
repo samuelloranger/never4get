@@ -48,16 +48,15 @@
             list-style: none;   
             padding: 0;  
             @media (min-width: $bureau) {
-                width: span(5 of 8); 
-                margin: 1.5rem span(1 of 5)- gutter(5);
-            } 
+                width: span(7 of 8);
+            }  
             &Item{
                 width: span(4 of 4);
                 height: 10rem; 
                 margin: 1rem 0;
                 border: 2px $gris solid;
                 @media (min-width: $bureau) {
-                    width: span(2 of 5);
+                    width: span(3 of 7); 
                 }  
                 &>label{  
                     position: relative;

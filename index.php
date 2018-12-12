@@ -144,11 +144,12 @@ $pdosResultatListes->closeCursor();
 <body class="index">
     <?php include($strNiveau.'inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
+
+    <noscript>
+        <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+    </noscript>
     <main>
         <a href="#contenu" class="visuallyHidden focusable">Allez au contenu</a>
-        <noscript>
-            <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
-        </noscript>
         <div class="echeancesBandeau conteneur">
             <div class="echeancesBandeau__dates">
             <?php 
@@ -210,7 +211,7 @@ $pdosResultatListes->closeCursor();
                             <div class="allLists__itemListContent">
                                 <div class="parent_relative">
                                     <h2 class="allLists__itemListNom">
-                                        <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                                        <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
                                             <?php echo $arrListes[$intCpt]['nom_liste']; ?>
                                         </a>
                                     </h2>

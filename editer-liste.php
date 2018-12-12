@@ -156,12 +156,10 @@
     <?php include('inc/fragments/header.inc.php'); ?>
     <!--http://webaim.org/techniques/skipnav/-->
     <a class="visuallyHidden focusable" href="#contenu">Allez au contenu</a>
-
+    <noscript>
+        <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+    </noscript>
     <main class="formListe conteneur">
-        <noscript>
-            <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
-        </noscript>
-
         <?php include("inc/fragments/sideNav.inc.php"); ?>
 
         <div class="formListe__content">
