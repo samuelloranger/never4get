@@ -72,7 +72,7 @@
 
 
     //******************** Affichage des infos de l'item ********************
-    $strRequeteInfosItem = "SELECT id_item, nom_item, DAY(echeance) AS jour, echeance, MONTH(echeance) AS mois , YEAR(echeance) AS annee,  HOUR(echeance) AS heure,  MINUTE(echeance) AS minute, t_item.id_liste, nom_liste
+    $strRequeteInfosItem = "SELECT id_item, nom_item, echeance, t_item.id_liste, nom_liste
                                         FROM t_item
                                         INNER JOIN t_liste ON t_liste.id_liste = t_item.id_liste
                                         WHERE id_item = :id_item";
@@ -89,12 +89,8 @@
     //Insére les valeurs dans le $arrInfosItem pour utilisation ultérieure
     $arrInfosItem = $pdosResultatInfosItem -> fetch();
 
-    //Si la date n'est pas entrée, on remet les valeurs de l'heure et des minutes à -1
-    if($arrInfosItem["echeance"] == null){
-        $arrInfosItem["heure"] = -1;
-        $arrInfosItem["minute"] = -1;
-    }
-
+    $arrInfosItem["date"] = substr($arrInfosItem["echeance"], 0, 10);
+    $arrInfosItem["heure"] = substr($arrInfosItem["echeance"], 11, 5);
 
     //******************** Ajouter/Modifier la date d'échéance ********************
     if ($strCodeOperation == "modifier") {
@@ -102,18 +98,20 @@
         $arrInfosItem["id_item"] = $_GET["id_item"];
         $arrInfosItem["id_liste"] = $_GET["id_liste"];
         $arrInfosItem["nom_item"] = $_GET["nom_item"];
-        $arrInfosItem["jour"] =  $_GET["jour"];
-        $arrInfosItem["mois"] =  $_GET["mois"];
-        $arrInfosItem["annee"] =  $_GET["annee"];
-        $arrInfosItem["heure"] =  $_GET["heure"];
-        $arrInfosItem["minute"] =  $_GET["minute"];
+        $arrInfosItem["date"] =  $_GET["date"];
+        $arrInfosItem["time"] =  $_GET["time"];
+        $arrInfosItem["annee"] = substr($arrInfosItem["date"], 0, 4);
+        $arrInfosItem["mois"] = substr($arrInfosItem["date"], 5, 2);
+        $arrInfosItem["jour"] = substr($arrInfosItem["date"], 8, 2);
+        $arrInfosItem["heure"] = substr($arrInfosItem["time"], 0, 2);
+        $arrInfosItem["minute"] = substr($arrInfosItem["time"], 3, 2);
 
         //Si la date est entrée correctement
         if($arrInfosItem["annee"] != 0 AND $arrInfosItem["mois"] != 0 AND $arrInfosItem["jour"] != 0){
                 //Vérifie si la date est correcte
                 if(checkdate($arrInfosItem["mois"], $arrInfosItem["jour"], $arrInfosItem["annee"]) == true){
                     //On entre la date saisie dans un format (Y-m-d H:m)
-                    $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"] . " " . $arrInfosItem["heure"] . ":" . $arrInfosItem["minute"];
+                    $dateSaisie = $arrInfosItem["annee"] . "-" . $arrInfosItem["mois"] . "-" . $arrInfosItem["jour"];
 
                     //On créer un objet date avec la date saisie
                     $newDateEcheance = new DateTime($dateSaisie);
@@ -146,7 +144,6 @@
                     else{
                         $strCodeErreur = "-1";
                         array_push($arrChampsErreurs, "echeance");
-                        var_dump("date trop petite");
                     }
                 }
                 //Si la date est entrée n'est pas valide
@@ -223,9 +220,7 @@
         if($strCodeOperation == "modifier"){
             //Redirection vers consulter-liste
             header("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&btnOperation=modifier");
-            //Pour tests seulement
-            //var_dump("Location:" . $strNiveau . "consulter-liste.php?id_liste=" . $arrInfosItem["id_liste"] ."&strCodeOperation=modifier");
-        }
+      }
     }
 
 ?>
@@ -244,14 +239,14 @@
     </noscript>
     <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
 
-    <main class="flexEditerItem conteneur">
+    <main class="flexgererItem conteneur">
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>
 
-        <div class="editerItem contenu">
-            <h1 class="editerItem__titre">Éditer un item</h1>
+        <div class="gererItem contenu">
+            <h1 class="gererItem__titre">Éditer un item</h1>
 
-            <h2 class="editerItem__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
+            <h2 class="gererItem__liste">Liste: <span><?php echo $arrInfosItem["nom_liste"]?></span></h2>
 
             <form class="formulaire" id="formDemoValidation" action="editer-item.php">
                 <input type="hidden" name="id_item" value="<?php echo $arrInfosItem["id_item"]; ?>">
@@ -265,52 +260,20 @@
 
                 <p class="formulaire__dateEcheanceTitre">Date d'échéance (facultatif)</p>
                 <p class="erreur"><?php echo $arrMessagesErreurs["echeance"]?></p>
+
                 <fieldset class="formulaire__conteneurDate">
-
                     <div class="date__conteneurSelectDate">
-                        <label for="jour" class="screen-reader-only">Jour</label>
-                        <select name="jour" id="jour" class="date__jour">
-                            <option value="0">Jour</option>
-                            <?php for($intCtr = 1; $intCtr <= 31; $intCtr++){?>
-                                <option value="<?php echo $intCtr; ?>" <?php if($arrInfosItem["jour"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr; ?></option>
-                            <?php } ?>
-                        </select>
-                        <label for="mois" class="screen-reader-only">Mois</label>
-                        <select name="mois" id="mois" class="date__mois">
-                            <option value="0">Mois</option>
-                            <?php for($intCtr = 1; $intCtr < count($arrMois)+1; $intCtr++){?>
-                                <option value="<?php echo $intCtr;?>" <?php if($arrInfosItem["mois"] == $intCtr){ echo "selected='selected'";}?>><?php echo $arrMois[$intCtr-1];?></option>
-                            <?php }?>
-                        </select>
-                        <label for="annee" class="screen-reader-only">Année</label>
-                        <select name="annee" id="annee" class="date__annee">
-                            <option value="0">Année</option>
-                            <?php for($intCtr = $anneeAjd; $intCtr <= $anneeAjd+5; $intCtr++){ ?>
-                                <option value="<?php echo $intCtr?>"  <?php if($arrInfosItem["annee"] == $intCtr){ echo "selected='selected'";}?>><?php echo $intCtr?></option>
-                            <?php } ?>
-                        </select>
+                        <label class="visuallyHidden">Date:</label>
+                        <input type="date" name="date" id="date" class="date__date" value="<?php echo $arrInfosItem["date"];?>">
 
-                        <label class="date__heure--label">à</label>
-                        <select name="heure" id="heure" class="date__heure">
-                            <option value="-1">Heure</option>
-                            <?php for($intCtr = 0; $intCtr <= 24; $intCtr++){?>
-                                <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["heure"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                            <?php } ?>
-                        </select>
-
-                        <label class="date__minute--label">:</label>
-                        <select name="minute" id="minute" class="date__minute">
-                            <option value="-1">Minute</option>
-                            <?php for($intCtr = 0; $intCtr <= 59; $intCtr++){?>
-                                <option value="<?php echo $intCtr?>" <?php if($arrInfosItem["minute"] == $intCtr){ echo "selected='selected'";}?>><?php if($intCtr <= 9){ echo "0" . $intCtr; } else { echo $intCtr; }?></option>
-                            <?php } ?>
-                        </select>
+                        <label class="visuallyHidden">Heure:</label>
+                        <input type="time" name="time" id="heure" class="date__heure" value="<?php echo $arrInfosItem["heure"];?>">
                     </div>
                 </fieldset>
 
                 <div class="conteneurBoutons">
-                    <button class="btnModifier" name="btnModifier" value="modifier">Modifier l'item</button>
-                    <a href="consulter-liste.php?id_liste=<?php echo $arrInfosItem["id_liste"]?>" class="btnAnnuler" id="btnAnnuler">Annuler</a>
+                    <button class="btn btnOperation" name="btnModifier" value="modifier">Modifier l'item</button>
+                    <a class="btn btnAnnuler" href="consulter-liste.php?id_liste=<?php echo $arrInfosItem["id_liste"]?>" id="btnAnnuler">Annuler</a>
                 </div>
             </form>
         </div>

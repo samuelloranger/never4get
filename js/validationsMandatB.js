@@ -45,7 +45,7 @@ var validationsMandatB = {
 
         //Masque le fieldset à l'ouverture du fichier
 
-        if($("#jour").val() == 0 && $("#mois").val() == 0 && $("#annee").val() == 0 && $("#heure").val() == -1 && $("#minute").val() == -1) {
+        if($("#date").val() == "" && $("#heure").val() == "") {
             console.log("pas de date entrée");
             $(".formulaire__dateEcheanceTitre").append('' +
                 '<div class="cacherDateEcheance" id="btnCacherDateEchance"> ' +
@@ -69,11 +69,8 @@ var validationsMandatB = {
     },
 
     cacherAfficherDateEcheance : function(){
-        $("#jour").val(0);
-        $("#mois").val(0);
-        $("#annee").val(0);
-        $("#heure").val(-1);
-        $("#minute").val(-1);
+        $("#date").val(0);
+        $("#heure").val(0);
 
         $(".formulaire__conteneurDate").toggleClass("formulaire__conteneurDate--cacher");
         $(".date__conteneurSelectDate").toggleClass("date__conteneurSelectDate--cacher");

@@ -185,7 +185,7 @@
         <div class="consulterListe contenu">
             <div class="consulterListe__titreBtn">
                 <h1><?php echo $arrInfosListe["nom_liste"];?></h1>
-                <a class="btnOperation fi flaticon-add" href="ajouter-item.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>"> Ajouter un item</a>
+                <a class="btn btnOperation fi flaticon-add" href="ajouter-item.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>"> Ajouter un item</a>
             </div>
 
             <?php if($strCodeOperation == "updateItem"){ ?>
@@ -218,9 +218,9 @@
                         <input type="hidden" name="id__item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
                         <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
 
-                        <button class="btnOperation <?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "fi flaticon-success" :  "fi flaticon-cross"; ?>" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
-                        <button class="btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
-                        <a  class="btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
+                        <button class="btn btnOperation <?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "fi flaticon-success" :  "fi flaticon-cross"; ?>" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
+                        <button class="btn btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
+                        <a  class="btn btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
                     </form>
                 </div>
                 <?php } ?>

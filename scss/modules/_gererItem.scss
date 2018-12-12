@@ -61,6 +61,12 @@
 }
 
 .date{
+  font-size: 14px;
+  border-radius:4px;
+  height: 4.2em;
+  border: 1px solid black;
+  border-radius: 0;
+
   &__conteneurSelectDate{
     display: flex;
     justify-content: space-between;
@@ -74,53 +80,19 @@
     }
   }
 
-  label{
-    padding-top: 15px;
-    vertical-align: center;
-  }
-
-  font-size: 14px;
-  border-radius:4px;
-  height: 42px;
-  border: 1px solid black;
-  border-radius: 0;
-
-  &__jour{
-    width: 50px;
-    height: 4.2em;
+  &__date{
+    height: 42px;
     background: white;
-  }
-
-  &__mois{
-    width: 80px;
-    height: 4.2em;
-    background: white;
-  }
-
-  &__annee{
-    width: 58px;
-    height: 4.2em;
-    background: white;
+    font-size: 16px;
+    font-family: $fontRegular;
   }
 
   &__heure{
-    width: 54px;
-    height: 4.2em;
-    background: white;
-
-    &--label{
-      padding-top: 12px;
-    }
-  }
-
-  &__minute{
-    width: 62px;
     height: 42px;
+    width: 82px;
     background: white;
-
-    &--label{
-      padding-top: 10px;
-    }
+    @include fontSize(14px);
+    font-family: $fontRegular;
   }
 }
 
@@ -129,6 +101,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  width: 50%;
   margin-top: 5%;
 
   .btnModifier{
@@ -140,39 +114,29 @@
     border: 0px;
     margin-bottom: 5%;
   }
+}
 
-  .btnAnnuler{
-    display: flex;
-    position: relative;
-    color: white;
-    font-size: 16px;
-    width: 166px;
-    height: 38px;
-    background-color: $gris;
-    border-radius: 5px;
-    border: 0px;
-    justify-content: center;
-    padding-top: 8px;
-  }
+footer{
+  position: absolute;
 }
 
 //********** Animations **********
 @-webkit-keyframes animation-cacherDate {
-  from{ opacity: 1;  height: 60px}
-  to{ opacity: 0; height: 0px; display: none;}
+  from{ opacity: 1;  height: 42px; }
+  to{ opacity: 0; height: 0px; display: none; }
 }
 
 @keyframes animation-cacherDate {
-  from{ opacity: 1;  height: 60px}
+  from{ opacity: 1;  height: 42px; }
   to{ opacity: 0; height: 0px; }
 }
 
 @-webkit-keyframes animation-afficherDate {
-  from{ opacity: 0;  height: 0px}
-  to{ opacity: 1; height: 60px;}
+  from{ opacity: 0;  height: 0px; }
+  to{ opacity: 1; height: 42px; }
 }
 
 @keyframes animation-afficherDate {
-  from{ opacity: 0;  height: 0px}
-  to{ opacity: 1; height: 60px;}
+  from{ opacity: 0;  height: 0px; }
+  to{ opacity: 1; height: 42px; }
 }
