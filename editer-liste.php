@@ -29,7 +29,6 @@
     if(isset($_GET['codeOperation'])){
         $strCodeOperation=$_GET['codeOperation'];
     }
-    var_dump($strCodeOperation);
 
     //Inclusion de la config liant aux BD
     include ($strNiveau.'inc/scripts/config.inc.php');
@@ -158,58 +157,57 @@
     <!--http://webaim.org/techniques/skipnav/-->
     <a class="visuallyHidden focusable" href="#contenu">Allez au contenu</a>
 
-    <main class="conteneur">
+    <main class="formListe conteneur">
         <noscript>
             <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
         </noscript>
 
-        <h1>Éditer <?php echo $arrListe['nom_liste']; ?></h1>
-        <?php 
-            if($strMessageErreur!=""){ ?>
-                <p class="erreur"><?php echo $strMessageErreur; ?></p>
-        <?php } ?>
-
         <?php include("inc/fragments/sideNav.inc.php"); ?>
 
-        <form action="editer-liste.php" method="GET">
-            <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
+        <div class="formListe__content">
+            <h1 class="formListe__titre">Éditer <?php echo $arrListe['nom_liste']; ?></h1>
+            <?php 
+                if($strMessageErreur!=""){ ?>
+                    <p class="erreur"><?php echo $strMessageErreur; ?></p>
+            <?php } ?>
 
-            <div class="conteneurChamp">
-                <label for="nomListe">Nom de la liste</label>
-                <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
-                <span class="contenantRetro"></span>
-            </div>
+            <form action="editer-liste.php" method="GET">
+                <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
-            <fieldset class="conteneurChamp">
-                <legend>Changement de couleurs <span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
-                <ul>
-                    <?php
-                        for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
-                            <li>
-                                <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>">
-                                    <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?> id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur">
-                                    <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
-                                    <span style="display: inline-block;width:20px; height: 10px; background-color: #<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>;"></span>
-                                </label>
-                            </li>
-                    <?php } ?>    
-                </ul>
-            </fieldset>
+                <div class="formListe__nom conteneurChamp">
+                    <label for="nomListe"><h2>Nom de la liste</h2></label>
+                    <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
+                    <span class="contenantRetro"></span>
+                </div>
 
-            <button type="submit" value="Edit" name="codeOperation">Modifier</button>
-            <a href="index.php">Annuler</a>
-        </form>
+                <fieldset class="formListe__couleurs conteneurChamp">
+                    <legend><h2>Choix de couleurs</h2><span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
+                    <ul class="formListe__couleursListe">
+                        <?php
+                            for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
+                                <li class="formListe__couleursListeItem">
+                                    <label for="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" style="background-image: url(images/couleurs/<?php echo $arrCouleurs[$intCpt]['hexadecimale']; ?>.png)">
+                                        <input type="radio" value="<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" <?php if($arrCouleurs[$intCpt]['nom_couleur_fr']==$arrListe['nom_couleur_fr']){ ?> checked="checked" <?php } ?> id="couleur<?php echo $arrCouleurs[$intCpt]['id_couleur']; ?>" name="couleur" class="formListe__couleursListeItemInput">
+                                        <span class="formListe__couleursListeItemInputCheck"></span>
+                                        <span class="formListe__couleursListeItemLibelle">
+                                            <?php echo $arrCouleurs[$intCpt]['nom_couleur_fr']; ?>
+                                        </span>
+                                    </label>
+                                </li>
+                        <?php } ?>    
+                    </ul>
+                </fieldset>
+
+                <button type="submit" value="Edit" name="codeOperation" class="btn btnOperation">Modifier</button>
+                <a href="index.php" class="btn btnAnnuler">Annuler</a>
+            </form>
+        </div>
     </main>
 
     <?php include('inc/fragments/footer.inc.php'); ?>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-
-    <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js">\x3C/script>')</script>
+    <?php include('inc/scripts/footerLinks.inc.php'); ?>
 
     <script src="js/validationsMandatA.js"></script>
-    <script src="js/menu.js"></script>
 
     <script>
     var niveau = "<?php echo $strNiveau; ?>"    
@@ -217,12 +215,9 @@
     $('body').addClass('js');
     $(document).ready(function()
     {
-        /**
-         *Initialiser les modules JavaScript ici: menu, accordéon...
-         */
+        /**Appel de la fonction d'initialisation de la validation côté client */
         validationsMandatA.initialiser();
 
-        menu.initialiser();
     });
     </script>
 </body>

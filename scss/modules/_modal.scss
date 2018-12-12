@@ -1,3 +1,22 @@
+/**
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
+*/
+
+/* Décrire l'animation */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .modalBox {
     display: none;
     left: 0;
@@ -34,13 +53,13 @@
       padding: 0.5em;
     } 
     &__actions {
-      padding: 0.5em;
-      text-align: right;
+      display: flex;
+      flex-flow: column wrap;
     }
     /* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
     &:target { 
-      display: table;
-      position: fixed;
+      display: table; 
+      position: fixed; 
       z-index: 1;
     }
   }

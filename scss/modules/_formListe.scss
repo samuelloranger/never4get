@@ -1,19 +1,108 @@
 /**
- * @author Gabriel Chouinard Létourneau
+ * @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmail.com>
 */
 .formListe{
-
-
+    display: flex; 
+    &__content{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;  
+        width: span(4 of 4);
+        margin: auto gutter(4);
+        @media (min-width: $bureau) {
+            width: span(8 of 12); 
+            margin: 0;
+            margin-left: span(1 of 12) + gutter(12) + gutter(12);
+        }
+        .btn{  
+            width: span(2 of 4); 
+            margin: 1rem auto; 
+            padding: .8rem .5rem;
+            height: auto; 
+            @media (min-width: $bureau) {
+                width: span(4 of 8); 
+            }
+        }
+        input{ 
+            border: 2px $gris solid;
+            vertical-align: text-bottom;
+        }
+    } 
+    &__nom{
+        h2{
+            display: inline-block;
+        } 
+    }
     &__couleurs{
         border: none;
-        padding: 0;
+        padding: 0;  
+        margin: 0;
+        margin-top: 2.5rem;
+        h2{
+            display: inline-block;
+        } 
         &Liste{ 
-            list-style: none; 
-            padding: 0; 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: space-between; 
+            list-style: none;   
+            padding: 0;  
+            @media (min-width: $bureau) {
+                width: span(5 of 8); 
+                margin: 1.5rem span(1 of 5)- gutter(5);
+            } 
             &Item{
-                height: 150px; 
-                 margin: 20px span(1 of 4)/2;
+                width: span(4 of 4);
+                height: 10rem; 
+                margin: 1rem 0;
+                border: 2px $gris solid;
+                @media (min-width: $bureau) {
+                    width: span(2 of 5);
+                }  
+                &>label{  
+                    position: relative;
+                    display: block;
+                    height: 100%;
+                    cursor: pointer;  
+                }
+                &Libelle{
+                    position: absolute;
+                    padding: .25rem; 
+                    background-color: $gris;
+                    color: #fff; 
+                }
+                &Input{
+                    position: absolute; 
+                    opacity: 0;
+                    cursor: pointer; 
+                    &:checked + &Check{
+                        background-color: $jauneAccent;
+                        &:after{
+                            display: block; 
+                        }
+                    }  
+                    &Check{
+                        position: absolute;
+                        bottom: .7rem; 
+                        right: .7rem; 
+                        width: 2.5rem; 
+                        height: 2.5rem;  
+                        border-radius: 2rem;
+                        background-color: $gris;
+                        &:after{
+                            content: "";
+                            position: absolute;
+                            display: none; 
+                            top: .65rem; 
+                            left: .65rem;
+                            width: 1.2rem; 
+                            height: 1.2rem;
+                            border-radius: 2rem;
+                            background: $gris;
+                        }
+                    }
+                }
             }
         } 
     } 
-}
+} 

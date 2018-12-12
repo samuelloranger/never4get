@@ -175,19 +175,18 @@ $pdosResultatListes->closeCursor();
             </div>
             <div class="echeancesBandeau__notifs">
                 <label class="echeancesBandeau__notifsTexte">
+                    <input type="checkbox" class="visuallyHidden">
                     <span class="echeancesBandeau__notifsIcon fi flaticon-alarm">
-                        <input type="checkbox" class="visuallyHidden">
                     </span>
-                        Je désire recevoir notifications des échéances
+                        Recevoir les notifications des échéances
                 </label>
             </div> 
         </div>
         <div class="allLists conteneur">
             <div class="allLists__intro">
                 <h1 class="allLists__introTitre">Listes</h1>
-                <a href="ajouter-liste.php" class="btnOperation fi flaticon-add">Ajouter une liste</a>
+                <a href="ajouter-liste.php" class="btn btnOperation fi flaticon-addAfter">Ajouter une liste</a>
             </div>
-            <div class="allLists__containerFlex">
                 <!--Intégration du message de rétroaction-->
                 <?php
                     //Si le message a été changé
@@ -196,7 +195,7 @@ $pdosResultatListes->closeCursor();
                             <?php echo $strMessageRetro; ?>
                         </p>
                 <?php } ?>
-
+            <div class="allLists__containerFlex">
                 <!--Intégration des listes présentes dans l'array créé plus tôt-->
                 <?php 
                     for($intCpt=0;$intCpt<count($arrListes);$intCpt++){ ?>
@@ -209,17 +208,22 @@ $pdosResultatListes->closeCursor();
                                 </p>
                             </header> 
                             <div class="allLists__itemListContent">
-                                <h2 class="allLists__itemListNom">
-                                    <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
-                                        <?php echo $arrListes[$intCpt]['nom_liste']; ?>
-                                    </a>
-                                </h2>
-
-                                <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="allLists__itemListLink fi flaticon-eye">Consulter</a>
+                                <div class="parent_relative">
+                                    <h2 class="allLists__itemListNom">
+                                        <a href="editer-liste.php?idListe=<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                                            <?php echo $arrListes[$intCpt]['nom_liste']; ?>
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="parent_relative">
+                                    <a href="consulter-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="allLists__itemListLink fi flaticon-eye">Consulter</a>
+                                </div>
                                 
-                                <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-edit">Éditer</a>
+                                <div class="parent_relative">
+                                    <a href="editer-liste.php?id_liste=<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="allLists__itemListLink fi flaticon-edit">Éditer</a>
+                                </div>
 
-                                <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="fi flaticon-trash allLists__itemListLink--ecard">Supprimer</a>
+                                <a href="index.php#modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="allLists__itemListLink--ecard allLists__itemListLink fi flaticon-trash">Supprimer</a>
                             </div>
                             <!--Modal Box utilisé pour la suppression des liste-->
                             <div id="modalDelete<?php echo $arrListes[$intCpt]['id_liste']; ?>" class="modalBox">
@@ -227,14 +231,15 @@ $pdosResultatListes->closeCursor();
                                     <div class="modalBox__fenetre">
                                         <header class="modalBox__entete" style="background-color: #<?php echo $arrListes[$intCpt]['hexadecimale']; ?>">
                                         </header>
-                                        <a href="index.php#" class="btn btn--fermer">Fermer</a>
+                                        <a href="index.php#" class="modalBox__fermer">Fermer</a>
                                         <div class="modalBox__contenu">
                                             <p><strong>Voulez-vous vraiment supprimer la liste <?php echo $arrListes[$intCpt]['nom_liste']; ?> et tout ce qu'elle contient?</strong></p>
 
                                         </div>
                                         <footer class="modalBox__actions">
-                                            <a href="index.php#" class="btn">Annuler</a>&nbsp;&nbsp;&nbsp;
-                                            <button type="submit" name="supprimerListe" class="btn btn--danger" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer la liste </button>
+                                            <button type="submit" name="supprimerListe" class="btn btnOperation" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer la liste </button>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <a href="index.php#" class="btn btnAnnuler">Annuler</a>
                                         </footer>
                                     </div>
                                 </div>
