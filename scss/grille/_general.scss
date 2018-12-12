@@ -13,7 +13,7 @@
           'container-spread': 'narrow',
   );
   .conteneur {
-    background: susy-svg-grid($susy) no-repeat scroll;
+    //background: susy-svg-grid($susy) no-repeat scroll;
   }
 }
 @media(min-width:$bureau){
@@ -24,7 +24,7 @@
           'container-spread': 'narrow'
   );
   .conteneur {
-    background: susy-svg-grid($susy) no-repeat scroll;
+    //background: susy-svg-grid($susy) no-repeat scroll;
   }
 }
 
@@ -49,4 +49,22 @@ body{
 
 .parent_relative{
   position: relative;
-} 
+}
+
+noscript p{
+  margin: 0 auto;
+  text-align: center;
+  @include fontSize(14px);
+  color: white;
+  padding: 2% 2%;
+  font-weight: bold;
+  background-color: red;
+  width: 100%;
+  transition-duration: 0.25s;
+
+  @media(min-width:601px){
+    width: 75%;
+    @include fontSize(18px);
+  }
+
+}

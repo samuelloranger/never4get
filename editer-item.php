@@ -234,11 +234,10 @@
     <?php include($strNiveau . "inc/scripts/headlinks.php"); ?>
 </head>
 <body>
+    <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
     <noscript>
         <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
     </noscript>
-    <?php include($strNiveau . "inc/fragments/header.inc.php"); ?>
-
     <main class="flexgererItem conteneur">
 
         <?php include($strNiveau . "inc/fragments/sideNav.inc.php"); ?>

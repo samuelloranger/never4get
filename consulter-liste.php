@@ -178,6 +178,9 @@
 <body>
     <!--  HEADER  -->
     <?php include("inc/fragments/header.inc.php"); ?>
+    <noscript>
+        <p>Le JavaScript n'est pas activé dans votre navigateur. Nous vous recommandons de l'activer afin d'améliorer votre expérience utilisateur.</p>
+    </noscript>
     <div class="couleurListe" style="background-color: #<?php echo $arrInfosListe["hexadecimale"]; ?>"></div>
     <main class="flexConsulterListe conteneur" id="main">
 
