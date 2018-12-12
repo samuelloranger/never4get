@@ -1,6 +1,9 @@
     /*
     Flaticon icon font: Flaticon
     Creation date: 27/11/2018 20:48
+    
+    @author Samuel Loranger 
+    @author Gabriel Chouinard Létourneau <chouinardletourneaug@gmai.com>
     */
 
     @font-face {
@@ -29,7 +32,8 @@
         font-style: normal;
         font-weight: normal;
         font-variant: normal;
-        line-height: 1;
+        transition: .25s all ease-in-out;
+        line-height: 1; 
         text-decoration: inherit;
         text-rendering: optimizeLegibility;
         text-transform: none;
@@ -37,6 +41,25 @@
         -webkit-font-smoothing: antialiased;
         font-smoothing: antialiased;
     }
+
+    .fi:after{
+      display: inline-block;
+      font-size: 25px;
+      padding-left: 10px;
+      vertical-align: bottom;
+      font-family: "Flaticon";
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      transition: .25s all ease-in-out;
+      line-height: 1;  
+      text-decoration: inherit; 
+      text-rendering: optimizeLegibility;
+      text-transform: none;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased;
+  } 
 
     .flaticon-user:before { content: "\f100"; font-size: 40px;  vertical-align: bottom; }
     .flaticon-calendar:before { content: "\f101"; }
@@ -52,7 +75,7 @@
     .flaticon-login:before { content: "\f10a"; }
     .flaticon-list:before { content: "\f10b"; }
     .flaticon-gear:before { content: "\f10c"; }
-    .flaticon-folder:before { content: "\f10d"; }
+    .flaticon-folder:before { content: "\f10d"; } 
     .flaticon-trash:before { content: "\f10e"; }
     .flaticon-more:before { content: "\f10f"; }
     .flaticon-minus:before { content: "\f110"; }
