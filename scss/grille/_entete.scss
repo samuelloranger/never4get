@@ -100,8 +100,14 @@
   &__logo{
     width: span(1 of 4);
     display: block;
+
     @media(min-width: $bureau){
       width: span(5 of 12);
+      margin-top: 5%;
+    }
+
+    @media(min-width: 700px){
+      margin-top: 0%;
     }
 
     img{

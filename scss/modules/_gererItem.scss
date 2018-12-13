@@ -4,6 +4,7 @@
 .flexgererItem{
   display: flex;
   padding-top: 2%;
+  min-height: 600px;
 }
 
 .gererItem{
@@ -105,8 +106,6 @@
 
   }
 
-  &__date
-
   &__heure{
     border: 1px solid black;
     height: 42px;
@@ -137,7 +136,7 @@
   }
 }
 
-footer{
+.footer{
   @media(max-width: $bureau){
     position: absolute;
   }
