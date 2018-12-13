@@ -28,7 +28,7 @@
     }
 
     //Code d'opérations
-    if(isset($_GET["btnAjouter"])){
+    if(isset($_GET["btnOperation"])){
         $strCodeOperation = "ajouter";
     }
 
@@ -248,15 +248,15 @@
                 <fieldset class="formulaire__conteneurDate">
                     <div class="date__conteneurSelectDate">
                         <label class="visuallyHidden">Date:</label>
-                        <input type="date" name="date" id="date" class="date__date" value="<?php echo $arrInfosItem["date"];?>">
+                        <input type="date" name="date" id="date" class="date__date" value="">
 
                         <label class="visuallyHidden">Heure:</label>
-                        <input type="time" name="time" id="heure" class="date__heure" value="<?php echo $arrInfosItem["heure"];?>">
+                        <input type="time" name="time" id="heure" class="date__heure" value="">
                     </div>
                 </fieldset>
 
                 <div class="conteneurBoutons">
-                    <button class="btnModifier" name="btn btnOperation" value="ajouter">Ajouter l'item</button>
+                    <button class="btn btnOperation" name="btnOperation" value="ajouter">Ajouter l'item</button>
                     <a href="consulter-liste.php?id_liste=<?php echo $arrInfosListe["id_liste"]?>" class="btn btnAnnuler" id="btnAnnuler">Annuler</a>
                 </div>
             </form>
