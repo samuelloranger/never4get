@@ -160,30 +160,37 @@
       padding-bottom: 5px;
       @include fontSize(18px);
 
-      &--active{
+      &--active {
         border-left: 6px $jauneAccent solid;
         padding-left: 4px;
       }
 
-      &:nth-child(1) a, &:nth-child(2) a, &:nth-child(3) a{
+      &:nth-child(1) a, &:nth-child(2) a, &:nth-child(3) a {
         font-family: $fontBold;
 
-        &:before{
+        &:before {
           padding-right: 8px;
         }
       }
 
-      &:nth-child(1){
+      &:nth-child(1) {
         margin-top: 5px;
       }
 
-      &:nth-child(3){
+      &:nth-child(3) {
         padding-bottom: 10px;
         border-bottom: 1px solid white;
       }
 
-      &:last-child{
+      &:last-child {
         height: 10em;
+      }
+
+      a {
+        transition: .2s all ease-in-out;
+        &:hover, &:active {
+          border-bottom: 5px $jauneAccent solid;
+        }
       }
     }
   }

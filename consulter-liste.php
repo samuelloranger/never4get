@@ -222,7 +222,7 @@
                         <input type="hidden" name="id__item" value="<?php echo $arrItemsListe[$intCtr]["id_item"];?>"/>
                         <input type="hidden" name="est_complete" value="<?php echo $arrItemsListe[$intCtr]["est_complete"];?>"/>
 
-                        <button class="btn btnOperation <?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "fi flaticon-success" :  "fi flaticon-cross"; ?>" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
+                        <button class="btn btnOperation <?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "fi flaticon-success" :  "fi flaticon-crossRed"; ?>" name="btnOperation" value="complete"><?php echo $arrItemsListe[$intCtr]["est_complete"] == "0" ? "Complété" :  "À compléter"; ?></button>
                         <button class="btn btnOperation fi flaticon-trash" name="btnOperation" value="supprimer">Supprimer</button>
                         <a  class="btn btnOperation fi flaticon-edit" href="editer-item.php?id_item=<?php echo $arrItemsListe[$intCtr]["id_item"];?>">Éditer l'item</a>
                     </form>

@@ -62,6 +62,7 @@
   } 
 
     .flaticon-user:before { content: "\f100"; font-size: 40px;  vertical-align: bottom; }
+    .flaticon-userMobile:before { content: "\f100";}
     .flaticon-calendar:before { content: "\f101"; }
     .flaticon-error:before { content: "\f102"; color: red; }
     .flaticon-success:before { content: "\f103"; color: green; } 
@@ -71,7 +72,8 @@
     .flaticon-home:before { content: "\f106"; }
     .flaticon-share:before { content: "\f107"; }
     .flaticon-placeholder:before { content: "\f108"; }
-    .flaticon-cross:before { content: "\f109"; color: red}
+    .flaticon-cross:before { content: "\f109";}
+    .flaticon-crossRed:before { content: "\f109"; color: red}
     .flaticon-login:before { content: "\f10a"; }
     .flaticon-list:before { content: "\f10b"; }
     .flaticon-gear:before { content: "\f10c"; }
