@@ -41,7 +41,7 @@ var validationsMandatB = {
         $('#nom_item').on('blur', this.validerTache.bind(this));
 
         // sur la date d'échéance, on validera seulement au sortir du dernier select : l'année
-        $('#minute').on('blur', this.validerAnnee.bind(this));
+        // $('#date').on('blur', this.validerAnnee.bind(this));
 
         //Masque le fieldset à l'ouverture du fichier
 
@@ -111,10 +111,9 @@ var validationsMandatB = {
         this.effacerRetro($objCible);
 
         // L'échéance est facultative mais si l'utilisateur entre une date incomplète, il faut afficher une erreur. Donc on vérifie si l'un des select n'est pas null.
-        if ($objCible.val() !== 'null' || $('#mois').val() !== 'null' || $('#jour').val() !== 'null'){
-
+        if ($objCible.val() !== 'null' || $('#date').val() !== 'null'){
             // si oui on vérifie que TOUS les select de date sont complétés
-            if ($objCible.val() !== 'null' && $('#mois').val() !== 'null' && $('#jour').val() !== 'null'){
+            if ($objCible.val() !== 'null' && $('#date').val() !== 'null'){
                 // Ici, on pourrait ajouter d'autres validations comme de vérifier s'il s'agit d'une date valide : pas un 30 février par exemple!
                 this.ajouterEncouragement($objCible);
             }
@@ -185,7 +184,6 @@ var validationsMandatB = {
      * @param $objJQueryDOM
      */
     ajouterEncouragement : function ($objJQueryDOM){
-
         $legende = $objJQueryDOM.closest('.formulaire__conteneurChamp').find('label');
 
         if($legende.length){
