@@ -59,7 +59,7 @@ if(isset($_GET['supprimerListe'])){
 //**************ÉCHÉANCES À VENIR**************/
 //Requête SQL
 $strRequeteEcheances=
-'SELECT nom_item, echeance, hexadecimale, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, HOUR(echeance) AS heure, MINUTE(echeance) AS minute
+'SELECT id_item, nom_item, echeance, hexadecimale, DAY(echeance) AS jour, MONTH(echeance) AS mois, YEAR(echeance) AS annee, HOUR(echeance) AS heure, MINUTE(echeance) AS minute
 FROM t_item
 INNER JOIN t_liste ON t_item.id_liste=t_liste.id_liste
 INNER JOIN t_couleur ON t_liste.id_couleur=t_couleur.id_couleur
@@ -72,6 +72,7 @@ $pdosResultatEcheances=$pdoConnexion->query($strRequeteEcheances);
 
 //Formation du array contenant les données des échéances
 for($intCpt=0;$ligne=$pdosResultatEcheances->fetch();$intCpt++){
+    $arrEcheances[$intCpt]['id_item']=$ligne['id_item'];
     $arrEcheances[$intCpt]['nom_item']=$ligne['nom_item'];
     $arrEcheances[$intCpt]['echeance']=$ligne['echeance'];
     $arrEcheances[$intCpt]['hexadecimale']=$ligne['hexadecimale'];
@@ -155,7 +156,10 @@ $pdosResultatListes->closeCursor();
             <?php 
                 for($intCpt=0;$intCpt<count($arrEcheances);$intCpt++){ ?>
                     <p><span class="echeancesBandeau__datesCouleurs" style="background-color: #<?php echo $arrEcheances[$intCpt]['hexadecimale']; ?>"></span>
-                        <?php echo $arrEcheances[$intCpt]['nom_item']; ?> <span class="echeancesBandeau__datesTemps"><?php echo $arrEcheances[$intCpt]['jour']; ?> <?php echo $arrMois[$arrEcheances[$intCpt]['mois']-1]; ?> <?php echo $arrEcheances[$intCpt]['annee']; ?> à 
+                    <a href="editer-item.php?id_item=<?php echo $arrEcheances[$intCpt]['id_item']; ?>">
+                        <?php echo $arrEcheances[$intCpt]['nom_item']; ?>
+                    </a>
+                    <span class="echeancesBandeau__datesTemps"><?php echo $arrEcheances[$intCpt]['jour']; ?> <?php echo $arrMois[$arrEcheances[$intCpt]['mois']-1]; ?> <?php echo $arrEcheances[$intCpt]['annee']; ?> à 
                         
                         <?php if($arrEcheances[$intCpt]['heure']<='9'){
                             echo '0'.$arrEcheances[$intCpt]['heure']; ?>
@@ -235,12 +239,14 @@ $pdosResultatListes->closeCursor();
                                         <a href="index.php#" class="modalBox__fermer">Fermer</a>
                                         <div class="modalBox__contenu">
                                             <p><strong>Voulez-vous vraiment supprimer la liste <?php echo $arrListes[$intCpt]['nom_liste']; ?> et tout ce qu'elle contient?</strong></p>
-
                                         </div>
                                         <footer class="modalBox__actions">
-                                            <button type="submit" name="supprimerListe" class="btn btnOperation" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">Supprimer la liste </button>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <a href="index.php#" class="btn btnAnnuler">Annuler</a>
+                                            <button type="submit" name="supprimerListe" class="btn btnOperation" value="<?php echo $arrListes[$intCpt]['id_liste']; ?>">
+                                                Supprimer la liste 
+                                            </button>
+                                            <a href="index.php#" class="btn btnAnnuler">
+                                                Annuler
+                                            </a>
                                         </footer>
                                     </div>
                                 </div>
@@ -255,6 +261,5 @@ $pdosResultatListes->closeCursor();
     <?php include($strNiveau.'inc/fragments/footer.inc.php'); ?>
 
     <?php include($strNiveau.'inc/scripts/footerLinks.inc.php'); ?>
-    </script>
 </body>
 </html>

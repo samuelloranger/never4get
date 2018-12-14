@@ -46,7 +46,7 @@ $pdosResultatListesHeader -> closeCursor();
                 <li class="header__listeItem"><a  class="fi flaticon-userMobile" href="">Compte</a></li>
                 <?php for($intCtr = 0; $intCtr < count($arrListesHeader); $intCtr++){?>
                     <li class="header__listeItem  <?php if(isset($_GET["id_item"]) == true){  if($arrListesHeader[$intCtr]["id_liste"] == $arrInfosItem["id_liste"]) { echo "header__listeItem--active"; } } else{ if($arrListesHeader[$intCtr]["id_liste"] == $arrInfosListe["id_liste"]) { echo "header__listeItem--active"; } }?>">
-                        <a href= consulter-liste.php?id_liste=<?php echo  $arrListesHeader[$intCtr]["id_liste"] ?>"><?php echo $arrListesHeader[$intCtr]["nom_liste"]; ?></a>
+                        <a href="consulter-liste.php?id_liste=<?php echo  $arrListesHeader[$intCtr]["id_liste"] ?>"><?php echo $arrListesHeader[$intCtr]["nom_liste"]; ?></a>
                     </li>
                 <?php } ?>
             </div>

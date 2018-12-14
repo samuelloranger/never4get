@@ -21,12 +21,12 @@
             height: auto; 
             @media (min-width: $bureau) {
                 width: span(4 of 8); 
-            }
-        }
+            } 
+        } 
         input{ 
-            border: 2px $gris solid;
+            border: 1px $gris solid; 
             vertical-align: text-bottom;
-        }
+        } 
     } 
     &__nom{
         h2{
@@ -55,6 +55,12 @@
                 height: 10rem; 
                 margin: 1rem 0;
                 border: 2px $gris solid;
+                transition: .2s all ease-in-out;
+                @include ombrePortee;
+                &:hover{ 
+                    transform: scale(1.1);
+                    @include ombrePorteeHover; 
+                }
                 @media (min-width: $bureau) {
                     width: span(3 of 7); 
                 }  
@@ -87,9 +93,10 @@
                         width: 2.5rem; 
                         height: 2.5rem;  
                         border-radius: 2rem;
-                        background-color: $gris;
+                        background-color: $gris; 
+                        @include ombrePortee;
                         &:after{
-                            content: "";
+                            content: ""; 
                             position: absolute;
                             display: none; 
                             top: .65rem; 

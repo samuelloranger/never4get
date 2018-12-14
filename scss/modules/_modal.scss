@@ -54,12 +54,13 @@
     } 
     &__actions {
       display: flex;
-      flex-flow: column wrap;
+      // flex-flow: row wrap;
+      // justify-content: space-around;
     }
     /* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
     &:target { 
       display: table; 
-      position: fixed; 
+      position: fixed;  
       z-index: 1;
     }
   }

@@ -16,17 +16,17 @@
         top: 0;
         left: 0;
         border-radius: 30px;
-        background-color: grey;
+        background-color: $gris;
         width: 30px;
         height: 30px;
         border: none;
         transition-duration: .4s;
         &:focus{
           outline: none;
-          border: yellow;
+          border: $jauneAccent;
         } 
         &--active{
-          background-color: blue;
+          background-color: $bleu;
           transform: translateX(30px);
         }
     }
@@ -57,9 +57,9 @@
   margin: 5px auto;
   transition-duration: 0.25s;
   @include fontSize(16px);
-
+  @include ombrePorteeBtn;
   &:hover{
-    border: $bleu 2px solid;
+    border: $bleu 2px solid; 
   }
 
   &:active{

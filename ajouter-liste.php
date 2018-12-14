@@ -104,7 +104,7 @@
         //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
         //****************************************************************
         //Vérifications du contenu du contenu du nom de la liste
-        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste'])){
+        if(!preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste'])){
             //Si nom du participant est invalide
             $strCodeErreur="-1";
         }
@@ -173,22 +173,24 @@
     <main class="formListe conteneur">
         <?php include("inc/fragments/sideNav.inc.php"); ?>
         <div class="formListe__content">
-            <h1 clas="formListe__titre">Ajouter une liste</h1>
+            <h1 class="formListe__titre">Ajouter une liste</h1>
             <?php 
                 if($strMessageErreur!=""){ ?>
                     <p class="erreur"><?php echo $strMessageErreur; ?></p>
             <?php } ?>
-            <form action="ajouter-liste.php" method="GET">
+            <form action="ajouter-liste.php" method="GET" >
                 <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
                 <div class="formListe__nom conteneurChamp">
-                    <label for="nomListe"><h2>Nom de la liste</h2></label>
+                    <label for="nomListe" class="h2">Nom de la liste</label>
                     <input type="text" id="nomListe" value="" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
                     <span class="contenantRetro"></span>
                 </div>
 
                 <fieldset class="formListe__couleurs conteneurChamp">
-                    <legend><h2>Choix de couleurs</h2><span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
+                    <legend class="h2">Choix de couleurs
+                        <span class="contenantRetro"></span>
+                    </legend>
                     <ul class="formListe__couleursListe">
                         <?php
                             for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
@@ -205,8 +207,12 @@
                     </ul>
                 </fieldset>
 
-                <button type="submit" value="Add" name="codeOperation" class="btn btnOperation">Ajouter</button>    
-                <a href="index.php" class="btn btnAnnuler">Annuler</a>
+                <button type="submit" value="Add" name="codeOperation" class="btn btnOperation">
+                    Ajouter
+                </button>    
+                <a href="index.php" class="btn btnAnnuler">
+                    Annuler
+                </a>
             </form>
         </div>
     </main>

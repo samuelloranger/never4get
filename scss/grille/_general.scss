@@ -1,6 +1,5 @@
 /**
- * @author Gabriel Chouinard Létourneau
- * @todo Compléter selon l'énoncé
+ * @author Gabriel Chouinard Létourneau <chouinardletourneauletourneaug@gmail.com>
 */
 
 @include border-box-sizing;
@@ -11,10 +10,7 @@
           'gutters': 0.25,
           'spread': 'narrow',
           'container-spread': 'narrow',
-  );
-  .conteneur {
-    //background: susy-svg-grid($susy) no-repeat scroll;
-  }
+  ); 
 }
 @media(min-width:$bureau){
   $susy: (
@@ -23,9 +19,6 @@
           'spread': 'narrow',
           'container-spread': 'narrow'
   );
-  .conteneur {
-    //background: susy-svg-grid($susy) no-repeat scroll;
-  }
 }
 
 body{
@@ -33,7 +26,7 @@ body{
   margin: 0;
   position: relative;
 
-  @media(max-width: $bureau){
+  @media(max-width: $bureau){ 
     min-height: 667px;
   }
 }
@@ -66,5 +59,4 @@ noscript p{
     width: 75%;
     @include fontSize(18px);
   }
-
 }

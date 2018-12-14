@@ -100,7 +100,7 @@
         //VÉRIFICATIONS DES MODIFS & GESTION DES ERREURS
         //****************************************************************
         //Vérifications du contenu du contenu du nom de la liste
-        if(preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste']===0)){
+        if(!preg_match('/^[a-zA-ZÀ-ÿ1-9\'\-#]{1,50}$/', $arrListe['nom_liste'])){
             //Si nom du participant est invalide
             $strCodeErreur="-1";
         }
@@ -173,13 +173,15 @@
                 <input type="hidden" name="id_liste" value="<?php echo $arrListe['id_liste']; ?>">
 
                 <div class="formListe__nom conteneurChamp">
-                    <label for="nomListe"><h2>Nom de la liste</h2></label>
+                    <label for="nomListe" class="h2">Nom de la liste</label>
                     <input type="text" id="nomListe" value="<?php echo $arrListe['nom_liste']; ?>" pattern="[a-zA-ZÀ-ÿ1-9 -'#]{1,55}" name="nomListe">
                     <span class="contenantRetro"></span>
                 </div>
 
                 <fieldset class="formListe__couleurs conteneurChamp">
-                    <legend><h2>Choix de couleurs</h2><span class="erreur"><?php echo $arrMessagesErreur['couleurs']; ?></span></legend>
+                    <legend class="h2">Choix de couleurs
+                        <span class="contenantRetro"></span>
+                    </legend>
                     <ul class="formListe__couleursListe">
                         <?php
                             for($intCpt=0;$intCpt<count($arrCouleurs);$intCpt++){ ?>
@@ -196,8 +198,12 @@
                     </ul>
                 </fieldset>
 
-                <button type="submit" value="Edit" name="codeOperation" class="btn btnOperation">Modifier</button>
-                <a href="index.php" class="btn btnAnnuler">Annuler</a>
+                <button type="submit" value="Edit" name="codeOperation" class="btn btnOperation">
+                    Modifier
+                </button>
+                <a href="index.php" class="btn btnAnnuler">
+                    Annuler
+                </a>
             </form>
         </div>
     </main>

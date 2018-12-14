@@ -4,7 +4,8 @@
 .echeancesBandeau{
     display: flex; 
     flex-flow: row-reverse wrap;
-    font-family: $fontSemiBold; 
+    justify-content: center;
+    font-family: $fontSemiBold;  
     background-color: $gris; 
     color: #fff;   
     padding: 1.5rem span(1 of 12) - gutter(12);
@@ -69,9 +70,10 @@
         flex-flow: column-reverse wrap;
         justify-content: space-between;
         width: span(9 of 12);
-        margin-left: span(2 of 12)+gutter(12);
+        margin: 0 auto; 
         @media (min-width: $bureau) {
             flex-flow: row nowrap;
+            margin-left: span(2 of 12)+gutter(12);
         }
         &Titre{
             text-align: center;
@@ -79,7 +81,8 @@
             margin: 2rem auto;
             @media (min-width: $bureau) {
                 width: span(2 of 9); 
-                margin-right: span(4 of 9)+gutter(9);
+                margin-right: span(4 of 9)+gutter(9); 
+                text-align: left;
             }
         }
         .btnOperation{ 
@@ -92,7 +95,7 @@
                 margin-left: gutter(9); 
                 float: right;   
             }
-        } 
+        }
     }
     &__retroactions{
         font-family: $fontSemiBold;
@@ -186,5 +189,8 @@
         justify-content: space-around;
         width: span(8 of 12);
         margin: 2% span(2 of 12)+gutter(12); 
-    }  
+        @media (min-width: 850px) {
+            justify-content: space-between;
+        } 
+    }   
 }     

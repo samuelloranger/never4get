@@ -1,6 +1,6 @@
 /**
-* @author Ève Février - efevrier@cegep-ste-foy.qc.ca
-* @author Yves Hélie - yves.helie@cegep-ste-foy.qc.ca
+* @author Gabriel Chouinard Létourneau - chouinardletourneaug@gmail.com
+* @author Samuel Loranger
 */
 
 /**
@@ -87,4 +87,12 @@
 //Ombre portée
 @mixin ombrePortee{
     box-shadow: 0px 0px 5px black;
+}
+//Ombre portée sur hover
+@mixin ombrePorteeHover{
+    box-shadow: 0px 0px 15px black;
+}
+//Ombre portée pour bouton
+@mixin ombrePorteeBtn{
+    box-shadow: 2px 2px 7px black;
 }
