@@ -9,7 +9,7 @@
   "author": "Samuel Loranger/Gabriel Chouinard-Letourneau",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "normalize": "^0.3.1"
   },
   "devDependencies": {
