@@ -12,16 +12,16 @@ if (stristr($_SERVER['HTTP_HOST'], 'local') || (substr($_SERVER['HTTP_HOST'], 0,
 // Selon l'environnement d'exécution (développement ou en ligne)
 if ($blnLocal) {
     $strHost = 'localhost';
-    $strBD="18_pni1_tofu";
-    $strUser = "never4get";
-    $strPassword= "badrequest";
+    $strBD="never4get";
+    $strUser = "root";
+    $strPassword= "\$Benji122";
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 } else {
-    $strHost = 'timunix2.cegep-ste-foy.qc.ca';
-    $strBD='18_pni1_tofu_err';
-    $strUser = '18_pni1_tofu_err';
-    $strPassword = 'oups';
+    $strHost = 'localhost';
+    $strBD='never4get';
+    $strUser = 'samuelloranger';
+    $strPassword = "\$Benji122";
     // error_reporting(E_ALL & ~E_NOTICE);
     // error_reporting(0);
 }
